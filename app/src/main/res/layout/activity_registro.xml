@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".Registro">
+
+    <TextView
+        android:id="@+id/tv_sucesso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/tv_sucesso"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="357dp"
+        android:layout_height="580dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/tv_registro"
+        android:text="@string/tv_registro"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sucesso" />
+
+    <Button
+        android:id="@+id/bt_home"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bt_principal"
+        android:elevation="8dp"
+        android:fontFamily="@font/font_awesome_5"
+        android:gravity="center"
+        android:stateListAnimator="@null"
+        android:text="@string/icon_home"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bt_compartilhar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bt_compartilhar"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/bt_principal"
+        android:elevation="8dp"
+        android:fontFamily="@font/font_awesome_5"
+        android:gravity="center"
+        android:stateListAnimator="@null"
+        android:text="@string/icon_share"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/bt_home"
+        app:layout_constraintEnd_toStartOf="@+id/bt_copiar2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_home" />
+
+    <Button
+        android:id="@+id/bt_novo"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/bt_principal"
+        android:elevation="8dp"
+        android:fontFamily="@font/font_awesome_5"
+        android:gravity="center"
+        android:stateListAnimator="@null"
+        android:text="@string/icon_plus"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/bt_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_copiar2" />
+
+    <Button
+        android:id="@+id/bt_copiar2"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/bt_principal"
+        android:elevation="8dp"
+        android:fontFamily="@font/font_awesome_5"
+        android:gravity="center"
+        android:stateListAnimator="@null"
+        android:text="@string/icon_copy"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/bt_home"
+        app:layout_constraintEnd_toStartOf="@+id/bt_novo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_compartilhar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

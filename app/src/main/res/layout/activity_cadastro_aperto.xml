@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".CadastroAperto">
+
+    <Button
+        android:id="@+id/bt_cadastro_confirma"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/bt_principal"
+        android:elevation="8dp"
+        android:fontFamily="@font/font_awesome_5"
+        android:gravity="center"
+        android:stateListAnimator="@null"
+        android:text="@string/icon_confirm"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_cadastro_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_cadastro_home"
+        app:layout_constraintTop_toTopOf="@+id/bt_cadastro_home" />
+
+    <Button
+        android:id="@+id/bt_cadastro_home"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bt_principal"
+        android:elevation="8dp"
+        android:fontFamily="@font/font_awesome_5"
+        android:gravity="center"
+        android:text="@string/icon_home"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bt_cadastro_confirma"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_titulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/product_sans"
+        android:gravity="center"
+        android:text="@string/tv_cadastro_aperto"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_processo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:fontFamily="@font/product_sans"
+        android:gravity="center"
+        android:text="@string/tv_cadastro_processo"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_titulo" />
+
+    <Spinner
+        android:layout_width="287dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_titulo" />
+
+    <AutoCompleteTextView
+        android:layout_width="282dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_cadastro_programa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_cadastro_programa"
+        app:layout_constraintTop_toTopOf="@+id/tv_cadastro_programa" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_programa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/product_sans"
+        android:text="@string/tv_cadastro_programa"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_processo" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_ciclos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/product_sans"
+        android:text="@string/tv_cadastro_ciclos"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_programa" />
+
+    <Spinner
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_cadastro_ciclos"
+        app:layout_constraintStart_toEndOf="@+id/tv_cadastro_ciclos"
+        app:layout_constraintTop_toTopOf="@+id/tv_cadastro_ciclos" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_nominal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/product_sans"
+        android:text="@string/tv_cadastro_nominal"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_ciclos" />
+
+    <EditText
+        android:id="@+id/et_cadastro_nominal"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/et_cadastro_nominal"
+        android:inputType="number"
+        android:maxLength="3"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_cadastro_nominal"
+        app:layout_constraintStart_toEndOf="@+id/tv_cadastro_nominal"
+        app:layout_constraintTop_toTopOf="@+id/tv_cadastro_nominal" />
+
+    <Button
+        android:id="@+id/bt_cadastro_motivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bt_texto"
+        android:elevation="8dp"
+        android:fontFamily="@font/product_sans"
+        android:text="@string/bt_cadastro_motivo"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cadastro_nominal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bt_texto"
+        android:elevation="8dp"
+        android:fontFamily="@font/product_sans"
+        android:text="@string/bt_cadastro_processo"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_cadastro_motivo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
