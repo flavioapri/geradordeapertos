@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="icon_home">&#xf015;</string>
+    <string name="icon_scanner">&#xf02a;</string>
+    <string name="icon_confirm">&#xf00c;</string>
+    <string name="icon_clear">&#xf12d;</string>
+    <string name="icon_share">&#xf1e0;</string>
+    <string name="icon_copy">&#xf0c5;</string>
+    <string name="icon_plus">&#xf067;</string>
+    <string name="icon_export">&#xf08e;</string>
+    <string name="icon_menu">&#xf142;</string>
+</resources>
