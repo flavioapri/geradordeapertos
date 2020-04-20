@@ -34,7 +34,9 @@
     <string name="notas_titulo">Notas das versões</string>
     <string name="leitura_cabecalho">Aponte a câmera para o código de barras</string>
     <string name="leitura_cabecalho_ok">Código lido com sucesso!\nAguarde</string>
-    <string name="releitura">Ler NP novamente</string>
     <string name="tv_formulario_ciclos">1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12</string>
     <string name="titulo_formulario">Configuração do aperto</string>
+    <string name="programa_individual">Programa individual</string>
+    <string name="programa_lote">Programa em lote</string>
+    <string name="leitura">Ler código</string>
 </resources>

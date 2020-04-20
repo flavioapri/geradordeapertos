@@ -18,10 +18,10 @@
         android:gravity="center"
         android:inputType="number"
         android:maxLength="9"
-        app:layout_constraintEnd_toStartOf="@+id/bt_formulario_releitura"
+        app:layout_constraintEnd_toStartOf="@+id/bt_formulario_leitura"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_formulario_np"
-        app:layout_constraintTop_toTopOf="@+id/bt_formulario_releitura" />
+        app:layout_constraintTop_toTopOf="@+id/bt_formulario_leitura" />
 
     <TextView
         android:id="@+id/tv_formulario_np"
@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toStartOf="@+id/et_formulario_np"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bt_formulario_releitura" />
+        app:layout_constraintTop_toTopOf="@+id/bt_formulario_leitura" />
 
     <TextView
         android:id="@+id/tv_formulario_processo"
@@ -55,7 +55,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_formulario_processo"
-        app:layout_constraintTop_toBottomOf="@+id/bt_formulario_releitura" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_formulario_leitura" />
 
     <TextView
         android:id="@+id/tv_formulario_programa"
@@ -132,10 +132,13 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="100dp"
         android:autofillHints=""
+        android:clickable="true"
+        android:editable="false"
         android:ems="10"
         android:gravity="center"
         android:inputType="date"
         android:maxLength="10"
+        android:onClick="mostrarCalendario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_formulario_data"
         app:layout_constraintTop_toBottomOf="@+id/sp_formulario_motivo" />
@@ -210,13 +213,14 @@
         app:layout_constraintTop_toTopOf="@+id/bt_formulario_confirm" />
 
     <Button
-        android:id="@+id/bt_formulario_releitura"
+        android:id="@+id/bt_formulario_leitura"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/bt_texto"
-        android:onClick="relerCodigo"
-        android:text="@string/releitura"
+        android:fontFamily="@font/product_sans"
+        android:onClick="leCodigo"
+        android:text="@string/leitura"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -230,6 +234,7 @@
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/bt_texto"
+        android:fontFamily="@font/product_sans"
         android:text="@string/tv_ciclo"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"

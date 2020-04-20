@@ -1,6 +1,7 @@
 package br.com.flavio.geradordeapertos;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -25,13 +26,14 @@ public class Leitura extends AppCompatActivity {
     private SurfaceView sv_camera;
     private CameraSource camera;
     private TextView tv_leitura_cabecalho;
+    private boolean primeiroCodigoDetectado = true;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leitura);
-        
         tv_leitura_cabecalho = findViewById(R.id.tv_leitura_cabecalho);
+        // Inicializa os recursos para criar o leitor de código de barras
         sv_camera = findViewById(R.id.sv_camera);
         BarcodeDetector detector = new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.CODE_128).build();
         camera = new CameraSource.Builder(this, detector).setAutoFocusEnabled(true)
@@ -64,7 +66,6 @@ public class Leitura extends AppCompatActivity {
             }
         });
         detector.setProcessor(new Detector.Processor<Barcode>() {
-            
             @Override
             public void release() {
             }
@@ -73,16 +74,17 @@ public class Leitura extends AppCompatActivity {
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 SparseArray<Barcode> barcodes = detections.getDetectedItems();
                 
-                Intent intent = new Intent(Leitura.this, Formulario.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                
-                if (barcodes.size() > 0) {
-                    String npLido = barcodes.valueAt(0).displayValue;
+                if (barcodes.size() > 0 && primeiroCodigoDetectado) {
+                    String np = barcodes.valueAt(0).displayValue;
                     tv_leitura_cabecalho.setTextColor(Color.GREEN);
                     tv_leitura_cabecalho.setText(R.string.leitura_cabecalho_ok);
                     
-                    intent.putExtra("npLido", npLido);
-                    startActivity(intent);
+                    /* Flag muda para false e evita que se repitam varias vezes esse bloco de
+                       código não inicializando varias activitys do formulário */
+                    primeiroCodigoDetectado = false;
+                    Intent intentFormulario = new Intent().putExtra("np", np);
+                    setResult(Activity.RESULT_OK, intentFormulario);
+                    finish();
                 }
             }
         });
@@ -90,7 +92,7 @@ public class Leitura extends AppCompatActivity {
     
     @Override
     protected void onResume() {
-        // Seta o texto do cabeçalho para o original
+        // Seta o texto do cabeçalho para o formato original
         tv_leitura_cabecalho.setText(R.string.leitura_cabecalho);
         tv_leitura_cabecalho.setTextColor(Color.DKGRAY);
         super.onResume();

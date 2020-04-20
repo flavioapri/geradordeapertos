@@ -1,5 +1,5 @@
 <resources>
-
-    <!-- Base application theme. -->
-
+    <style name="dialog">
+        <item name="colorAccent">#66A114</item>
+    </style>
 </resources>
