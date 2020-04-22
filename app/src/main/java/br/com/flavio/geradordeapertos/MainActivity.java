@@ -1,21 +1,16 @@
 package br.com.flavio.geradordeapertos;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private Intent intent;
-    boolean valor = false;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.mi_cadastrar:
-                        intent.setClass(MainActivity.this, CadastroAperto.class);
+                        intent.setClass(MainActivity.this, Cadastro.class);
                         break;
                     case R.id.mi_configuracoes:
                         intent.setClass(MainActivity.this, Configuracoes.class);
@@ -68,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.mi_programa_individual:
-                        intent.setClass(MainActivity.this, Formulario.class);
+                        intent.setClass(MainActivity.this, FormularioProgramaIndividual.class);
                         break;
                     case R.id.mi_programa_lote:
-                        intent.setClass(MainActivity.this, FormularioProgramaEmLote.class);
+                        intent.setClass(MainActivity.this, FormularioProgramaLote.class);
                         break;
                 }
                 startActivity(intent);

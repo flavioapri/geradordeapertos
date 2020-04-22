@@ -51,9 +51,8 @@ public class Leitura extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                } else {
+                } else
                     requestPermissions(new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_DENIED);
-                }
             }
             
             @Override

@@ -1518,9 +1518,12 @@ id barrier
 id beginning
 id blocking
 id bottom
-id bt_cadastro_confirma
 id bt_cadastro_home
 id bt_cadastro_motivo
+id bt_cadastro_processo
+id bt_cadastro_processo_home
+id bt_cadastro_processo_novo
+id bt_cadastro_programa
 id bt_compartilhar
 id bt_copiar2
 id bt_formulario_can
@@ -1559,6 +1562,7 @@ id coordinator
 id custom
 id customPanel
 id cut
+id cv_lista_processo
 id dark
 id date_picker_actions
 id decor_content_parent
@@ -1578,7 +1582,6 @@ id end
 id end_padder
 id enterAlways
 id enterAlwaysCollapsed
-id et_cadastro_nominal
 id et_configuracoes_tolerancia
 id et_formulario_data
 id et_formulario_np
@@ -1688,6 +1691,7 @@ id right
 id right_icon
 id right_side
 id rounded
+id rv_cadastro_processo_lista
 id save_non_transition_alpha
 id save_overlay_view
 id scale
@@ -1772,10 +1776,8 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
-id tv_cadastro_ciclos
-id tv_cadastro_nominal
-id tv_cadastro_processo
-id tv_cadastro_programa
+id tv_cadastro_processo_rodape
+id tv_cadastro_processo_titulo
 id tv_cadastro_titulo
 id tv_configuracoes_titulo
 id tv_configuracoes_tolerancia
@@ -1791,6 +1793,7 @@ id tv_historico_inicio
 id tv_historico_processo
 id tv_historico_titulo
 id tv_leitura_cabecalho
+id tv_processo_nome
 id tv_sobre_descricao
 id tv_sobre_notas
 id tv_sobre_titulo
@@ -1868,11 +1871,11 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
-layout activity_cadastro_aperto
-layout activity_cadastro_motivo
+layout activity_cadastro
+layout activity_cadastro_processo
 layout activity_configuracoes
-layout activity_formulario
-layout activity_formulario_programa_em_lote
+layout activity_formulario_individual
+layout activity_formulario_programa_lote
 layout activity_historico
 layout activity_leitura
 layout activity_main
@@ -1937,6 +1940,7 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout processo
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -1985,12 +1989,19 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string alterar
+string angulo
 string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string bt_cadastro_motivo
-string bt_cadastro_processo
+string bt_cadastro_programa
+string cadastrar
+string cadastrar_novo
 string cadastro
+string cadastro_processo
+string cadastro_programa
+string cancelar
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
@@ -2033,6 +2044,8 @@ string icon_menu
 string icon_plus
 string icon_scanner
 string icon_share
+string informe_nome_motivo
+string informe_nome_processo
 string inicio
 string leitura
 string leitura_cabecalho
@@ -2041,6 +2054,7 @@ string manter_configuracao
 string mi_configuracoes
 string mi_historico
 string mi_sobre
+string motivo
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_suffix
@@ -2082,8 +2096,11 @@ string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string pesquisar
+string processo
+string programa
 string programa_individual
 string programa_lote
+string remover
 string search_menu_title
 string simbolo_porcentagem
 string sobre
@@ -2096,6 +2113,7 @@ string tv_cadastro_aperto
 string tv_cadastro_ciclos
 string tv_cadastro_nominal
 string tv_cadastro_processo
+string tv_cadastro_processo_lista_rodape
 string tv_cadastro_programa
 string tv_ciclo
 string tv_data
@@ -2106,8 +2124,10 @@ string tv_processo
 string tv_programa
 string tv_registro
 string tv_sucesso
+style AlertDialog
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
+style AlertDialogTitulo
 style Animation_AppCompat_Dialog
 style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
@@ -2781,7 +2801,6 @@ style Widget_MaterialComponents_Toolbar_Primary
 style Widget_MaterialComponents_Toolbar_PrimarySurface
 style Widget_MaterialComponents_Toolbar_Surface
 style Widget_Support_CoordinatorLayout
-style dialog
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth

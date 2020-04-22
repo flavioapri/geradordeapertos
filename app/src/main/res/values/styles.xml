@@ -1,5 +1,9 @@
 <resources>
-    <style name="dialog">
-        <item name="colorAccent">#66A114</item>
+    <style name="AlertDialog">
+        <item name="android:fontFamily">@font/product_sans</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:windowTitleStyle">@style/AlertDialogTitulo</item>
     </style>
+    <style name="AlertDialogTitulo"></style>
 </resources>

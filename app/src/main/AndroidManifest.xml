@@ -11,21 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".FormularioProgramaEmLote"></activity>
+        <activity android:name=".CadastroProcesso">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Cadastro" />
+        <activity android:name=".FormularioProgramaLote" />
         <activity android:name=".Leitura" />
         <activity android:name=".Sobre" />
         <activity android:name=".Configuracoes" />
         <activity android:name=".Historico" />
-        <activity android:name=".CadastroMotivo" />
-        <activity android:name=".CadastroAperto" />
         <activity android:name=".Registro" />
-        <activity android:name=".Formulario" />
+        <activity android:name=".FormularioProgramaIndividual" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -12,14 +12,13 @@
     <string name="tv_data">Data</string>
     <string name="tv_sucesso">Registro gerado com sucesso!</string>
     <string name="tv_registro">Registro de aperto gerado</string>
-    <string name="tv_cadastro_aperto">Cadastro de apertos</string>
+    <string name="tv_cadastro_aperto">Cadastro de programas</string>
     <string name="tv_cadastro_processo">Processo</string>
     <string name="tv_cadastro_programa">Programa</string>
     <string name="tv_cadastro_ciclos">Ciclos</string>
     <string name="tv_cadastro_nominal">Valor nominal</string>
     <string name="et_cadastro_nominal">555</string>
     <string name="bt_cadastro_motivo">Cadastro de motivo</string>
-    <string name="bt_cadastro_processo">Cadastro de processo</string>
     <string name="historico">Histórico</string>
     <string name="inicio">Início</string>
     <string name="fim">Fim</string>
@@ -39,4 +38,19 @@
     <string name="programa_individual">Programa individual</string>
     <string name="programa_lote">Programa em lote</string>
     <string name="leitura">Ler código</string>
+    <string name="cadastro_processo">Cadastro de processo</string>
+    <string name="informe_nome_processo">Informe o nome do processo que deseja cadastrar</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="informe_nome_motivo">Informe a descrição do motivo que deseja cadastrar</string>
+    <string name="angulo">Ângulo</string>
+    <string name="bt_cadastro_programa">Cadastro de programa</string>
+    <string name="cadastro_programa">Cadastro de programa</string>
+    <string name="programa">Programa</string>
+    <string name="processo">Processo</string>
+    <string name="motivo">Motivo</string>
+    <string name="cadastrar_novo">Cadastrar novo processo</string>
+    <string name="tv_cadastro_processo_lista_rodape">Clique e mantenha pressionado em um processo na lista para excluir ou alterar</string>
+    <string name="remover">Remover</string>
+    <string name="alterar">Alterar</string>
 </resources>
