@@ -21,6 +21,7 @@ public class CadastroProcesso extends AppCompatActivity {
     private RecyclerView rv_processsos;
     private EditText et_dialog_processo;
     private RecyclerViewAdapter adapter;
+    private List<Processo> processos;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +41,9 @@ public class CadastroProcesso extends AppCompatActivity {
      */
     private void carregaListaProcessos() {
         ProcessoDAO processoDAO = new ProcessoDAO(this);
-        List<Processo> processos = processoDAO.buscaProcessos();
+        processos = processoDAO.buscaProcessos();
         processoDAO.close();
-        adapter = new RecyclerViewAdapter(processos);
+        adapter = new RecyclerViewAdapter(processos, this);
         rv_processsos.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv_processsos.setLayoutManager(llm);
@@ -84,4 +85,5 @@ public class CadastroProcesso extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
 }
