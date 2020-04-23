@@ -13,21 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import br.com.flavio.geradordeapertos.adapter.RecyclerViewAdapter;
+import br.com.flavio.geradordeapertos.adapter.ProcessoAdapter;
 import br.com.flavio.geradordeapertos.dao.ProcessoDAO;
 import br.com.flavio.geradordeapertos.modelo.Processo;
 
 public class CadastroProcesso extends AppCompatActivity {
-    private RecyclerView rv_processsos;
-    private EditText et_dialog_processo;
-    private RecyclerViewAdapter adapter;
+    private RecyclerView rv_processos;
+    private ProcessoAdapter adapter;
     private List<Processo> processos;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_processo);
-        rv_processsos = findViewById(R.id.rv_cadastro_processo_lista);
+        rv_processos = findViewById(R.id.rv_cadastro_processo_lista);
     }
     
     @Override
@@ -43,10 +42,10 @@ public class CadastroProcesso extends AppCompatActivity {
         ProcessoDAO processoDAO = new ProcessoDAO(this);
         processos = processoDAO.buscaProcessos();
         processoDAO.close();
-        adapter = new RecyclerViewAdapter(processos, this);
-        rv_processsos.setAdapter(adapter);
+        adapter = new ProcessoAdapter(processos, this);
+        rv_processos.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        rv_processsos.setLayoutManager(layoutManager);
+        rv_processos.setLayoutManager(layoutManager);
     }
     
     /**

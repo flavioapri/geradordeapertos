@@ -1520,6 +1520,8 @@ id blocking
 id bottom
 id bt_cadastro_home
 id bt_cadastro_motivo
+id bt_cadastro_motivo_home
+id bt_cadastro_motivo_novo
 id bt_cadastro_processo
 id bt_cadastro_processo_home
 id bt_cadastro_processo_novo
@@ -1691,6 +1693,7 @@ id right
 id right_icon
 id right_side
 id rounded
+id rv_cadastro_motivo_lista
 id rv_cadastro_processo_lista
 id save_non_transition_alpha
 id save_overlay_view
@@ -1776,6 +1779,8 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tv_cadastro_motivo_rodape
+id tv_cadastro_motivo_titulo
 id tv_cadastro_processo_rodape
 id tv_cadastro_processo_titulo
 id tv_cadastro_titulo
@@ -1872,6 +1877,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_cadastro
+layout activity_cadastro_motivo
 layout activity_cadastro_processo
 layout activity_configuracoes
 layout activity_formulario_individual
@@ -1990,6 +1996,8 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string alterar
+string alterar_motivo
+string alterar_motivo_descricao
 string alterar_processo
 string alterar_processo_descricao
 string angulo
@@ -2000,7 +2008,9 @@ string bt_cadastro_motivo
 string bt_cadastro_programa
 string cadastrar
 string cadastrar_novo
+string cadastrar_novo_motivo
 string cadastro
+string cadastro_motivo
 string cadastro_processo
 string cadastro_programa
 string cancelar
@@ -2103,6 +2113,8 @@ string programa
 string programa_individual
 string programa_lote
 string remover
+string remover_motivo
+string remover_motivo_descricao
 string remover_processo
 string remover_processo_descricao
 string search_menu_title
@@ -2115,6 +2127,7 @@ string titulo_formulario
 string tolerancia
 string tv_cadastro_aperto
 string tv_cadastro_ciclos
+string tv_cadastro_motivo_lista_rodape
 string tv_cadastro_nominal
 string tv_cadastro_processo
 string tv_cadastro_processo_lista_rodape

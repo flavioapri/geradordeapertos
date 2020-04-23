@@ -22,13 +22,14 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-        <activity android:name="br.com.flavio.geradordeapertos.CadastroProcesso" >
+        <activity android:name="br.com.flavio.geradordeapertos.CadastroMotivo" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="br.com.flavio.geradordeapertos.CadastroProcesso" />
         <activity android:name="br.com.flavio.geradordeapertos.Cadastro" />
         <activity android:name="br.com.flavio.geradordeapertos.FormularioProgramaLote" />
         <activity android:name="br.com.flavio.geradordeapertos.Leitura" />
@@ -37,8 +38,7 @@
         <activity android:name="br.com.flavio.geradordeapertos.Historico" />
         <activity android:name="br.com.flavio.geradordeapertos.Registro" />
         <activity android:name="br.com.flavio.geradordeapertos.FormularioProgramaIndividual" />
-        <activity android:name="br.com.flavio.geradordeapertos.MainActivity" >
-        </activity>
+        <activity android:name="br.com.flavio.geradordeapertos.MainActivity" />
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"

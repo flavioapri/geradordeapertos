@@ -57,4 +57,11 @@
     <string name="alterar_processo_descricao">Informe o novo nome do processo</string>
     <string name="remover_processo">Remover processo</string>
     <string name="remover_processo_descricao">Deseja mesmo remover o processo?\nSeus dados não poderam mais ser recuperados.</string>
+    <string name="cadastro_motivo">Cadastro de motivo</string>
+    <string name="tv_cadastro_motivo_lista_rodape">Clique e mantenha pressionado em um motivo na lista para excluir ou alterar</string>
+    <string name="cadastrar_novo_motivo">Cadastrar novo motivo</string>
+    <string name="remover_motivo">Remover motivo?</string>
+    <string name="remover_motivo_descricao">Se você remover ele não podera mais ser recuperado.</string>
+    <string name="alterar_motivo">Alterar motivo</string>
+    <string name="alterar_motivo_descricao">Informe o novo motivo</string>
 </resources>

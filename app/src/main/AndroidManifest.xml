@@ -11,12 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".CadastroProcesso">
+        <activity android:name=".CadastroPrograma"></activity>
+        <activity android:name=".CadastroMotivo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CadastroProcesso" />
         <activity android:name=".Cadastro" />
         <activity android:name=".FormularioProgramaLote" />
         <activity android:name=".Leitura" />
@@ -25,9 +28,7 @@
         <activity android:name=".Historico" />
         <activity android:name=".Registro" />
         <activity android:name=".FormularioProgramaIndividual" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
