@@ -45,8 +45,8 @@ public class CadastroProcesso extends AppCompatActivity {
         processoDAO.close();
         adapter = new RecyclerViewAdapter(processos, this);
         rv_processsos.setAdapter(adapter);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        rv_processsos.setLayoutManager(llm);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        rv_processsos.setLayoutManager(layoutManager);
     }
     
     /**
