@@ -53,4 +53,8 @@
     <string name="tv_cadastro_processo_lista_rodape">Clique e mantenha pressionado em um processo na lista para excluir ou alterar</string>
     <string name="remover">Remover</string>
     <string name="alterar">Alterar</string>
+    <string name="alterar_processo">Alterar processo</string>
+    <string name="alterar_processo_descricao">Informe o novo nome do processo</string>
+    <string name="remover_processo">Remover processo</string>
+    <string name="remover_processo_descricao">Deseja mesmo remover o processo?\nSeus dados não poderam mais ser recuperados.</string>
 </resources>

@@ -1,15 +1,18 @@
 package br.com.flavio.geradordeapertos.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -28,13 +31,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public RecyclerViewAdapter(List<Processo> processos, Context contexto) {
         this.processos = processos;
         this.contexto = contexto;
-        
     }
     
     @NonNull
     @Override
     public ProcessoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.processo, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lista, parent, false);
         return new ProcessoViewHolder(view, contexto);
     }
     
@@ -52,15 +54,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView processoNome;
         Context contexto;
         
-        
         public ProcessoViewHolder(@NonNull View itemView, Context contexto) {
             super(itemView);
-            this.processoNome = itemView.findViewById(R.id.tv_processo_nome);
+            this.processoNome = itemView.findViewById(R.id.tv_nome);
             this.contexto = contexto;
             
             itemView.setOnCreateContextMenuListener(this);
         }
-    
+        
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
             MenuItem alterar = menu.add(Menu.NONE, 1, 1, R.string.alterar);
@@ -73,19 +74,61 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         MenuItem.OnMenuItemClickListener onClick = new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                int posicao = getAdapterPosition();
-                Processo processo = processos.get(posicao);
-                ProcessoDAO processoDAO = new ProcessoDAO(contexto);
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case 1:
+                        alterarProcesso();
                         break;
                     case 2:
-                        processoDAO.deleta(processo);
+                        removerProcesso();
                         break;
                 }
-                processoDAO.close();
                 return true;
             }
         };
+        
+        private void removerProcesso() {
+            final int posicao = getAdapterPosition();
+            final Processo processo = processos.get(posicao);
+            final ProcessoDAO processoDAO = new ProcessoDAO(contexto);
+            
+            new AlertDialog.Builder(contexto, R.style.AlertDialog)
+                    .setTitle(R.string.remover_processo)
+                    .setMessage(R.string.remover_processo_descricao)
+                    .setPositiveButton(R.string.remover, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            processoDAO.deleta(processo);
+                            processos.remove(posicao);
+                            notifyDataSetChanged();
+                        }
+                    })
+                    .setNegativeButton(R.string.cancelar, null)
+                    .show();
+            processoDAO.close();
+        }
+        
+        private void alterarProcesso() {
+            final EditText et_alterar = new EditText(contexto);
+            int posicao = getAdapterPosition();
+            final Processo processo = processos.get(posicao);
+            final ProcessoDAO processoDAO = new ProcessoDAO(contexto);
+            
+            new AlertDialog.Builder(contexto, R.style.AlertDialog)
+                    .setTitle(R.string.alterar_processo)
+                    .setMessage(R.string.alterar_processo_descricao)
+                    .setView(et_alterar)
+                    .setPositiveButton(R.string.alterar, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            processo.setNome(et_alterar.getText().toString());
+                            processoDAO.altera(processo);
+                            notifyDataSetChanged();
+                        }
+                    })
+                    .setNegativeButton(R.string.cancelar, null)
+                    .show();
+            processoDAO.close();
+        }
     }
+    
 }

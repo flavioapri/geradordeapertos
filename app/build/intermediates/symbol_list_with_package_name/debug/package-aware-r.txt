@@ -1562,7 +1562,7 @@ id coordinator
 id custom
 id customPanel
 id cut
-id cv_lista_processo
+id cv_lista
 id dark
 id date_picker_actions
 id decor_content_parent
@@ -1793,7 +1793,7 @@ id tv_historico_inicio
 id tv_historico_processo
 id tv_historico_titulo
 id tv_leitura_cabecalho
-id tv_processo_nome
+id tv_nome
 id tv_sobre_descricao
 id tv_sobre_notas
 id tv_sobre_titulo
@@ -1897,6 +1897,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout item_lista
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
@@ -1940,7 +1941,6 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
-layout processo
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -1990,6 +1990,8 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string alterar
+string alterar_processo
+string alterar_processo_descricao
 string angulo
 string app_name
 string appbar_scrolling_view_behavior
@@ -2101,6 +2103,8 @@ string programa
 string programa_individual
 string programa_lote
 string remover
+string remover_processo
+string remover_processo_descricao
 string search_menu_title
 string simbolo_porcentagem
 string sobre

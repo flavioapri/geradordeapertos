@@ -60,12 +60,12 @@
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\font\\font_awesome_5.ttf"
     },
     {
-        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_processo.xml.flat",
-        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\processo.xml"
-    },
-    {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\font_product_sans.ttf.flat",
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\font\\product_sans.ttf"
+    },
+    {
+        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_lista.xml.flat",
+        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\item_lista.xml"
     },
     {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",

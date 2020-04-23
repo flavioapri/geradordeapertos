@@ -7,14 +7,15 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_lista_processo"
+        android:id="@+id/cv_lista"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp">
 
         <TextView
-            android:id="@+id/tv_processo_nome"
+            android:id="@+id/tv_nome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="@string/cadastro_processo"
             android:textSize="18sp" />
     </androidx.cardview.widget.CardView>

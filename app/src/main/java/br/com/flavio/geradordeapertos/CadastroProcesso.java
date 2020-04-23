@@ -50,12 +50,14 @@ public class CadastroProcesso extends AppCompatActivity {
     }
     
     /**
-     * Exibe popup para persistir um novo processo
+     * Exibe popup para persistir um novo item_lista
      *
      * @param view
      */
     public void cadastrarProcesso(View view) {
-        et_dialog_processo = new EditText(this);
+        final EditText et_dialog_processo = new EditText(this);
+        final ProcessoDAO processoDAO = new ProcessoDAO(this);
+        final Processo processo = new Processo();
         //TODO personalizar estilo do dialog
         new AlertDialog.Builder(this, R.style.AlertDialog)
                 .setTitle(R.string.cadastro_processo)
@@ -64,16 +66,14 @@ public class CadastroProcesso extends AppCompatActivity {
                 .setPositiveButton(R.string.cadastrar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Processo processo = new Processo();
-                        ProcessoDAO processoDAO = new ProcessoDAO(CadastroProcesso.this);
                         processo.setNome(et_dialog_processo.getText().toString());
                         processoDAO.insere(processo);
-                        processoDAO.close();
                         carregaListaProcessos();
                     }
                 })
                 .setNegativeButton(R.string.cancelar, null)
                 .show();
+        processoDAO.close();
     }
     
     /**
@@ -85,5 +85,4 @@ public class CadastroProcesso extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
 }
