@@ -64,4 +64,25 @@
     <string name="remover_motivo_descricao">Se você remover ele não podera mais ser recuperado.</string>
     <string name="alterar_motivo">Alterar motivo</string>
     <string name="alterar_motivo_descricao">Informe o novo motivo</string>
+    <string name="selecionar_processo">Selecionar processo</string>
+    <string name="nome">Nome</string>
+    <string name="inserir_nome_programa">Inserir nome do programa</string>
+    <string name="inserir_qtd_ciclos">Inserir quantidade de ciclos</string>
+    <string name="inserir_valor_nominal">Inserir valor nominal</string>
+    <string name="inserir_angulo">Inserir ângulo</string>
+    <string name="confirmar">Confirma</string>
+    <string name="selecao_processo">Seleção de processo</string>
+    <string name="selecione_processo_lista">Selecione um processo na lista</string>
+    <string name="alert_titulo_nome_programa">Inserir nome do programa</string>
+    <string name="alert_msg_programa">Informe o nome do programa</string>
+    <string name="hint_nome_programa">Nome do programa</string>
+    <string name="alerto_title_ciclos">Definir ciclos</string>
+    <string name="alert_msg_ciclos">Quantos ciclos de aperto tera o programa?</string>
+    <string name="alert_titulo_nominal">Valor nominal do aperto</string>
+    <string name="alert_msg_nominal">Informe o valor nominal do aperto</string>
+    <string name="mascara_valor_nominal">###.#</string>
+    <string name="alert_titulo_angulo">Valor do ângulo</string>
+    <string name="alert_msg_angulo">Informe o valor do ângulo</string>
+    <string name="unidade_newton_metro">%1$.1f Nm</string>
+    <string name="unidade_grau">%1$d °</string>
 </resources>

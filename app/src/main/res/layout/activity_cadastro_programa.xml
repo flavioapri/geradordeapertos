@@ -4,6 +4,187 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     tools:context=".CadastroPrograma">
+
+    <TextView
+        android:id="@+id/tv_cadastro_programa_titulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/product_sans"
+        android:gravity="center"
+        android:text="@string/cadastro_programa"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_programa_processo"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/processo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_programa_titulo" />
+
+    <Button
+        android:id="@+id/bt_cadastro_programa_processo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bt_texto"
+        android:elevation="8dp"
+        android:fontFamily="@font/product_sans"
+        android:onClick="selecionaProcesso"
+        android:text="@string/selecionar_processo"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_programa_processo" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_programa_nome"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/nome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_cadastro_programa_processo" />
+
+    <Button
+        android:id="@+id/bt_cadastro_programa_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bt_texto"
+        android:elevation="8dp"
+        android:fontFamily="@font/product_sans"
+        android:onClick="insereNome"
+        android:text="@string/inserir_nome_programa"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_cadastro_programa_nome" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_programa_ciclos"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/tv_cadastro_ciclos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_cadastro_programa_nome" />
+
+    <Button
+        android:id="@+id/bt_cadastro_programa_ciclos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bt_texto"
+        android:elevation="8dp"
+        android:fontFamily="@font/product_sans"
+        android:onClick="insereCiclos"
+        android:text="@string/inserir_qtd_ciclos"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_cadastro_programa_ciclos" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_programa_nominal"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/tv_cadastro_nominal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_cadastro_programa_ciclos" />
+
+    <Button
+        android:id="@+id/bt_cadastro_programa_nominal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bt_texto"
+        android:elevation="8dp"
+        android:fontFamily="@font/product_sans"
+        android:text="@string/inserir_valor_nominal"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:onClick="insereValorNominal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_cadastro_programa_nominal" />
+
+    <TextView
+        android:id="@+id/tv_cadastro_programa_angulo"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/angulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_cadastro_programa_nominal" />
+
+    <Button
+        android:id="@+id/bt_cadastro_programa_angulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bt_texto"
+        android:elevation="8dp"
+        android:fontFamily="@font/product_sans"
+        android:onClick="insereAngulo"
+        android:text="@string/inserir_angulo"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_cadastro_programa_angulo" />
+
+    <Button
+        android:id="@+id/bt_cadastro_motivo_home"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bt_principal"
+        android:elevation="8dp"
+        android:fontFamily="@font/font_awesome_5"
+        android:gravity="center"
+        android:text="@string/icon_home"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

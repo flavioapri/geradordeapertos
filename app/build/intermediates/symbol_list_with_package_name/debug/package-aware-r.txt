@@ -1526,6 +1526,11 @@ id bt_cadastro_processo
 id bt_cadastro_processo_home
 id bt_cadastro_processo_novo
 id bt_cadastro_programa
+id bt_cadastro_programa_angulo
+id bt_cadastro_programa_ciclos
+id bt_cadastro_programa_nome
+id bt_cadastro_programa_nominal
+id bt_cadastro_programa_processo
 id bt_compartilhar
 id bt_copiar2
 id bt_formulario_can
@@ -1579,6 +1584,7 @@ id dimensions
 id direct
 id disableHome
 id dropdown_menu
+id editText
 id edit_query
 id end
 id end_padder
@@ -1589,6 +1595,8 @@ id et_formulario_data
 id et_formulario_np
 id et_historico_fim
 id et_historico_inicio
+id et_programa_angulo
+id et_programa_nominal
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1673,6 +1681,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id number_picker
 id off
 id on
 id outline
@@ -1783,6 +1792,12 @@ id tv_cadastro_motivo_rodape
 id tv_cadastro_motivo_titulo
 id tv_cadastro_processo_rodape
 id tv_cadastro_processo_titulo
+id tv_cadastro_programa_angulo
+id tv_cadastro_programa_ciclos
+id tv_cadastro_programa_nome
+id tv_cadastro_programa_nominal
+id tv_cadastro_programa_processo
+id tv_cadastro_programa_titulo
 id tv_cadastro_titulo
 id tv_configuracoes_titulo
 id tv_configuracoes_tolerancia
@@ -1879,6 +1894,7 @@ layout abc_tooltip
 layout activity_cadastro
 layout activity_cadastro_motivo
 layout activity_cadastro_processo
+layout activity_cadastro_programa
 layout activity_configuracoes
 layout activity_formulario_individual
 layout activity_formulario_programa_lote
@@ -1887,6 +1903,7 @@ layout activity_leitura
 layout activity_main
 layout activity_registro
 layout activity_sobre
+layout angulo_edit_text
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1903,6 +1920,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout edittext
 layout item_lista
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
@@ -1932,6 +1950,7 @@ layout mtrl_picker_header_title_text
 layout mtrl_picker_header_toggle
 layout mtrl_picker_text_input_date
 layout mtrl_picker_text_input_date_range
+layout nominal_edit_text
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
@@ -1947,9 +1966,11 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout number_picker
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout spinner
 layout support_simple_spinner_dropdown_item
 layout test_action_chip
 layout test_design_checkbox
@@ -1995,6 +2016,14 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string alert_msg_angulo
+string alert_msg_ciclos
+string alert_msg_nominal
+string alert_msg_programa
+string alert_titulo_angulo
+string alert_titulo_nome_programa
+string alert_titulo_nominal
+string alerto_title_ciclos
 string alterar
 string alterar_motivo
 string alterar_motivo_descricao
@@ -2038,6 +2067,7 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string configuracoes
+string confirmar
 string error_icon_content_description
 string et_cadastro_nominal
 string exposed_dropdown_menu_content_description
@@ -2045,6 +2075,7 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string fim
 string hide_bottom_view_on_scroll_behavior
+string hint_nome_programa
 string historico
 string icon_clear
 string icon_confirm
@@ -2059,10 +2090,15 @@ string icon_share
 string informe_nome_motivo
 string informe_nome_processo
 string inicio
+string inserir_angulo
+string inserir_nome_programa
+string inserir_qtd_ciclos
+string inserir_valor_nominal
 string leitura
 string leitura_cabecalho
 string leitura_cabecalho_ok
 string manter_configuracao
+string mascara_valor_nominal
 string mi_configuracoes
 string mi_historico
 string mi_sobre
@@ -2101,6 +2137,7 @@ string mtrl_picker_toggle_to_calendar_input_mode
 string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
+string nome
 string notas_titulo
 string password_toggle_content_description
 string path_password_eye
@@ -2118,6 +2155,9 @@ string remover_motivo_descricao
 string remover_processo
 string remover_processo_descricao
 string search_menu_title
+string selecao_processo
+string selecionar_processo
+string selecione_processo_lista
 string simbolo_porcentagem
 string sobre
 string sobre_descricao
@@ -2141,6 +2181,8 @@ string tv_processo
 string tv_programa
 string tv_registro
 string tv_sucesso
+string unidade_grau
+string unidade_newton_metro
 style AlertDialog
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
@@ -2373,6 +2415,7 @@ style MaterialAlertDialog_MaterialComponents_Title_Panel
 style MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked
 style MaterialAlertDialog_MaterialComponents_Title_Text
 style MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked
+style NumberPickerText
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_MaterialComponents
