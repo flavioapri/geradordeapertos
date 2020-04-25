@@ -24,12 +24,12 @@ public class Cadastro extends AppCompatActivity {
             case R.id.bt_cadastro_processo:
                 intent.setClass(this, CadastroProcesso.class);
                 break;
-//            case R.id.bt_cadastro_motivo:
-//                intent.setClass(this, CadastroMotivo.class);
-//                break;
-//            case R.id.bt_cadastro_programa:
-//                intent.setClass(this, CadastroPrograma.class);
-//                break;
+            case R.id.bt_cadastro_motivo:
+                intent.setClass(this, CadastroMotivo.class);
+                break;
+            case R.id.bt_cadastro_programa:
+                intent.setClass(this, CadastroPrograma.class);
+                break;
             default:
                 intent.setClass(this, MainActivity.class);
                 break;

@@ -2019,6 +2019,8 @@ string alert_msg_angulo
 string alert_msg_ciclos
 string alert_msg_nominal
 string alert_msg_programa
+string alert_programa_msg_salvar
+string alert_programa_titulo_salvar
 string alert_titulo_angulo
 string alert_titulo_nome_programa
 string alert_titulo_nominal
@@ -2102,6 +2104,8 @@ string mi_configuracoes
 string mi_historico
 string mi_sobre
 string motivo
+string msg_formulario_incompleto
+string msg_programa_salvo
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_suffix
@@ -2161,6 +2165,8 @@ string simbolo_porcentagem
 string sobre
 string sobre_descricao
 string status_bar_notification_info_overflow
+string string_sem_nome
+string string_valor_vazio
 string taxa_tolerancia
 string titulo_formulario
 string tolerancia

@@ -83,6 +83,12 @@
     <string name="mascara_valor_nominal">###.#</string>
     <string name="alert_titulo_angulo">Valor do ângulo</string>
     <string name="alert_msg_angulo">Informe o valor do ângulo</string>
+    <string name="alert_programa_titulo_salvar">Salvar programa</string>
+    <string name="alert_programa_msg_salvar">Deseja salvar o programa?</string>
     <string name="unidade_newton_metro">%1$.1f Nm</string>
     <string name="unidade_grau">%1$d °</string>
+    <string name="msg_programa_salvo">Programa salvo com sucesso!</string>
+    <string name="string_valor_vazio" />
+    <string name="string_sem_nome">Sem nome</string>
+    <string name="msg_formulario_incompleto">Os campos ainda não foram totalmente preenchidos</string>
 </resources>

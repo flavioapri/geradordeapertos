@@ -1,6 +1,7 @@
 package br.com.flavio.geradordeapertos;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +71,7 @@ public class CadastroPrograma extends AppCompatActivity {
     private Spinner criaSpinnerDeProcessos() {
         ProcessoDAO processoDAO = new ProcessoDAO(this);
         List<Processo> processos = processoDAO.buscaProcessos();
+        //TODO tratar quando a lista de processos esta vazia
         processoDAO.close();
         ArrayAdapter<Processo> adapter = new ArrayAdapter<Processo>(this, R.layout.sp_cadastro_programa_processo, processos);
         Spinner spinner = new Spinner(this);
@@ -86,8 +88,10 @@ public class CadastroPrograma extends AppCompatActivity {
                 .setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        programa.setNome(editText.getText().toString());
-                        tv_nome.setText(programa.getNome());
+                        String nome = editText.getText().toString();
+                        programa.setNome(nome);
+                        tv_nome.setText(nome);
+                        //TODO forçar usuário a inserir nome
                     }
                 })
                 .setNegativeButton(R.string.cancelar, null)
@@ -130,7 +134,7 @@ public class CadastroPrograma extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String valor = editText.getText().toString();
-                        programa.setValorNominal(Float.parseFloat(valor));
+                        programa.setValorNominal(valor);
                         String exibicao = getString(R.string.unidade_newton_metro, programa.getValorNominal());
                         tv_nominal.setText(exibicao);
                     }
@@ -152,7 +156,7 @@ public class CadastroPrograma extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String valor = editText.getText().toString();
-                        programa.setAngulo(Integer.parseInt(valor));
+                        programa.setAngulo(valor);
                         String exibicao = getString(R.string.unidade_grau, programa.getAngulo());
                         tv_angulo.setText(exibicao);
                     }
@@ -161,9 +165,42 @@ public class CadastroPrograma extends AppCompatActivity {
                 .show();
     }
     
-    public void inserirPrograma(View view){
-        ProgramaDAO dao = new ProgramaDAO(this);
-        dao.insere(programa);
-        dao.close();
+    public void inserirPrograma(View view) {
+        if (programa.isPreenchido()) {
+            new AlertDialog.Builder(this, R.style.AlertDialog)
+                    .setTitle(R.string.alert_programa_titulo_salvar)
+                    .setMessage(R.string.alert_programa_msg_salvar)
+                    .setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ProgramaDAO dao = new ProgramaDAO(CadastroPrograma.this);
+                            dao.insere(programa);
+                            dao.close();
+                            limparFormulario();
+                            new AlertDialog.Builder(CadastroPrograma.this, R.style.AlertDialog)
+                                    .setMessage(R.string.msg_programa_salvo)
+                                    .show();
+                        }
+                    })
+                    .setNegativeButton(R.string.cancelar, null)
+                    .show();
+        } else {
+            new AlertDialog.Builder(CadastroPrograma.this, R.style.AlertDialog)
+                    .setMessage(R.string.msg_formulario_incompleto)
+                    .show();
+        }
+    }
+    
+    public void limparFormulario() {
+        tv_processo.setText(R.string.string_valor_vazio);
+        tv_nome.setText(R.string.string_valor_vazio);
+        tv_ciclos.setText(R.string.string_valor_vazio);
+        tv_nominal.setText(R.string.string_valor_vazio);
+        tv_angulo.setText(R.string.string_valor_vazio);
+        programa = new Programa();
+    }
+    
+    public void vaiParaHome(View view){
+        startActivity(new Intent(this, MainActivity.class));
     }
 }

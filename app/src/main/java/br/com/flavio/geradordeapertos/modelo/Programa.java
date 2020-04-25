@@ -10,6 +10,14 @@ public class Programa {
     private float valorNominal;
     private int angulo;
     
+    public Programa() {
+        this.idProcesso = 0;
+        this.nome = "";
+        this.ciclos = 0;
+        this.valorNominal = 0;
+        this.angulo = 0;
+    }
+    
     public int getId() {
         return id;
     }
@@ -50,12 +58,30 @@ public class Programa {
         this.valorNominal = valorNominal;
     }
     
+    public void setValorNominal(String valorNominal) {
+        try {
+            this.valorNominal = Float.parseFloat(valorNominal);
+        } catch (NumberFormatException e) {
+        }
+    }
+    
     public int getAngulo() {
         return angulo;
     }
     
     public void setAngulo(int angulo) {
         this.angulo = angulo;
+    }
+    
+    public void setAngulo(String angulo) {
+        try {
+            this.angulo = Integer.parseInt(angulo);
+        } catch (NumberFormatException e) {
+        }
+    }
+    
+    public boolean isPreenchido() {
+        return (idProcesso > 0 & nome.length() > 0 & ciclos > 0 & valorNominal > 0);
     }
     
     @NonNull
