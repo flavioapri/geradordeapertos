@@ -49,7 +49,7 @@ public class CadastroMotivo extends AppCompatActivity {
     }
     
     /**
-     * Exibe popup para persistir um novo item_lista
+     * Exibe popup para persistir um novo ll_historico
      *
      * @param view
      */

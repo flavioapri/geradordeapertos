@@ -36,7 +36,7 @@ public class MotivoAdapter extends RecyclerView.Adapter<MotivoAdapter.MotivoView
     @NonNull
     @Override
     public MotivoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lista, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ll_historico, parent, false);
         return new MotivoViewHolder(view, contexto);
     }
     

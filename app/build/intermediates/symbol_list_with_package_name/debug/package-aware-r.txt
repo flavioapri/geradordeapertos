@@ -1527,6 +1527,7 @@ id bt_cadastro_processo_home
 id bt_cadastro_processo_novo
 id bt_cadastro_programa
 id bt_cadastro_programa_angulo
+id bt_cadastro_programa_cadastrar
 id bt_cadastro_programa_ciclos
 id bt_cadastro_programa_nome
 id bt_cadastro_programa_nominal
@@ -1584,7 +1585,6 @@ id dimensions
 id direct
 id disableHome
 id dropdown_menu
-id editText
 id edit_query
 id end
 id end_padder
@@ -1903,7 +1903,6 @@ layout activity_leitura
 layout activity_main
 layout activity_registro
 layout activity_sobre
-layout angulo_edit_text
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1920,8 +1919,9 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
-layout edittext
-layout item_lista
+layout et_cadastro_programa_angulo
+layout et_cadastro_programa_nominal
+layout ll_historico
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
@@ -1950,7 +1950,6 @@ layout mtrl_picker_header_title_text
 layout mtrl_picker_header_toggle
 layout mtrl_picker_text_input_date
 layout mtrl_picker_text_input_date_range
-layout nominal_edit_text
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
@@ -1966,11 +1965,11 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
-layout number_picker
+layout np_cadastro_programa_ciclos
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
-layout spinner
+layout sp_cadastro_programa_processo
 layout support_simple_spinner_dropdown_item
 layout test_action_chip
 layout test_design_checkbox

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/et_programa_angulo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:gravity="center"
+    android:inputType="number"
+    android:maxLength="3"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/et_programa_nominal" />

@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 
 import br.com.flavio.geradordeapertos.dao.ProcessoDAO;
+import br.com.flavio.geradordeapertos.dao.ProgramaDAO;
 import br.com.flavio.geradordeapertos.mask.MascaraWatcher;
 import br.com.flavio.geradordeapertos.modelo.Processo;
 import br.com.flavio.geradordeapertos.modelo.Programa;
@@ -58,6 +59,7 @@ public class CadastroPrograma extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         processo = (Processo) spinner.getSelectedItem();
+                        programa.setIdprocesso(processo.getId());
                         tv_processo.setText(processo.getNome());
                     }
                 })
@@ -69,7 +71,7 @@ public class CadastroPrograma extends AppCompatActivity {
         ProcessoDAO processoDAO = new ProcessoDAO(this);
         List<Processo> processos = processoDAO.buscaProcessos();
         processoDAO.close();
-        ArrayAdapter<Processo> adapter = new ArrayAdapter<Processo>(this, R.layout.spinner, processos);
+        ArrayAdapter<Processo> adapter = new ArrayAdapter<Processo>(this, R.layout.sp_cadastro_programa_processo, processos);
         Spinner spinner = new Spinner(this);
         spinner.setAdapter(adapter);
         return spinner;
@@ -94,7 +96,7 @@ public class CadastroPrograma extends AppCompatActivity {
     
     public void insereCiclos(View view) {
         LayoutInflater inflater = getLayoutInflater();
-        View v = inflater.inflate(R.layout.number_picker, null);
+        View v = inflater.inflate(R.layout.np_cadastro_programa_ciclos, null);
         final NumberPicker numberPicker = v.findViewById(R.id.number_picker);
         numberPicker.setMinValue(1);
         numberPicker.setMaxValue(20);
@@ -116,7 +118,7 @@ public class CadastroPrograma extends AppCompatActivity {
     
     public void insereValorNominal(View view) {
         LayoutInflater inflater = getLayoutInflater();
-        View v = inflater.inflate(R.layout.nominal_edit_text, null);
+        View v = inflater.inflate(R.layout.et_cadastro_programa_nominal, null);
         final EditText editText = v.findViewById(R.id.et_programa_nominal);
         editText.addTextChangedListener(new MascaraWatcher(getString(R.string.mascara_valor_nominal)));
         
@@ -139,7 +141,7 @@ public class CadastroPrograma extends AppCompatActivity {
     
     public void insereAngulo(View view) {
         LayoutInflater inflater = getLayoutInflater();
-        View v = inflater.inflate(R.layout.angulo_edit_text, null);
+        View v = inflater.inflate(R.layout.et_cadastro_programa_angulo, null);
         final EditText editText = v.findViewById(R.id.et_programa_angulo);
         
         new AlertDialog.Builder(this, R.style.AlertDialog)
@@ -157,5 +159,11 @@ public class CadastroPrograma extends AppCompatActivity {
                 })
                 .setNegativeButton(R.string.cancelar, null)
                 .show();
+    }
+    
+    public void inserirPrograma(View view){
+        ProgramaDAO dao = new ProgramaDAO(this);
+        dao.insere(programa);
+        dao.close();
     }
 }

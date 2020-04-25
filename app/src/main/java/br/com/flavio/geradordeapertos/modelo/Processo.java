@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 public class Processo {
     private String nome;
-    private long id;
+    private int id;
     
     public String getNome() {
         return nome;
@@ -14,11 +14,11 @@ public class Processo {
         this.nome = nome;
     }
     
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     
-    public long getId() {
+    public int getId() {
         return id;
     }
     

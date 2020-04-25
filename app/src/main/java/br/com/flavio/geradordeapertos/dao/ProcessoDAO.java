@@ -14,27 +14,25 @@ import java.util.List;
 import br.com.flavio.geradordeapertos.modelo.Processo;
 
 public class ProcessoDAO extends SQLiteOpenHelper {
+    private static final int VERSAO_BANCO = 1;
+    private static final String NOME_BANCO = "gerador_de_apertos";
+    
     public ProcessoDAO(@Nullable Context context) {
-        super(context, "GeradorDeApertos", null, 1);
+        super(context, NOME_BANCO, null, VERSAO_BANCO);
     }
     
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE Processo (id INTEGER PRIMARY KEY, nome TEXT NOT NULL);";
-        db.execSQL(sql);
     }
     
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = "DROP TABLE IF EXISTS Processo";
-        db.execSQL(sql);
-        onCreate(db);
     }
     
     public void insere(Processo processo) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues dados = pegaDadosProcesso(processo);
-        db.insert("Processo", null, dados);
+        db.insert("processo", null, dados);
     }
     
     private ContentValues pegaDadosProcesso(Processo processo) {
@@ -44,14 +42,14 @@ public class ProcessoDAO extends SQLiteOpenHelper {
     }
     
     public List<Processo> buscaProcessos() {
-        String sql = "SELECT * FROM Processo";
+        String sql = "SELECT * FROM processo";
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
         
         ArrayList<Processo> processos = new ArrayList<Processo>();
         while (c.moveToNext()) {
             Processo processo = new Processo();
-            processo.setId(c.getLong(c.getColumnIndex("id")));
+            processo.setId(c.getInt(c.getColumnIndex("id")));
             processo.setNome(c.getString(c.getColumnIndex("nome")));
             processos.add(processo);
         }
@@ -62,13 +60,13 @@ public class ProcessoDAO extends SQLiteOpenHelper {
     public void deleta(Processo processo) {
         SQLiteDatabase db = getWritableDatabase();
         String[] parametros = {String.valueOf(processo.getId())};
-        db.delete("Processo", "id=?", parametros);
+        db.delete("processo", "id=?", parametros);
     }
     
     public void altera(Processo processo) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues dados = pegaDadosProcesso(processo);
         String[] parametros = {String.valueOf(processo.getId())};
-        db.update("Processo", dados, "id=?", parametros);
+        db.update("processo", dados, "id=?", parametros);
     }
 }

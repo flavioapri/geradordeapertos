@@ -1,8 +1,10 @@
 package br.com.flavio.geradordeapertos.modelo;
 
+import androidx.annotation.NonNull;
+
 public class Programa {
     private int id;
-    private int IdProcesso;
+    private int idProcesso;
     private String nome;
     private int ciclos;
     private float valorNominal;
@@ -16,12 +18,12 @@ public class Programa {
         this.id = id;
     }
     
-    public int getIdProcesso() {
-        return IdProcesso;
+    public int getIdprocesso() {
+        return idProcesso;
     }
     
-    public void setIdProcesso(int idProcesso) {
-        IdProcesso = idProcesso;
+    public void setIdprocesso(int idprocesso) {
+        this.idProcesso = idprocesso;
     }
     
     public String getNome() {
@@ -54,5 +56,16 @@ public class Programa {
     
     public void setAngulo(int angulo) {
         this.angulo = angulo;
+    }
+    
+    @NonNull
+    @Override
+    public String toString() {
+        return "ID: " + id + "\n" +
+                "ID Processo: " + idProcesso + "\n" +
+                "Nome: " + nome + "\n" +
+                "Ciclos: " + ciclos + "\n" +
+                "Nominal: " + valorNominal + "\n" +
+                "Ângulo: " + angulo + "\n";
     }
 }
