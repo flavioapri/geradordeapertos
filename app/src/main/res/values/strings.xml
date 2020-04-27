@@ -91,4 +91,15 @@
     <string name="string_valor_vazio" />
     <string name="string_sem_nome">Sem nome</string>
     <string name="msg_formulario_incompleto">Os campos ainda não foram totalmente preenchidos</string>
+    <string name="formato_data">dd/MM/yyyy</string>
+    <string name="formato_dia">dd</string>
+    <string name="formato_mes">MM</string>
+    <string name="formato_ano">yyyy</string>
+    <string name="formato_separador">/</string>
+    <string name="np">np</string>
+    <string name="mascara_np">##/######.#</string>
+    <string name="alert_titulo_formulario_ciclos">Ciclos de aperto</string>
+    <string name="alert_msg_registro_ciclos">Selecione os ciclos de aperto</string>
+    <string name="alert_titulo_registro_ciclos">Ciclos de aperto</string>
+    <string name="selecionar_todos">Todos</string>
 </resources>

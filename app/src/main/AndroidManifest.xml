@@ -12,11 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".CadastroPrograma">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".CadastroMotivo"></activity>
         <activity android:name=".CadastroProcesso">
@@ -28,8 +24,14 @@
         <activity android:name=".Sobre" />
         <activity android:name=".Configuracoes" />
         <activity android:name=".Historico" />
-        <activity android:name=".Registro" />
-        <activity android:name=".FormularioProgramaIndividual" />
+
+        <activity android:name=".FormularioProgramaIndividual" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MainActivity" />
     </application>
 

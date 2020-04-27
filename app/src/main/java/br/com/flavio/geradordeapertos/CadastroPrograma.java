@@ -18,7 +18,7 @@ import java.util.List;
 
 import br.com.flavio.geradordeapertos.dao.ProcessoDAO;
 import br.com.flavio.geradordeapertos.dao.ProgramaDAO;
-import br.com.flavio.geradordeapertos.mask.MascaraWatcher;
+import br.com.flavio.geradordeapertos.mascara.Mascara;
 import br.com.flavio.geradordeapertos.modelo.Processo;
 import br.com.flavio.geradordeapertos.modelo.Programa;
 
@@ -50,7 +50,7 @@ public class CadastroPrograma extends AppCompatActivity {
         super.onResume();
     }
     
-    public void selecionaProcesso(View view) {
+    public void carregaProcessos(View view) {
         final Spinner spinner = criaSpinnerDeProcessos();
         new AlertDialog.Builder(this, R.style.AlertDialog)
                 .setTitle(R.string.selecao_processo)
@@ -124,7 +124,7 @@ public class CadastroPrograma extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         View v = inflater.inflate(R.layout.et_cadastro_programa_nominal, null);
         final EditText editText = v.findViewById(R.id.et_programa_nominal);
-        editText.addTextChangedListener(new MascaraWatcher(getString(R.string.mascara_valor_nominal)));
+        editText.addTextChangedListener(Mascara.insert(Mascara.MASCARA_TORQUE, editText));
         
         new AlertDialog.Builder(this, R.style.AlertDialog)
                 .setTitle(R.string.alert_titulo_nominal)

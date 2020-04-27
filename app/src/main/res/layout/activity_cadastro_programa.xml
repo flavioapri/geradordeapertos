@@ -40,7 +40,7 @@
         android:background="@drawable/bt_texto"
         android:elevation="8dp"
         android:fontFamily="@font/product_sans"
-        android:onClick="selecionaProcesso"
+        android:onClick="carregaProcessos"
         android:text="@string/selecionar_processo"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"

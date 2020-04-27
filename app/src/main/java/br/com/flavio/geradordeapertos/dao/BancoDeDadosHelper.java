@@ -36,7 +36,7 @@ public class BancoDeDadosHelper extends SQLiteOpenHelper {
     private static final String CRIAR_TABELA_PROGRAMA =
             "CREATE TABLE " + TABELA_PROGRAMA + " (" + ID + " INTEGER PRIMARY KEY, " + NOME + " TEXT NOT NULL, " + ID_PROCESSO + " INTEGER" +
                     " NOT NULL, " + CICLOS + " " +
-                    "INTEGER NOT NULL, " + VALOR_NOMINAL + " FLOAT NOT NULL, " + ANGULO + " INTEGER NOT NULL);";
+                    "INTEGER NOT NULL, " + VALOR_NOMINAL + " REAL NOT NULL, " + ANGULO + " INTEGER NOT NULL);";
     
     public BancoDeDadosHelper(@Nullable Context context) {
         super(context, NOME_BANCO, null, VERSAO_BANCO);

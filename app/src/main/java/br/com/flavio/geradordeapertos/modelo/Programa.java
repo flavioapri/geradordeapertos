@@ -87,11 +87,6 @@ public class Programa {
     @NonNull
     @Override
     public String toString() {
-        return "ID: " + id + "\n" +
-                "ID Processo: " + idProcesso + "\n" +
-                "Nome: " + nome + "\n" +
-                "Ciclos: " + ciclos + "\n" +
-                "Nominal: " + valorNominal + "\n" +
-                "Ângulo: " + angulo + "\n";
+        return nome;
     }
 }

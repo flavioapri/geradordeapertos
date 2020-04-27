@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.flavio.geradordeapertos.modelo.Processo;
 import br.com.flavio.geradordeapertos.modelo.Programa;
 
 public class ProgramaDAO extends SQLiteOpenHelper {
@@ -47,6 +48,27 @@ public class ProgramaDAO extends SQLiteOpenHelper {
     
     public List<Programa> buscaProgramas() {
         String sql = "SELECT * FROM programa";
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery(sql, null);
+        
+        ArrayList<Programa> programas = new ArrayList<Programa>();
+        while (c.moveToNext()) {
+            Programa programa = new Programa();
+            programa.setId(c.getInt(c.getColumnIndex("id")));
+            programa.setNome(c.getString(c.getColumnIndex("nome")));
+            programa.setIdprocesso(c.getInt(c.getColumnIndex("id_processo")));
+            programa.setCiclos(c.getInt(c.getColumnIndex("ciclos")));
+            programa.setValorNominal(c.getFloat(c.getColumnIndex("valor_nominal")));
+            programa.setAngulo(c.getInt(c.getColumnIndex("angulo")));
+            programas.add(programa);
+        }
+        c.close();
+        return programas;
+    }
+    
+    public List<Programa> buscaProgramas(Processo processo) {
+        int id_processo = processo.getId();
+        String sql = "SELECT * FROM programa WHERE id_processo = " + id_processo;
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
         

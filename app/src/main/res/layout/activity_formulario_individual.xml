@@ -17,7 +17,7 @@
         android:ems="5"
         android:gravity="center"
         android:inputType="number"
-        android:maxLength="9"
+        android:maxLength="11"
         app:layout_constraintEnd_toStartOf="@+id/bt_formulario_leitura"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_formulario_np"
@@ -53,6 +53,7 @@
         android:layout_height="45dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_formulario_processo"
         app:layout_constraintTop_toBottomOf="@+id/bt_formulario_leitura" />
@@ -96,7 +97,6 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/product_sans"
         android:gravity="center"
-        android:text="@string/tv_formulario_ciclos"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/bt_formulario_ciclos"
         tools:layout_editor_absoluteX="146dp" />
@@ -112,71 +112,24 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_formulario_ciclos" />
 
 
-    <TextView
-        android:id="@+id/tv_formulario_data"
-        android:layout_width="42dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="101dp"
-        android:fontFamily="@font/product_sans"
-        android:gravity="center_vertical"
-        android:text="@string/tv_data"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_formulario_data" />
-
-    <EditText
-        android:id="@+id/et_formulario_data"
-        android:layout_width="122dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="100dp"
-        android:autofillHints=""
-        android:clickable="true"
-        android:editable="false"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="date"
-        android:maxLength="10"
-        android:onClick="mostrarCalendario"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_formulario_data"
-        app:layout_constraintTop_toBottomOf="@+id/sp_formulario_motivo" />
-
     <Button
         android:id="@+id/bt_formulario_home"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/bt_principal"
         android:elevation="8dp"
         android:fontFamily="@font/font_awesome_5"
         android:gravity="center"
+        android:onClick="vaiParaHome"
         android:stateListAnimator="@null"
         android:text="@string/icon_home"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/bt_formulario_can"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/bt_formulario_can"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:background="@drawable/bt_principal"
-        android:elevation="8dp"
-        android:fontFamily="@font/font_awesome_5"
-        android:gravity="center"
-        android:stateListAnimator="@null"
-        android:text="@string/icon_scanner"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@+id/bt_formulario_confirm"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_formulario_home"
-        app:layout_constraintTop_toTopOf="@+id/bt_formulario_home" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bt_formulario_confirm"
@@ -190,10 +143,11 @@
         android:text="@string/icon_confirm"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
+
         app:layout_constraintEnd_toStartOf="@+id/bt_formulario_clear"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_formulario_can"
-        app:layout_constraintTop_toTopOf="@+id/bt_formulario_can" />
+        app:layout_constraintStart_toEndOf="@+id/bt_formulario_home"
+        app:layout_constraintTop_toTopOf="@+id/bt_formulario_home" />
 
     <Button
         android:id="@+id/bt_formulario_clear"
@@ -207,10 +161,11 @@
         android:text="@string/icon_clear"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_formulario_confirm"
-        app:layout_constraintTop_toTopOf="@+id/bt_formulario_confirm" />
+        app:layout_constraintTop_toTopOf="@+id/bt_formulario_home" />
 
     <Button
         android:id="@+id/bt_formulario_leitura"
@@ -235,6 +190,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/bt_texto"
         android:fontFamily="@font/product_sans"
+        android:onClick="selecionaCiclos"
         android:text="@string/tv_ciclo"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
@@ -254,5 +210,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_formulario_data"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/product_sans"
+        android:gravity="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_formulario_motivo" />
+
+    <Button
+        android:id="@+id/bt_formulario_data"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bt_texto"
+        android:fontFamily="@font/product_sans"
+        android:onClick="mostrarCalendario"
+        android:text="@string/tv_data"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_formulario_data" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

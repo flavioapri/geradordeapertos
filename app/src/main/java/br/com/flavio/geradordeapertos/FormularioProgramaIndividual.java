@@ -1,26 +1,57 @@
 package br.com.flavio.geradordeapertos;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+
+import br.com.flavio.geradordeapertos.dao.MotivoDAO;
+import br.com.flavio.geradordeapertos.dao.ProcessoDAO;
+import br.com.flavio.geradordeapertos.dao.ProgramaDAO;
+import br.com.flavio.geradordeapertos.mascara.Mascara;
+import br.com.flavio.geradordeapertos.modelo.Cabina;
+import br.com.flavio.geradordeapertos.modelo.Motivo;
+import br.com.flavio.geradordeapertos.modelo.Processo;
+import br.com.flavio.geradordeapertos.modelo.Programa;
+import br.com.flavio.geradordeapertos.modelo.Registro;
 
 public class FormularioProgramaIndividual extends AppCompatActivity {
     private EditText et_np;
-    private EditText et_data;
+    private TextView tv_data;
+    private Spinner sp_processos;
+    private Spinner sp_programas;
+    private Registro registro;
+    private Cabina cabina;
+    private Motivo motivo;
+    private Processo processo;
+    private Programa programa;
+    private List<CheckBox> ciclos;
     private static final int ACTIVITY_LEITURA = 1;
+    private TextView tv_ciclos;
+    private Spinner sp_motivos;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +59,140 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
         setContentView(R.layout.activity_formulario_individual);
         
         et_np = findViewById(R.id.et_formulario_np);
-        et_data = findViewById(R.id.et_formulario_data);
+        tv_data = findViewById(R.id.tv_formulario_data);
+        tv_ciclos = findViewById(R.id.tv_formulario_ciclos);
+        sp_processos = findViewById(R.id.sp_formulario_processo);
+        sp_programas = findViewById(R.id.sp_formulario_programa);
+        sp_motivos = findViewById(R.id.sp_formulario_motivo);
+        et_np.addTextChangedListener(Mascara.insert(Mascara.MASCARA_NP, et_np));
+        // Inicializada o formulário com a data atual
+        SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        Date dataAtual = new Date();
+        String dataFormatada = formataData.format(dataAtual);
+        tv_data.setText(dataFormatada);
+        
+        registro = new Registro();
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        carregaProcessos();
+        carregaMotivos();
+    }
+    
+    public void carregaProcessos() {
+        ProcessoDAO dao = new ProcessoDAO(this);
+        final List<Processo> processos = dao.buscaProcessos();
+        dao.close();//TODO tratar quando a lista de processos esta vazia
+        ArrayAdapter<Processo> adapter = new ArrayAdapter<Processo>(this, android.R.layout.simple_spinner_item, processos);
+        adapter.setDropDownViewResource(R.layout.sp_cadastro_programa_processo);//TODO renomear este layout desta fonte
+        sp_processos.setAdapter(adapter);
+        sp_processos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                processo = processos.get(position);
+                carregaProgramas(processo);
+            }
+            
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+    
+    private void carregaProgramas(Processo processo) {
+        ProgramaDAO dao = new ProgramaDAO(this);
+        final List<Programa> programas = dao.buscaProgramas(processo);
+        dao.close();//TODO tratar quando a lista de programas estiver vazia
+        ArrayAdapter<Programa> adapter = new ArrayAdapter<Programa>(this, android.R.layout.simple_spinner_item, programas);
+        adapter.setDropDownViewResource(R.layout.sp_cadastro_programa_processo);
+        sp_programas.setAdapter(adapter);
+        sp_programas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                programa = programas.get(position);
+            }
+            
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+    
+    public void selecionaCiclos(View view) {
+        final LinearLayout grupoCheckBoxes = criaGrupoCheckBoxes();
+        
+        new AlertDialog.Builder(this, R.style.AlertDialog)
+                .setTitle(R.string.alert_titulo_registro_ciclos)
+                .setMessage(R.string.alert_msg_registro_ciclos)
+                .setView(grupoCheckBoxes)
+                .setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        verificaCheckBoxesSelecionados(grupoCheckBoxes);
+                    }
+                })
+                .setNegativeButton(R.string.cancelar, null)
+                .show();
+    }
+    
+    private LinearLayout criaGrupoCheckBoxes() {
+        ArrayList<CheckBox> checkBoxes = new ArrayList<>();
+        LinearLayout layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setGravity(Gravity.CENTER);
+        
+        LinearLayout.LayoutParams parametrosCheckBox = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        parametrosCheckBox.setMargins(0, 0, 0, 20);
+        
+        for (int cont = 0; cont < programa.getCiclos(); cont++) {
+            checkBoxes.add(new CheckBox(this));
+            checkBoxes.get(cont).setText(Integer.toString((cont + 1)));
+            checkBoxes.get(cont).setScaleY(1.5f);
+            checkBoxes.get(cont).setScaleX(1.5f);
+            checkBoxes.get(cont).setChecked(true);
+            checkBoxes.get(cont).setLayoutParams(parametrosCheckBox);
+            layout.addView(checkBoxes.get(cont));
+        }
+        return layout;
+    }
+    
+    private void verificaCheckBoxesSelecionados(LinearLayout grupoCheckBoxes) {
+        ciclos = new ArrayList<>();
+        StringBuilder ciclos = new StringBuilder();//TODO tentar utilizar strinf builder no projeto
+        for (int cont = 0; cont < grupoCheckBoxes.getChildCount(); cont++) {
+            View view = grupoCheckBoxes.getChildAt(cont);
+            
+            if (view instanceof CheckBox) {
+                CheckBox checkBox = (CheckBox) view;
+                if (checkBox.isChecked()) {
+                    this.ciclos.add(checkBox);
+                    ciclos.append(checkBox.getText()).append("    ");//TODO solução mais elegante para esta string
+                }
+            }
+        }
+        tv_ciclos.setText(ciclos.toString());
+    }
+    
+    public void carregaMotivos() {
+        MotivoDAO dao = new MotivoDAO(this);
+        final List<Motivo> motivos = dao.buscaMotivos();
+        dao.close();//TODO tratar quando a lista de processos esta vazia
+        ArrayAdapter<Motivo> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, motivos);
+        adapter.setDropDownViewResource(R.layout.sp_motivos);//TODO renomear layout desta fonte
+        sp_motivos.setAdapter(adapter);//TODO implementar "Sem motivo" no spinner
+        sp_motivos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                motivo = motivos.get(position);
+            }
+            
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
     
     /**
@@ -41,23 +205,25 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
         int ano = calendario.get(Calendar.YEAR);
         int mes = calendario.get(Calendar.MONTH);
         int dia = calendario.get(Calendar.DAY_OF_MONTH);
-        DatePickerDialog datePickerDialog = new DatePickerDialog(FormularioProgramaIndividual.this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int ano, int mes, int dia) {
-                calendario.set(ano, mes, dia);
-                String formato = "dd/MM/yyyy";
-                SimpleDateFormat sdf = new SimpleDateFormat(formato, Locale.ENGLISH);
-                Date data;
-                try {
-                    data = sdf.parse(sdf.format(calendario.getTime()));
-                    String sDia = new SimpleDateFormat("dd", Locale.ENGLISH).format(data);
-                    String sMes = new SimpleDateFormat("MM", Locale.ENGLISH).format(data);
-                    String sAno = new SimpleDateFormat("yyyy", Locale.ENGLISH).format(data);
-                    et_data.setText((sDia + "/" + sMes + "/" + sAno));
-                } catch (ParseException ignored) {
-                }
-            }
-        }, ano, mes, dia);
+        //TODO tentar ocultar o teclado
+        DatePickerDialog datePickerDialog = new DatePickerDialog(FormularioProgramaIndividual.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int ano, int mes, int dia) {
+                        calendario.set(ano, mes, dia);
+                        String formato = getString(R.string.formato_data);
+                        SimpleDateFormat sdf = new SimpleDateFormat(formato, Locale.ENGLISH);
+                        Date data;
+                        try {
+                            data = sdf.parse(sdf.format(calendario.getTime()));
+                            String sDia = new SimpleDateFormat(getString(R.string.formato_dia), Locale.ENGLISH).format(data);
+                            String sMes = new SimpleDateFormat(getString(R.string.formato_mes), Locale.ENGLISH).format(data);
+                            String sAno = new SimpleDateFormat(getString(R.string.formato_ano), Locale.ENGLISH).format(data);
+                            tv_data.setText((sDia + getString(R.string.formato_separador) + sMes + getString(R.string.formato_separador) + sAno));
+                        } catch (ParseException ignored) {
+                        }
+                    }
+                }, ano, mes, dia);
         datePickerDialog.show();
         datePickerDialog.getDatePicker();
     }
@@ -81,6 +247,17 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
         startActivityForResult(intentLeitura, ACTIVITY_LEITURA);
     }
     
+    public void vaiParaHome(View view) {
+        startActivity(new Intent(this, MainActivity.class));
+    }
+    
+    public void geraRegistro(View view) {
+    
+    }
+    
+    public void limpaFormulario(View view) {
+    
+    }
 }
 
 
