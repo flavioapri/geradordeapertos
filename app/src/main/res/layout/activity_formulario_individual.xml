@@ -139,11 +139,12 @@
         android:elevation="8dp"
         android:fontFamily="@font/font_awesome_5"
         android:gravity="center"
+        android:onClick="geraRegistro"
         android:stateListAnimator="@null"
         android:text="@string/icon_confirm"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
 
+        android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@+id/bt_formulario_clear"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_formulario_home"

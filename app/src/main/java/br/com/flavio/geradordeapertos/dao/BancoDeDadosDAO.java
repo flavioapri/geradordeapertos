@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 /**
  * Cria o banco de dados com todas as tabelas
  */
-public class BancoDeDadosHelper extends SQLiteOpenHelper {
+public class BancoDeDadosDAO extends SQLiteOpenHelper {
     private static final int VERSAO_BANCO = 1;
     private static final String NOME_BANCO = "gerador_de_apertos";
     // Nome das tabelas
@@ -38,7 +38,7 @@ public class BancoDeDadosHelper extends SQLiteOpenHelper {
                     " NOT NULL, " + CICLOS + " " +
                     "INTEGER NOT NULL, " + VALOR_NOMINAL + " REAL NOT NULL, " + ANGULO + " INTEGER NOT NULL);";
     
-    public BancoDeDadosHelper(@Nullable Context context) {
+    public BancoDeDadosDAO(@Nullable Context context) {
         super(context, NOME_BANCO, null, VERSAO_BANCO);
     }
     

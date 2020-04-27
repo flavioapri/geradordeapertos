@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,12 +28,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import br.com.flavio.geradordeapertos.dao.MotivoDAO;
 import br.com.flavio.geradordeapertos.dao.ProcessoDAO;
 import br.com.flavio.geradordeapertos.dao.ProgramaDAO;
 import br.com.flavio.geradordeapertos.mascara.Mascara;
-import br.com.flavio.geradordeapertos.modelo.Cabina;
 import br.com.flavio.geradordeapertos.modelo.Motivo;
 import br.com.flavio.geradordeapertos.modelo.Processo;
 import br.com.flavio.geradordeapertos.modelo.Programa;
@@ -43,8 +45,6 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
     private TextView tv_data;
     private Spinner sp_processos;
     private Spinner sp_programas;
-    private Registro registro;
-    private Cabina cabina;
     private Motivo motivo;
     private Processo processo;
     private Programa programa;
@@ -71,7 +71,6 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
         String dataFormatada = formataData.format(dataAtual);
         tv_data.setText(dataFormatada);
         
-        registro = new Registro();
     }
     
     @Override
@@ -164,7 +163,6 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
         StringBuilder ciclos = new StringBuilder();//TODO tentar utilizar strinf builder no projeto
         for (int cont = 0; cont < grupoCheckBoxes.getChildCount(); cont++) {
             View view = grupoCheckBoxes.getChildAt(cont);
-            
             if (view instanceof CheckBox) {
                 CheckBox checkBox = (CheckBox) view;
                 if (checkBox.isChecked()) {
@@ -252,7 +250,34 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
     }
     
     public void geraRegistro(View view) {
+        double torque;
+        for (CheckBox ciclo : ciclos) {
+            Registro registro = new Registro();
+            registro.setIdPrograma(programa.getId());
+            registro.setNP(et_np.getText().toString());
+            registro.setCiclo(ciclo.getText().toString());
+            registro.setIdMotivo(motivo.getId());
+            registro.setData(tv_data.getText().toString());
+            torque = geraTorque(programa.getValorNominal());
+            registro.setValor(torque);
+            Log.d("registro", String.valueOf(registro));
+        }
+    }
     
+    private double geraTorque(double valorNominal) {
+        Random aleatorio = new Random();
+        double decimalAleatorio;
+        double taxaTolerancia = 0.05;//TODO implementar através das configurações
+        double tolerancia = valorNominal * taxaTolerancia;
+        double limiteSuperior = valorNominal + tolerancia;
+        double limiteInferior = valorNominal - tolerancia;
+        
+        //decimalAleatorio = ((limiteSuperior - limiteInferior) + limiteInferior) * aleatorio.nextDouble();
+        decimalAleatorio = ThreadLocalRandom.current().nextDouble(limiteInferior, limiteSuperior);
+        
+        Log.d("aleatorio", String.valueOf(decimalAleatorio));
+        
+        return decimalAleatorio;
     }
     
     public void limpaFormulario(View view) {

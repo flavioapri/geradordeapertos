@@ -1,13 +1,17 @@
 package br.com.flavio.geradordeapertos.modelo;
 
+import androidx.annotation.NonNull;
+
+import java.text.DecimalFormat;
+
 public class Registro {
     private int idRegistro;
-    private int data;
-    private int idPrograma;
-    private int idCabina;
-    private int idMotivo;
-    private int ciclo;
-    private float valor;
+    private String data; //
+    private int idPrograma;//
+    private int np;//
+    private int idMotivo;//
+    private int ciclo;//
+    private double valor;
     
     public int getIdRegistro() {
         return idRegistro;
@@ -17,12 +21,15 @@ public class Registro {
         this.idRegistro = idRegistro;
     }
     
-    public int getData() {
+    public String getData() {
         return data;
     }
     
-    public void setData(int data) {
-        this.data = data;
+    public void setData(String data) {
+        String[] dataSeparada = data.split("/");
+        this.data = dataSeparada[2] +
+                dataSeparada[1] +
+                dataSeparada[0];
     }
     
     public int getIdPrograma() {
@@ -33,12 +40,17 @@ public class Registro {
         this.idPrograma = idPrograma;
     }
     
-    public int getIdCabina() {
-        return idCabina;
+    public int getNP() {
+        return np;
     }
     
-    public void setIdCabina(int idCabina) {
-        this.idCabina = idCabina;
+    public void setNP(int np) {
+        this.np = np;
+    }
+    
+    public void setNP(String np) {
+        np = np.replace(".", "").replace("/", "");
+        this.np = Integer.parseInt(np);
     }
     
     public int getIdMotivo() {
@@ -57,12 +69,31 @@ public class Registro {
         this.ciclo = ciclo;
     }
     
-    public float getValor() {
+    public void setCiclo(String ciclo) {
+        this.ciclo = Integer.parseInt(ciclo);
+    }
+    
+    public double getValor() {
         return valor;
     }
     
-    public void setValor(float valor) {
-        this.valor = valor;
+    public void setValor(double valor) {
+        // Arredonda as casas decimais para duas
+        DecimalFormat formatador = new DecimalFormat("000.00");
+        String valorFormatado = formatador.format(valor);
+        valorFormatado = valorFormatado.replace(",", ".");
+        this.valor = Double.parseDouble(valorFormatado);
     }
     
+    @NonNull
+    @Override
+    public String toString() {
+        return "\n"
+                + "ID Programa: " + idPrograma + "\n"
+                + "NP: " + np + "\n"
+                + "ID Motivo: " + idMotivo + "\n"
+                + "Ciclo: " + ciclo + "\n"
+                + "Torque: " + valor + "\n"
+                + "Data: " + data;
+    }
 }

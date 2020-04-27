@@ -7,7 +7,7 @@ public class Programa {
     private int idProcesso;
     private String nome;
     private int ciclos;
-    private float valorNominal;
+    private double valorNominal;
     private int angulo;
     
     public Programa() {
@@ -50,7 +50,7 @@ public class Programa {
         this.ciclos = ciclos;
     }
     
-    public float getValorNominal() {
+    public double getValorNominal() {
         return valorNominal;
     }
     
@@ -60,7 +60,7 @@ public class Programa {
     
     public void setValorNominal(String valorNominal) {
         try {
-            this.valorNominal = Float.parseFloat(valorNominal);
+            this.valorNominal = Double.parseDouble(valorNominal);
         } catch (NumberFormatException e) {
         }
     }

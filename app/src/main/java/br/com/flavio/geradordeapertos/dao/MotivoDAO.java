@@ -51,7 +51,7 @@ public class MotivoDAO extends SQLiteOpenHelper {
         ArrayList<Motivo> motivos = new ArrayList<Motivo>();
         while (c.moveToNext()) {
             Motivo motivo = new Motivo();
-            motivo.setId(c.getLong(c.getColumnIndex("id")));
+            motivo.setId(c.getInt(c.getColumnIndex("id")));
             motivo.setNome(c.getString(c.getColumnIndex("nome")));
             motivos.add(motivo);
         }
