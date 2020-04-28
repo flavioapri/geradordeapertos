@@ -5,20 +5,20 @@ import androidx.annotation.NonNull;
 import java.text.DecimalFormat;
 
 public class Registro {
-    private int idRegistro;
-    private String data; //
-    private int idPrograma;//
-    private int np;//
-    private int idMotivo;//
-    private int ciclo;//
+    private int id;
+    private int np;
+    private String data;
+    private Programa programa;
+    private int ciclo;
     private double valor;
+    private Motivo motivo;
     
-    public int getIdRegistro() {
-        return idRegistro;
+    public int getId() {
+        return id;
     }
     
-    public void setIdRegistro(int idRegistro) {
-        this.idRegistro = idRegistro;
+    public void setId(int id) {
+        this.id = id;
     }
     
     public String getData() {
@@ -32,12 +32,12 @@ public class Registro {
                 dataSeparada[0];
     }
     
-    public int getIdPrograma() {
-        return idPrograma;
+    public Programa getPrograma() {
+        return programa;
     }
     
-    public void setIdPrograma(int idPrograma) {
-        this.idPrograma = idPrograma;
+    public void setPrograma(Programa programa) {
+        this.programa = programa;
     }
     
     public int getNP() {
@@ -53,12 +53,12 @@ public class Registro {
         this.np = Integer.parseInt(np);
     }
     
-    public int getIdMotivo() {
-        return idMotivo;
+    public Motivo getMotivo() {
+        return motivo;
     }
     
-    public void setIdMotivo(int idMotivo) {
-        this.idMotivo = idMotivo;
+    public void setMotivo(Motivo motivo) {
+        this.motivo = motivo;
     }
     
     public int getCiclo() {
@@ -89,9 +89,9 @@ public class Registro {
     @Override
     public String toString() {
         return "\n"
-                + "ID Programa: " + idPrograma + "\n"
+                + "Programa: " + programa.getNome() + "\n"
                 + "NP: " + np + "\n"
-                + "ID Motivo: " + idMotivo + "\n"
+                + "Motivo: " + motivo.getNome() + "\n"
                 + "Ciclo: " + ciclo + "\n"
                 + "Torque: " + valor + "\n"
                 + "Data: " + data;

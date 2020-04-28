@@ -69,4 +69,18 @@ public class ProcessoDAO extends SQLiteOpenHelper {
         String[] parametros = {String.valueOf(processo.getId())};
         db.update("processo", dados, "id=?", parametros);
     }
+    
+    public Processo buscaProcesso(int idProcesso) {
+        String sql = "SELECT id_processo, nome FROM processo WHERE id = " + idProcesso;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery(sql, null);
+        Processo processo = new Processo();
+        
+        while (c.moveToNext()) {
+            processo.setId(c.getInt(c.getColumnIndex("id")));
+            processo.setNome(c.getString(c.getColumnIndex("nome")));
+        }
+        c.close();
+        return processo;
+    }
 }

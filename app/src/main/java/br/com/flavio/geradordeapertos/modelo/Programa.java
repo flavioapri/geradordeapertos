@@ -4,14 +4,13 @@ import androidx.annotation.NonNull;
 
 public class Programa {
     private int id;
-    private int idProcesso;
+    private Processo processo;
     private String nome;
     private int ciclos;
     private double valorNominal;
     private int angulo;
     
     public Programa() {
-        this.idProcesso = 0;
         this.nome = "";
         this.ciclos = 0;
         this.valorNominal = 0;
@@ -26,12 +25,12 @@ public class Programa {
         this.id = id;
     }
     
-    public int getIdprocesso() {
-        return idProcesso;
+    public Processo getProcesso() {
+        return processo;
     }
     
-    public void setIdprocesso(int idprocesso) {
-        this.idProcesso = idprocesso;
+    public void setProcesso(Processo processo) {
+        this.processo = processo;
     }
     
     public String getNome() {
@@ -81,7 +80,7 @@ public class Programa {
     }
     
     public boolean isPreenchido() {
-        return (idProcesso > 0 & nome.length() > 0 & ciclos > 0 & valorNominal > 0);
+        return (nome.length() > 0 & ciclos > 0 & valorNominal > 0);
     }
     
     @NonNull

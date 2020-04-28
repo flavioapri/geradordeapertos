@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 public class Motivo {
     private String nome;
-    private int id;
+    private Motivo id;
     
     public String getNome() {
         return nome;
@@ -14,11 +14,11 @@ public class Motivo {
         this.nome = nome;
     }
     
-    public void setId(int id) {
+    public void setId(Motivo id) {
         this.id = id;
     }
     
-    public int getId() {
+    public Motivo getId() {
         return id;
     }
     

@@ -60,7 +60,7 @@ public class CadastroPrograma extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         processo = (Processo) spinner.getSelectedItem();
-                        programa.setIdprocesso(processo.getId());
+                        programa.setProcesso(processo);
                         tv_processo.setText(processo.getNome());
                     }
                 })
@@ -170,17 +170,14 @@ public class CadastroPrograma extends AppCompatActivity {
             new AlertDialog.Builder(this, R.style.AlertDialog)
                     .setTitle(R.string.alert_programa_titulo_salvar)
                     .setMessage(R.string.alert_programa_msg_salvar)
-                    .setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            ProgramaDAO dao = new ProgramaDAO(CadastroPrograma.this);
-                            dao.insere(programa);
-                            dao.close();
-                            limparFormulario();
-                            new AlertDialog.Builder(CadastroPrograma.this, R.style.AlertDialog)
-                                    .setMessage(R.string.msg_programa_salvo)
-                                    .show();
-                        }
+                    .setPositiveButton(R.string.confirmar, (dialog, which) -> {
+                        ProgramaDAO dao = new ProgramaDAO(CadastroPrograma.this);
+                        dao.insere(programa);
+                        dao.close();
+                        limparFormulario();
+                        new AlertDialog.Builder(CadastroPrograma.this, R.style.AlertDialog)
+                                .setMessage(R.string.msg_programa_salvo)
+                                .show();
                     })
                     .setNegativeButton(R.string.cancelar, null)
                     .show();

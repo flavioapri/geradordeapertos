@@ -102,4 +102,8 @@
     <string name="alert_msg_registro_ciclos">Selecione os ciclos de aperto</string>
     <string name="alert_titulo_registro_ciclos">Ciclos de aperto</string>
     <string name="selecionar_todos">Todos</string>
+    <string name="alert_formulario_titulo_incompleto">Formulario incompleto</string>
+    <string name="alert_formulario_msg_incompleto">NP faltando números e/ou ciclos não selecionados</string>
+    <string name="ok">OK</string>
+    <string name="alert_formulario_titulo_limpar">Deseja limpar as informações do formulário?</string>
 </resources>

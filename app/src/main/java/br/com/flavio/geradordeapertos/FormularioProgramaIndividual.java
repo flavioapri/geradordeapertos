@@ -28,7 +28,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import br.com.flavio.geradordeapertos.dao.MotivoDAO;
@@ -250,38 +249,53 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
     }
     
     public void geraRegistro(View view) {
-        double torque;
-        for (CheckBox ciclo : ciclos) {
-            Registro registro = new Registro();
-            registro.setIdPrograma(programa.getId());
-            registro.setNP(et_np.getText().toString());
-            registro.setCiclo(ciclo.getText().toString());
-            registro.setIdMotivo(motivo.getId());
-            registro.setData(tv_data.getText().toString());
-            torque = geraTorque(programa.getValorNominal());
-            registro.setValor(torque);
-            Log.d("registro", String.valueOf(registro));
+        if (verificaFormulario()) {
+            double torque;
+            for (CheckBox ciclo : ciclos) {
+                Registro registro = new Registro();
+                registro.setPrograma(programa);
+                registro.setNP(et_np.getText().toString());
+                registro.setCiclo(ciclo.getText().toString());
+                registro.setMotivo(motivo);
+                registro.setData(tv_data.getText().toString());
+                torque = geraTorque(programa.getValorNominal());
+                registro.setValor(torque);
+                Log.d("registro", registro.toString());//TODO apagar linha
+            }
         }
     }
     
+    private boolean verificaFormulario() {
+        String np = et_np.getText().toString().trim();
+        if (np.length() < 11 && ciclos.isEmpty()) {
+            new AlertDialog.Builder(this, R.style.AlertDialog)
+                    .setTitle(R.string.alert_formulario_titulo_incompleto)
+                    .setMessage(R.string.alert_formulario_msg_incompleto)
+                    .setPositiveButton(R.string.ok, (dialog, which) -> { })
+                    .show();
+        }
+        return true;
+    }
+    
     private double geraTorque(double valorNominal) {
-        Random aleatorio = new Random();
-        double decimalAleatorio;
         double taxaTolerancia = 0.05;//TODO implementar através das configurações
         double tolerancia = valorNominal * taxaTolerancia;
         double limiteSuperior = valorNominal + tolerancia;
         double limiteInferior = valorNominal - tolerancia;
         
-        //decimalAleatorio = ((limiteSuperior - limiteInferior) + limiteInferior) * aleatorio.nextDouble();
-        decimalAleatorio = ThreadLocalRandom.current().nextDouble(limiteInferior, limiteSuperior);
-        
-        Log.d("aleatorio", String.valueOf(decimalAleatorio));
-        
-        return decimalAleatorio;
+        return ThreadLocalRandom.current().nextDouble(limiteInferior, limiteSuperior);
     }
     
     public void limpaFormulario(View view) {
-    
+        new AlertDialog.Builder(this, R.style.AlertDialog)
+                .setTitle(R.string.alert_formulario_titulo_limpar)
+                .setPositiveButton(R.string.ok, (dialog, which) -> {
+                    et_np.setText("");
+                    carregaProcessos();
+                    tv_ciclos.setText("");
+                    ciclos.clear();
+                })
+                .show();
     }
 }
 

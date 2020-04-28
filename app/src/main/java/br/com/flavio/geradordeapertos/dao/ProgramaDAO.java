@@ -17,9 +17,11 @@ import br.com.flavio.geradordeapertos.modelo.Programa;
 public class ProgramaDAO extends SQLiteOpenHelper {
     private static final int VERSAO_BANCO = 1;
     private static final String NOME_BANCO = "gerador_de_apertos";
+    private Context context;
     
     public ProgramaDAO(@Nullable Context context) {
         super(context, NOME_BANCO, null, VERSAO_BANCO);
+        this.context = context;
     }
     
     @Override
@@ -38,49 +40,57 @@ public class ProgramaDAO extends SQLiteOpenHelper {
     
     private ContentValues pegaDadosPrograma(Programa programa) {
         ContentValues dados = new ContentValues();
-        dados.put("id_processo", programa.getIdprocesso());
+        dados.put("id_processo", programa.getProcesso().getId());
         dados.put("nome", programa.getNome());
         dados.put("ciclos", programa.getCiclos());
         dados.put("valor_nominal", programa.getValorNominal());
         dados.put("angulo", programa.getAngulo());
         return dados;
     }
-    
+    //TODO tentar simplificar os metodos buscaProgramas
     public List<Programa> buscaProgramas() {
         String sql = "SELECT * FROM programa";
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
-        
+        int idProcesso;
+        ProcessoDAO processoDAO = new ProcessoDAO(context);
         ArrayList<Programa> programas = new ArrayList<Programa>();
         while (c.moveToNext()) {
             Programa programa = new Programa();
             programa.setId(c.getInt(c.getColumnIndex("id")));
             programa.setNome(c.getString(c.getColumnIndex("nome")));
-            programa.setIdprocesso(c.getInt(c.getColumnIndex("id_processo")));
             programa.setCiclos(c.getInt(c.getColumnIndex("ciclos")));
             programa.setValorNominal(c.getFloat(c.getColumnIndex("valor_nominal")));
             programa.setAngulo(c.getInt(c.getColumnIndex("angulo")));
+    
+            idProcesso = c.getInt(c.getColumnIndex("id_processo"));
+            programa.setProcesso(processoDAO.buscaProcesso(idProcesso));
+    
             programas.add(programa);
         }
+        processoDAO.close();
         c.close();
         return programas;
     }
     
     public List<Programa> buscaProgramas(Processo processo) {
-        int id_processo = processo.getId();
-        String sql = "SELECT * FROM programa WHERE id_processo = " + id_processo;
+        int idProcesso = processo.getId();
+        String sql = "SELECT * FROM programa WHERE id_processo = " + idProcesso;
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
-        
+        ProcessoDAO processoDAO = new ProcessoDAO(context);
         ArrayList<Programa> programas = new ArrayList<Programa>();
         while (c.moveToNext()) {
             Programa programa = new Programa();
             programa.setId(c.getInt(c.getColumnIndex("id")));
             programa.setNome(c.getString(c.getColumnIndex("nome")));
-            programa.setIdprocesso(c.getInt(c.getColumnIndex("id_processo")));
             programa.setCiclos(c.getInt(c.getColumnIndex("ciclos")));
             programa.setValorNominal(c.getFloat(c.getColumnIndex("valor_nominal")));
             programa.setAngulo(c.getInt(c.getColumnIndex("angulo")));
+    
+            idProcesso = c.getInt(c.getColumnIndex("id_processo"));
+            programa.setProcesso(processoDAO.buscaProcesso(idProcesso));
+            
             programas.add(programa);
         }
         c.close();

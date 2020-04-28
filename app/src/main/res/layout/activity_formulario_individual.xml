@@ -158,11 +158,12 @@
         android:elevation="8dp"
         android:fontFamily="@font/font_awesome_5"
         android:gravity="center"
+        android:onClick="limpaFormulario"
         android:stateListAnimator="@null"
         android:text="@string/icon_clear"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
 
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_formulario_confirm"
