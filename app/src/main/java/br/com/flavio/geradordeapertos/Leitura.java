@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.vision.CameraSource;
@@ -87,6 +88,15 @@ public class Leitura extends AppCompatActivity {
                 }
             }
         });
+        // Verifica se o app tem permissão de acessar a camera e se não tiver pede a permissão
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
+                        PackageManager.PERMISSION_GRANTED);
+            }
+        }
     }
     
     @Override

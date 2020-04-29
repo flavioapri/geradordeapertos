@@ -1549,6 +1549,7 @@ id bt_pesquisar
 id buttonPanel
 id cancel_action
 id cancel_button
+id card_view
 id cb_formulario_selecionar_todos
 id center
 id center_horizontal
@@ -1698,13 +1699,13 @@ id pin
 id progress_circular
 id progress_horizontal
 id radio
-id rc_registros
 id right
 id right_icon
 id right_side
 id rounded
 id rv_cadastro_motivo_lista
 id rv_cadastro_processo_lista
+id rv_registros_lista
 id save_non_transition_alpha
 id save_overlay_view
 id scale
@@ -1789,6 +1790,7 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tv_angulo
 id tv_cadastro_motivo_rodape
 id tv_cadastro_motivo_titulo
 id tv_cadastro_processo_rodape
@@ -1800,8 +1802,10 @@ id tv_cadastro_programa_nominal
 id tv_cadastro_programa_processo
 id tv_cadastro_programa_titulo
 id tv_cadastro_titulo
+id tv_ciclos_apertos
 id tv_configuracoes_titulo
 id tv_configuracoes_tolerancia
+id tv_data
 id tv_formulario_ciclos
 id tv_formulario_data
 id tv_formulario_motivo
@@ -1814,7 +1818,11 @@ id tv_historico_inicio
 id tv_historico_processo
 id tv_historico_titulo
 id tv_leitura_cabecalho
+id tv_lista_registro_np
+id tv_motivo
 id tv_nome
+id tv_processo
+id tv_programa
 id tv_sobre_descricao
 id tv_sobre_notas
 id tv_sobre_titulo
@@ -1923,6 +1931,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout et_cadastro_programa_angulo
 layout et_cadastro_programa_nominal
+layout lista_registro_main
 layout ll_historico
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
@@ -2018,8 +2027,13 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string alert_confirmacao_gravar_registro
+string alert_formulario_msg_incompleto
+string alert_formulario_titulo_incompleto
+string alert_formulario_titulo_limpar
 string alert_msg_angulo
 string alert_msg_ciclos
+string alert_msg_gravar_registro
 string alert_msg_nominal
 string alert_msg_programa
 string alert_msg_registro_ciclos
@@ -2027,6 +2041,7 @@ string alert_programa_msg_salvar
 string alert_programa_titulo_salvar
 string alert_titulo_angulo
 string alert_titulo_formulario_ciclos
+string alert_titulo_gravar_registro
 string alert_titulo_nome_programa
 string alert_titulo_nominal
 string alert_titulo_registro_ciclos
@@ -2155,6 +2170,7 @@ string mtrl_picker_toggle_to_year_selection
 string nome
 string notas_titulo
 string np
+string ok
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -2170,6 +2186,8 @@ string remover_motivo
 string remover_motivo_descricao
 string remover_processo
 string remover_processo_descricao
+string remover_registro
+string remover_registro_descricao
 string search_menu_title
 string selecao_processo
 string selecionar_processo

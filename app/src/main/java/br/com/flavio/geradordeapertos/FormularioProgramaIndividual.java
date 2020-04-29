@@ -33,6 +33,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import br.com.flavio.geradordeapertos.dao.MotivoDAO;
 import br.com.flavio.geradordeapertos.dao.ProcessoDAO;
 import br.com.flavio.geradordeapertos.dao.ProgramaDAO;
+import br.com.flavio.geradordeapertos.dao.RegistroDAO;
 import br.com.flavio.geradordeapertos.mascara.Mascara;
 import br.com.flavio.geradordeapertos.modelo.Motivo;
 import br.com.flavio.geradordeapertos.modelo.Processo;
@@ -250,29 +251,60 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
     
     public void geraRegistro(View view) {
         if (verificaFormulario()) {
-            double torque;
-            for (CheckBox ciclo : ciclos) {
-                Registro registro = new Registro();
-                registro.setPrograma(programa);
-                registro.setNP(et_np.getText().toString());
-                registro.setCiclo(ciclo.getText().toString());
-                registro.setMotivo(motivo);
-                registro.setData(tv_data.getText().toString());
-                torque = geraTorque(programa.getValorNominal());
-                registro.setValor(torque);
-                Log.d("registro", registro.toString());//TODO apagar linha
+            if (confirmaRegistro()) {
+                double torque;
+                for (CheckBox ciclo : ciclos) {
+                    Registro registro = new Registro();
+                    registro.setPrograma(programa);
+                    registro.setNP(et_np.getText().toString());
+                    registro.setCiclo(ciclo.getText().toString());
+                    registro.setMotivo(motivo);
+                    registro.setData(tv_data.getText().toString());
+                    torque = geraTorque(programa.getValorNominal());
+                    registro.setValor(torque);
+                    Log.d("valores", String.valueOf(registro));
+                    gravaRegistro(registro);
+                }
             }
         }
     }
     
+    private boolean confirmaRegistro() {
+        final boolean[] confirmado = {true};// Array porque só assim da para setar valor do onclick confirmar
+        
+        new AlertDialog.Builder(this, R.style.AlertDialog)
+                .setTitle(R.string.alert_titulo_gravar_registro)
+                .setMessage(R.string.alert_msg_gravar_registro)
+                .setPositiveButton(R.string.confirmar, (dialog, which) -> {
+                    confirmado[0] = true;
+                    Log.d("confirmado1", String.valueOf(confirmado[0]));
+                    limpa();
+                    new AlertDialog.Builder(FormularioProgramaIndividual.this, R.style.AlertDialog)
+                            .setMessage(R.string.alert_confirmacao_gravar_registro)
+                            .show();
+                })
+                .setNegativeButton(R.string.cancelar, (dialog, which) -> confirmado[0] = false)
+                .show();
+        Log.d("confirmado2", String.valueOf(confirmado[0]));
+        return confirmado[0];
+    }
+    
+    private void gravaRegistro(Registro registro) {
+        RegistroDAO dao = new RegistroDAO(this);
+        dao.insere(registro);
+        dao.close();
+    }
+    
     private boolean verificaFormulario() {
         String np = et_np.getText().toString().trim();
-        if (np.length() < 11 && ciclos.isEmpty()) {
+        
+        if (np.length() < 11 | ciclos.isEmpty()) {
             new AlertDialog.Builder(this, R.style.AlertDialog)
                     .setTitle(R.string.alert_formulario_titulo_incompleto)
                     .setMessage(R.string.alert_formulario_msg_incompleto)
                     .setPositiveButton(R.string.ok, (dialog, which) -> { })
                     .show();
+            return false;
         }
         return true;
     }
@@ -286,17 +318,17 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
         return ThreadLocalRandom.current().nextDouble(limiteInferior, limiteSuperior);
     }
     
-    public void limpaFormulario(View view) {
-        new AlertDialog.Builder(this, R.style.AlertDialog)
-                .setTitle(R.string.alert_formulario_titulo_limpar)
-                .setPositiveButton(R.string.ok, (dialog, which) -> {
-                    et_np.setText("");
-                    carregaProcessos();
-                    tv_ciclos.setText("");
-                    ciclos.clear();
-                })
-                .show();
+    public void limpa() {
+        et_np.setText("");
+        carregaProcessos();
+        tv_ciclos.setText("");
+        ciclos.clear();
     }
+    
+    public void botaoLimpa(View view) {
+        limpa();
+    }
+    
 }
 
 

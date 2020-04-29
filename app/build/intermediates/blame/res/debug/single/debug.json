@@ -24,6 +24,10 @@
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
+        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_lista_registro_main.xml.flat",
+        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\lista_registro_main.xml"
+    },
+    {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_formulario_programa_lote.xml.flat",
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_formulario_programa_lote.xml"
     },

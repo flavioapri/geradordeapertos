@@ -15,7 +15,7 @@
 11-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:5:22-62
 12
 13    <application
-13-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:7:5-36:19
+13-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:7:5-38:19
 14        android:allowBackup="true"
 14-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -63,37 +63,38 @@
 34-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:26:9-47
 34-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:26:19-44
 35        <activity android:name="br.com.flavio.geradordeapertos.FormularioProgramaIndividual" >
-35-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:28:9-34:20
+35-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:28:9-30:20
 35-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:28:19-63
-36            <intent-filter>
-36-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:29:13-33:29
-37                <action android:name="android.intent.action.MAIN" />
-37-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:30:17-69
-37-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:30:25-66
-38
-39                <category android:name="android.intent.category.LAUNCHER" />
-39-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:32:17-77
-39-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:32:27-74
-40            </intent-filter>
-41        </activity>
-42        <activity android:name="br.com.flavio.geradordeapertos.MainActivity" />
-42-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:35:9-50
-42-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:35:19-47
-43        <activity
-43-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\e2c213d4dfcecf7d0961805c3c2450f7\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
-44            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-44-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\e2c213d4dfcecf7d0961805c3c2450f7\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
-45            android:exported="false"
-45-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\e2c213d4dfcecf7d0961805c3c2450f7\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
-46            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-46-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\e2c213d4dfcecf7d0961805c3c2450f7\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
-47
-48        <meta-data
-48-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\752a983649401b2c06f8f162da3a35f7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
-49            android:name="com.google.android.gms.version"
-49-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\752a983649401b2c06f8f162da3a35f7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-50            android:value="@integer/google_play_services_version" />
-50-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\752a983649401b2c06f8f162da3a35f7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
-51    </application>
-52
-53</manifest>
+36        </activity>
+37        <activity android:name="br.com.flavio.geradordeapertos.MainActivity" >
+37-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:31:9-37:20
+37-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:31:19-47
+38            <intent-filter>
+38-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:32:13-36:29
+39                <action android:name="android.intent.action.MAIN" />
+39-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:33:17-69
+39-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:33:25-66
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:35:17-77
+41-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:35:27-74
+42            </intent-filter>
+43        </activity>
+44        <activity
+44-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\e2c213d4dfcecf7d0961805c3c2450f7\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+45            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+45-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\e2c213d4dfcecf7d0961805c3c2450f7\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+46            android:exported="false"
+46-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\e2c213d4dfcecf7d0961805c3c2450f7\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+47            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+47-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\e2c213d4dfcecf7d0961805c3c2450f7\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+48
+49        <meta-data
+49-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\752a983649401b2c06f8f162da3a35f7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+50            android:name="com.google.android.gms.version"
+50-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\752a983649401b2c06f8f162da3a35f7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+51            android:value="@integer/google_play_services_version" />
+51-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Flavio\.gradle\caches\transforms-2\files-2.1\752a983649401b2c06f8f162da3a35f7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+52    </application>
+53
+54</manifest>

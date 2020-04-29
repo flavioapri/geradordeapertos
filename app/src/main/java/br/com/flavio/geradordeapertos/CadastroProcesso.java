@@ -14,12 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import br.com.flavio.geradordeapertos.adapter.ProcessoAdapter;
-import br.com.flavio.geradordeapertos.helper.BancoDeDadosHelper;
 import br.com.flavio.geradordeapertos.dao.ProcessoDAO;
 import br.com.flavio.geradordeapertos.modelo.Processo;
 
 public class CadastroProcesso extends AppCompatActivity {
-    private BancoDeDadosHelper bancoDeDadosHelper;
     private RecyclerView rv_processos;
     private ProcessoAdapter adapter;
     private List<Processo> processos;
@@ -29,9 +27,6 @@ public class CadastroProcesso extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_processo);
         rv_processos = findViewById(R.id.rv_cadastro_processo_lista);
-        
-        bancoDeDadosHelper = new BancoDeDadosHelper(this);
-        bancoDeDadosHelper.getWritableDatabase();
     }
     
     @Override

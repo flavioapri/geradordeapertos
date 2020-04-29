@@ -174,7 +174,7 @@ public class CadastroPrograma extends AppCompatActivity {
                         ProgramaDAO dao = new ProgramaDAO(CadastroPrograma.this);
                         dao.insere(programa);
                         dao.close();
-                        limparFormulario();
+                        limpaFormulario();
                         new AlertDialog.Builder(CadastroPrograma.this, R.style.AlertDialog)
                                 .setMessage(R.string.msg_programa_salvo)
                                 .show();
@@ -188,7 +188,7 @@ public class CadastroPrograma extends AppCompatActivity {
         }
     }
     
-    public void limparFormulario() {
+    public void limpaFormulario() {
         tv_processo.setText(R.string.string_valor_vazio);
         tv_nome.setText(R.string.string_valor_vazio);
         tv_ciclos.setText(R.string.string_valor_vazio);

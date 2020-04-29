@@ -106,4 +106,9 @@
     <string name="alert_formulario_msg_incompleto">NP faltando números e/ou ciclos não selecionados</string>
     <string name="ok">OK</string>
     <string name="alert_formulario_titulo_limpar">Deseja limpar as informações do formulário?</string>
+    <string name="alert_titulo_gravar_registro">Gravar registro</string>
+    <string name="alert_msg_gravar_registro">Deseja gravar este registro?</string>
+    <string name="alert_confirmacao_gravar_registro">Registro gravado com sucesso</string>
+    <string name="remover_registro">Exclusão de registro</string>
+    <string name="remover_registro_descricao">Deseja excluir este registro? Os dados não poderão ser recuperados após a exclusão.</string>
 </resources>

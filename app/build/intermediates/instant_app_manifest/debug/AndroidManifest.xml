@@ -34,13 +34,14 @@
         <activity android:name="br.com.flavio.geradordeapertos.Configuracoes" />
         <activity android:name="br.com.flavio.geradordeapertos.Historico" />
         <activity android:name="br.com.flavio.geradordeapertos.FormularioProgramaIndividual" >
+        </activity>
+        <activity android:name="br.com.flavio.geradordeapertos.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="br.com.flavio.geradordeapertos.MainActivity" />
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"

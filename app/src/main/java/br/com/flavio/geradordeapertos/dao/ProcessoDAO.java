@@ -71,7 +71,7 @@ public class ProcessoDAO extends SQLiteOpenHelper {
     }
     
     public Processo buscaProcesso(int idProcesso) {
-        String sql = "SELECT id_processo, nome FROM processo WHERE id = " + idProcesso;
+        String sql = "SELECT id, nome FROM processo WHERE id = " + idProcesso;
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
         Processo processo = new Processo();

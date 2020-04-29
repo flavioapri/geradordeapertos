@@ -26,10 +26,20 @@ public class Registro {
     }
     
     public void setData(String data) {
-        String[] dataSeparada = data.split("/");
-        this.data = dataSeparada[2] +
-                dataSeparada[1] +
-                dataSeparada[0];
+        String dia;
+        String mes;
+        String ano;
+        if (data.contains("/")) {
+            String[] dataSeparada = data.split("/");
+            dia = dataSeparada[2];
+            mes = dataSeparada[1];
+            ano = dataSeparada[0];
+        } else {
+            dia = data.substring(6);
+            mes = data.substring(4, 6);
+            ano = data.substring(0, 4);
+        }
+        this.data = dia + mes + ano;
     }
     
     public Programa getPrograma() {

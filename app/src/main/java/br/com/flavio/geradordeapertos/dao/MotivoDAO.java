@@ -71,4 +71,18 @@ public class MotivoDAO extends SQLiteOpenHelper {
         String[] parametros = {String.valueOf(motivo.getId())};
         db.update("Motivo", dados, "id=?", parametros);
     }
+    
+    public Motivo busca(int idMotivo) {
+        String sql = "SELECT id, nome FROM motivo WHERE id = " + idMotivo;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery(sql, null);
+        
+        Motivo motivo = new Motivo();
+        while (c.moveToNext()) {
+            motivo.setId(c.getInt(c.getColumnIndex("id")));
+            motivo.setNome(c.getString(c.getColumnIndex("nome")));
+        }
+        c.close();
+        return motivo;
+    }
 }

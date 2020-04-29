@@ -34,11 +34,11 @@ public class ProgramaDAO extends SQLiteOpenHelper {
     
     public void insere(Programa programa) {
         SQLiteDatabase db = getWritableDatabase();
-        ContentValues dados = pegaDadosPrograma(programa);
+        ContentValues dados = pegaDados(programa);
         db.insert("programa", null, dados);
     }
     
-    private ContentValues pegaDadosPrograma(Programa programa) {
+    private ContentValues pegaDados(Programa programa) {
         ContentValues dados = new ContentValues();
         dados.put("id_processo", programa.getProcesso().getId());
         dados.put("nome", programa.getNome());
@@ -47,6 +47,7 @@ public class ProgramaDAO extends SQLiteOpenHelper {
         dados.put("angulo", programa.getAngulo());
         return dados;
     }
+    
     //TODO tentar simplificar os metodos buscaProgramas
     public List<Programa> buscaProgramas() {
         String sql = "SELECT * FROM programa";
@@ -62,10 +63,10 @@ public class ProgramaDAO extends SQLiteOpenHelper {
             programa.setCiclos(c.getInt(c.getColumnIndex("ciclos")));
             programa.setValorNominal(c.getFloat(c.getColumnIndex("valor_nominal")));
             programa.setAngulo(c.getInt(c.getColumnIndex("angulo")));
-    
+            
             idProcesso = c.getInt(c.getColumnIndex("id_processo"));
             programa.setProcesso(processoDAO.buscaProcesso(idProcesso));
-    
+            
             programas.add(programa);
         }
         processoDAO.close();
@@ -87,7 +88,7 @@ public class ProgramaDAO extends SQLiteOpenHelper {
             programa.setCiclos(c.getInt(c.getColumnIndex("ciclos")));
             programa.setValorNominal(c.getFloat(c.getColumnIndex("valor_nominal")));
             programa.setAngulo(c.getInt(c.getColumnIndex("angulo")));
-    
+            
             idProcesso = c.getInt(c.getColumnIndex("id_processo"));
             programa.setProcesso(processoDAO.buscaProcesso(idProcesso));
             
@@ -105,9 +106,30 @@ public class ProgramaDAO extends SQLiteOpenHelper {
     
     public void altera(Programa programa) {
         SQLiteDatabase db = getWritableDatabase();
-        ContentValues dados = pegaDadosPrograma(programa);
+        ContentValues dados = pegaDados(programa);
         String[] parametros = {String.valueOf(programa.getId())};
         db.update("programa", dados, "id=?", parametros);
+    }
+    
+    public Programa buscaPrograma(int idPrograma) {
+        String sql = "SELECT id, nome, ciclos, valor_nominal, angulo, id_processo FROM programa WHERE id = " + idPrograma;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery(sql, null);
+        int idProcesso;
+        ProcessoDAO processoDAO = new ProcessoDAO(context);
+        Programa programa = new Programa();
+        while (c.moveToNext()) {
+            programa.setId(c.getInt(c.getColumnIndex("id")));
+            programa.setNome(c.getString(c.getColumnIndex("nome")));
+            programa.setCiclos(c.getInt(c.getColumnIndex("ciclos")));
+            programa.setValorNominal(c.getFloat(c.getColumnIndex("valor_nominal")));
+            programa.setAngulo(c.getInt(c.getColumnIndex("angulo")));
+            
+            idProcesso = c.getInt(c.getColumnIndex("id_processo"));
+            programa.setProcesso(processoDAO.buscaProcesso(idProcesso));
+        }
+        c.close();
+        return programa;
     }
 }
 
