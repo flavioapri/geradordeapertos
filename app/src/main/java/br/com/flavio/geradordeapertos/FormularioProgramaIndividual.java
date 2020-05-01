@@ -5,7 +5,6 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,6 +29,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
 
+import br.com.flavio.geradordeapertos.adapter.EmissorMensagem;
 import br.com.flavio.geradordeapertos.dao.MotivoDAO;
 import br.com.flavio.geradordeapertos.dao.ProcessoDAO;
 import br.com.flavio.geradordeapertos.dao.ProgramaDAO;
@@ -52,6 +52,8 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
     private static final int ACTIVITY_LEITURA = 1;
     private TextView tv_ciclos;
     private Spinner sp_motivos;
+    private String valores;
+    private Registro registro;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -252,9 +254,10 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
     public void geraRegistro(View view) {
         if (verificaFormulario()) {
             if (confirmaRegistro()) {
+                valores = "";
                 double torque;
                 for (CheckBox ciclo : ciclos) {
-                    Registro registro = new Registro();
+                    registro = new Registro();
                     registro.setPrograma(programa);
                     registro.setNP(et_np.getText().toString());
                     registro.setCiclo(ciclo.getText().toString());
@@ -262,8 +265,10 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
                     registro.setData(tv_data.getText().toString());
                     torque = geraTorque(programa.getValorNominal());
                     registro.setValor(torque);
-                    Log.d("valores", String.valueOf(registro));
                     gravaRegistro(registro);
+                    // Seta a data que não esta formatada com a data formatada para utilizar o registro para envio
+                    registro.setData(registro.getDataComMascara());
+                    valores += "Ciclo " + registro.getCiclo() + ": " + registro.getValor() + "\n";
                 }
             }
         }
@@ -277,15 +282,14 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
                 .setMessage(R.string.alert_msg_gravar_registro)
                 .setPositiveButton(R.string.confirmar, (dialog, which) -> {
                     confirmado[0] = true;
-                    Log.d("confirmado1", String.valueOf(confirmado[0]));
                     limpa();
                     new AlertDialog.Builder(FormularioProgramaIndividual.this, R.style.AlertDialog)
                             .setMessage(R.string.alert_confirmacao_gravar_registro)
                             .show();
+                    EmissorMensagem.envia(this, registro, valores);
                 })
                 .setNegativeButton(R.string.cancelar, (dialog, which) -> confirmado[0] = false)
                 .show();
-        Log.d("confirmado2", String.valueOf(confirmado[0]));
         return confirmado[0];
     }
     
@@ -310,7 +314,7 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
     }
     
     private double geraTorque(double valorNominal) {
-        double taxaTolerancia = 0.05;//TODO implementar através das configurações
+        double taxaTolerancia = 0.01;//TODO implementar através das configurações
         double tolerancia = valorNominal * taxaTolerancia;
         double limiteSuperior = valorNominal + tolerancia;
         double limiteInferior = valorNominal - tolerancia;

@@ -1,9 +1,6 @@
 package br.com.flavio.geradordeapertos.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,13 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import br.com.flavio.geradordeapertos.R;
@@ -49,7 +46,6 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
     @Override
     public void onBindViewHolder(@NonNull RegistroViewHolder holder, int posicao) {
         holder.np.setText(unificados.get(posicao).getNPComMascara());
-        System.out.println(holder.np.getText());
         holder.data.setText(unificados.get(posicao).getDataComMascara());
         holder.processo.setText("Processo: " + unificados.get(posicao).getPrograma().getProcesso().getNome());
         holder.programa.setText("Programa: " + unificados.get(posicao).getPrograma().getNome());
@@ -83,6 +79,7 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
                 j--;
             }
         }
+        Collections.reverse(unificados);// Ordenar do último para o primeiro
         return unificados;
     }
     
@@ -127,7 +124,8 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
         MenuItem.OnMenuItemClickListener onClick = item -> {
             switch (item.getItemId()) {
                 case 1:
-                    envia();
+                    EmissorMensagem.envia(contexto, unificados.get(getAdapterPosition()),
+                            valores.get(getAdapterPosition()));
                     break;
                 case 2:
                     remove();
@@ -153,25 +151,29 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
                     .show();
             registroDAO.close();
         }
-        
-        public void envia() {
-            PackageManager pm = contexto.getPackageManager();
-            Registro registro = unificados.get(getAdapterPosition());
-            String msg = registro.toString();
-            
-            try {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                
-                PackageInfo info = pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
-                intent.setPackage("com.whatsapp");
-                
-                intent.putExtra(Intent.EXTRA_TEXT, msg);
-                contexto.startActivity(intent);
-                
-            } catch (PackageManager.NameNotFoundException e) {
-                Toast.makeText(contexto, "WhatsApp não instalado", Toast.LENGTH_SHORT).show();
-            }
-        }
+
+//        /**
+//         * Envia o registro como texto via Whatsapp
+//         */
+//        public void envia() {
+//            PackageManager pm = contexto.getPackageManager();
+//            Registro registro = unificados.get(getAdapterPosition());
+//
+//            String msg = registro.toString() + valores.get(getAdapterPosition());
+//
+//            try {
+//                Intent intent = new Intent(Intent.ACTION_SEND);
+//                intent.setType("text/plain");
+//
+//                pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+//                intent.setPackage("com.whatsapp");
+//
+//                intent.putExtra(Intent.EXTRA_TEXT, msg);
+//                contexto.startActivity(intent);
+//
+//            } catch (PackageManager.NameNotFoundException e) {
+//                Toast.makeText(contexto, "WhatsApp não instalado", Toast.LENGTH_SHORT).show();
+//            }
+//        }
     }
 }

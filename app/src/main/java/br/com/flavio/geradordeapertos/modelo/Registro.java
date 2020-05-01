@@ -128,9 +128,7 @@ public class Registro {
                 + "NP " + getNPComMascara() + "\n"
                 + "Motivo: " + motivo.getNome() + "\n"
                 + "Data: " + getDataComMascara() + "\n"
-                + angulo + "\n"
-                + "Ciclo: " + ciclo + "\n"
-                + "Torque: " + valor + "\n";
+                + angulo + "\n";
     }
     
     /**
