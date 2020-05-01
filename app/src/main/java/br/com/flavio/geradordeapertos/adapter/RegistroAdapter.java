@@ -1,6 +1,9 @@
 package br.com.flavio.geradordeapertos.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -8,11 +11,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.flavio.geradordeapertos.R;
@@ -24,10 +29,13 @@ import br.com.flavio.geradordeapertos.modelo.Registro;
  */
 public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.RegistroViewHolder> {
     private List<Registro> registros;
+    private List<Registro> unificados;
+    private List<String> valores;
     private Context contexto;
     
     public RegistroAdapter(List<Registro> registros, Context contexto) {
         this.registros = registros;
+        this.unificados = unificaRegistros();
         this.contexto = contexto;
     }
     
@@ -40,20 +48,47 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
     
     @Override
     public void onBindViewHolder(@NonNull RegistroViewHolder holder, int posicao) {
-        //O método setText deve sempre receber String
-        holder.np.setText(String.valueOf(registros.get(posicao).getNP()));
-        holder.data.setText(registros.get(posicao).getData());
-        holder.processo.setText(registros.get(posicao).getPrograma().getProcesso().getNome());
-        holder.programa.setText(registros.get(posicao).getPrograma().getNome());
-        holder.motivo.setText(registros.get(posicao).getMotivo().getNome());
-        holder.angulo.setText(String.valueOf(registros.get(posicao).getPrograma().getAngulo()));
-        //TODO exibir todos os apertos em um unico card
-        holder.ciclos_apertos.setText(String.valueOf(registros.get(posicao).getValor()));
+        holder.np.setText(unificados.get(posicao).getNPComMascara());
+        System.out.println(holder.np.getText());
+        holder.data.setText(unificados.get(posicao).getDataComMascara());
+        holder.processo.setText("Processo: " + unificados.get(posicao).getPrograma().getProcesso().getNome());
+        holder.programa.setText("Programa: " + unificados.get(posicao).getPrograma().getNome());
+        holder.motivo.setText("Motivo: " + unificados.get(posicao).getMotivo().getNome());
+        holder.angulo.setText("Ângulo: " + String.valueOf(unificados.get(posicao).getPrograma().getAngulo()));
+        holder.ciclos_apertos.setText(valores.get(posicao));
+    }
+    
+    /**
+     * Unifica os registro para que sejam exibidos em um único card.
+     *
+     * @return Lista com os registros unificados
+     */
+    private List<Registro> unificaRegistros() {
+        List<Registro> unificados = new ArrayList<>();
+        valores = new ArrayList<>();
+        String valor = "";
+        
+        int i = 0;
+        for (int j = i; j < registros.size(); j++) {
+            if (registros.get(i).equals(registros.get(j))) { // Comparação feita por equals sobrescrito em Registro
+                valor += "Ciclo " + registros.get(j).getCiclo() + ": " + registros.get(j).getValor() + "\n";
+            }
+            if (!registros.get(i).equals(registros.get(j)) || (j + 1) == registros.size()) {
+                unificados.add(registros.get(i));
+                i = j;
+                valores.add(valor);
+                valor = "";
+                if ((j + 1) == registros.size())
+                    break;
+                j--;
+            }
+        }
+        return unificados;
     }
     
     @Override
     public int getItemCount() {
-        return registros.size();
+        return unificados.size();
     }
     
     public class RegistroViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
@@ -68,7 +103,7 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
         
         public RegistroViewHolder(@NonNull View itemView, Context contexto) {
             super(itemView);
-            this.np = itemView.findViewById(R.id.tv_lista_registro_np);
+            this.np = itemView.findViewById(R.id.tv_np);
             this.data = itemView.findViewById(R.id.tv_data);
             this.processo = itemView.findViewById(R.id.tv_processo);
             this.programa = itemView.findViewById(R.id.tv_programa);
@@ -82,26 +117,23 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
         
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            MenuItem enviar = menu.add(Menu.NONE, 1, 1, R.string.alterar);
+            MenuItem enviar = menu.add(Menu.NONE, 1, 1, R.string.enviar);
             MenuItem remover = menu.add(Menu.NONE, 2, 2, R.string.remover);
-    
+            
             enviar.setOnMenuItemClickListener(onClick);
             remover.setOnMenuItemClickListener(onClick);
         }
         
-        MenuItem.OnMenuItemClickListener onClick = new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case 1:
-                        envia();
-                        break;
-                    case 2:
-                        remove();
-                        break;
-                }
-                return true;
+        MenuItem.OnMenuItemClickListener onClick = item -> {
+            switch (item.getItemId()) {
+                case 1:
+                    envia();
+                    break;
+                case 2:
+                    remove();
+                    break;
             }
+            return true;
         };
         
         private void remove() {
@@ -122,8 +154,24 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
             registroDAO.close();
         }
         
-        private void envia() {
-           //TODO implementar
+        public void envia() {
+            PackageManager pm = contexto.getPackageManager();
+            Registro registro = unificados.get(getAdapterPosition());
+            String msg = registro.toString();
+            
+            try {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                
+                PackageInfo info = pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+                intent.setPackage("com.whatsapp");
+                
+                intent.putExtra(Intent.EXTRA_TEXT, msg);
+                contexto.startActivity(intent);
+                
+            } catch (PackageManager.NameNotFoundException e) {
+                Toast.makeText(contexto, "WhatsApp não instalado", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

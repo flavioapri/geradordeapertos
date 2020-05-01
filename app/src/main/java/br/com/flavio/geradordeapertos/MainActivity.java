@@ -1,10 +1,13 @@
 package br.com.flavio.geradordeapertos;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        carregaListaRegistros();
+        criaLista();
     }
     
     public void criaBancoDeDados() {
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     
-    private void carregaListaRegistros() {
+    private void criaLista() {
         RegistroDAO dao = new RegistroDAO(this);
         registros = dao.buscaTodos();
         dao.close();
@@ -64,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void mostraMenuSuperior(View view) {
         PopupMenu popup = getPopupMenu(view, R.menu.menu_main);
-        
         popup.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.mi_cadastrar:
@@ -85,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
         });
         popup.show();
     }
+    
+  
     
     /**
      * Exibe o menu para seleção do tipo de geração de apertos e chama a activity do formulário correspondente.

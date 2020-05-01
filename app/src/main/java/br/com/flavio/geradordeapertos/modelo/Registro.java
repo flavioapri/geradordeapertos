@@ -1,6 +1,7 @@
 package br.com.flavio.geradordeapertos.modelo;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.text.DecimalFormat;
 
@@ -23,6 +24,15 @@ public class Registro {
     
     public String getData() {
         return data;
+    }
+    
+    /**
+     * Retorna a data formatada
+     *
+     * @return Data com mascara dd/mm/yyyy
+     */
+    public String getDataComMascara() {
+        return this.data.substring(0, 2) + "/" + this.data.substring(2, 4) + "/" + this.data.substring(4, 8);
     }
     
     public void setData(String data) {
@@ -54,6 +64,16 @@ public class Registro {
         return np;
     }
     
+    /**
+     * Devolve o NP formatado
+     *
+     * @return NP formatado com mascara 00.0000000/0
+     */
+    public String getNPComMascara() {
+        String np = String.valueOf(this.np);
+        return np.substring(0, 2) + "." + np.substring(2, 8) + "/" + np.substring(8, 9);
+    }
+    
     public void setNP(int np) {
         this.np = np;
     }
@@ -83,7 +103,8 @@ public class Registro {
         this.ciclo = Integer.parseInt(ciclo);
     }
     
-    public double getValor() {
+    public double
+    getValor() {
         return valor;
     }
     
@@ -98,12 +119,49 @@ public class Registro {
     @NonNull
     @Override
     public String toString() {
+        String angulo = "";
+        if (programa.getAngulo() > 0) // Se houver ângulo exibe
+            angulo += "Ângulo: " + this.programa.getAngulo();
         return "\n"
+                + "Processo: " + programa.getProcesso().getNome() + "\n"
                 + "Programa: " + programa.getNome() + "\n"
-                + "NP: " + np + "\n"
+                + "NP " + getNPComMascara() + "\n"
                 + "Motivo: " + motivo.getNome() + "\n"
+                + "Data: " + getDataComMascara() + "\n"
+                + angulo + "\n"
                 + "Ciclo: " + ciclo + "\n"
-                + "Torque: " + valor + "\n"
-                + "Data: " + data;
+                + "Torque: " + valor + "\n";
+    }
+    
+    /**
+     * Sobrescrito para que seja a feita comparação necessária para a unificação dos registros. Os critérios de verificação são pelo NP e
+     * Programa.
+     *
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (!(obj instanceof Registro))
+            return false;
+        Registro registro = (Registro) obj;
+        if (!(this.np == registro.np) || !(this.getPrograma().getId() == registro.getPrograma().getId()))
+            return false;
+        return true;
+    }
+    
+    /**
+     * Sobrescrito para que seja a feita comparação necessária para a unificação dos registros. Sempre que equals() for sobrescrito
+     * hashCode() deve ser sobrescrito também. Aqui deve se informar algum código que devolva um número qualquer.
+     *
+     * @param obj
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + np;
+        return result;
     }
 }

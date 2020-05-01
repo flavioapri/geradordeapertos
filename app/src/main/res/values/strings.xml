@@ -111,4 +111,8 @@
     <string name="alert_confirmacao_gravar_registro">Registro gravado com sucesso</string>
     <string name="remover_registro">Exclusão de registro</string>
     <string name="remover_registro_descricao">Deseja excluir este registro? Os dados não poderão ser recuperados após a exclusão.</string>
+    <string name="NP">NP</string>
+    <string name="ponto">.</string>
+    <string name="barra">/</string>
+    <string name="enviar">Enviar</string>
 </resources>

@@ -4,29 +4,33 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
 
         <TextView
             android:id="@+id/tv_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:gravity="center_vertical"
+            android:text=" "
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_lista_registro_np" />
+            app:layout_constraintTop_toTopOf="@+id/tv_np" />
 
         <TextView
-            android:id="@+id/tv_lista_registro_np"
+            android:id="@+id/tv_np"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:gravity="center_vertical"
+            android:text=" "
             android:textColor="#000000"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,18 +40,22 @@
             android:id="@+id/tv_processo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_marginTop="10dp"
             android:gravity="center_vertical"
+            android:text=" "
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_lista_registro_np" />
+            app:layout_constraintTop_toBottomOf="@id/tv_np" />
 
         <TextView
             android:id="@+id/tv_programa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_marginTop="10dp"
             android:gravity="center_vertical"
+            android:text=" "
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_processo" />
@@ -56,8 +64,10 @@
             android:id="@+id/tv_motivo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_marginTop="10dp"
             android:gravity="center_vertical"
+            android:text=" "
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_programa" />
@@ -66,8 +76,10 @@
             android:id="@+id/tv_angulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_marginTop="10dp"
             android:gravity="center_vertical"
+            android:text=" "
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_motivo" />
@@ -76,10 +88,12 @@
             android:id="@+id/tv_ciclos_apertos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_marginTop="10dp"
             android:gravity="center_vertical"
+            android:text=" "
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_angulo" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
