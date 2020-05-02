@@ -7,9 +7,12 @@ import android.widget.Toast;
 
 import br.com.flavio.geradordeapertos.modelo.Registro;
 
+/**
+ * Envia os registro por mensagem via Whatsapp
+ */
 public class EmissorMensagem {
     /**
-     * Envia o registro como texto via Whatsapp
+     * Envia o registro 
      */
     public static void envia(Context contexto, Registro registro, String valores) {
         PackageManager pm = contexto.getPackageManager();

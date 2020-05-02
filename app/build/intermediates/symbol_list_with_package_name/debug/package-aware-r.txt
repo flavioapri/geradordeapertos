@@ -1546,6 +1546,8 @@ id bt_historico_limpar
 id bt_menu
 id bt_novo
 id bt_pesquisar
+id bt_relacao_programa_home
+id bt_relacao_programa_novo
 id buttonPanel
 id cancel_action
 id cancel_button
@@ -1573,6 +1575,7 @@ id custom
 id customPanel
 id cut
 id cv_lista
+id cv_lista_relacao_programas
 id dark
 id date_picker_actions
 id decor_content_parent
@@ -1706,6 +1709,7 @@ id rounded
 id rv_cadastro_motivo_lista
 id rv_cadastro_processo_lista
 id rv_registros_lista
+id rv_relacao_programa_lista
 id save_non_transition_alpha
 id save_overlay_view
 id scale
@@ -1818,11 +1822,18 @@ id tv_historico_inicio
 id tv_historico_processo
 id tv_historico_titulo
 id tv_leitura_cabecalho
+id tv_lista_programas_angulo
+id tv_lista_programas_ciclos
+id tv_lista_programas_nome
+id tv_lista_programas_processo
+id tv_lista_programas_valor
 id tv_motivo
 id tv_nome
 id tv_np
 id tv_processo
 id tv_programa
+id tv_relacao_programa_rodape
+id tv_relacao_programa_titulo
 id tv_sobre_descricao
 id tv_sobre_notas
 id tv_sobre_titulo
@@ -1911,6 +1922,7 @@ layout activity_historico
 layout activity_leitura
 layout activity_main
 layout activity_registro
+layout activity_relacao_programas
 layout activity_sobre
 layout cb_formulario_ciclos
 layout custom_dialog
@@ -1932,6 +1944,7 @@ layout design_text_input_start_icon
 layout et_cadastro_programa_angulo
 layout et_cadastro_programa_nominal
 layout lista_registro_main
+layout lista_relacao_programas
 layout ll_historico
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
@@ -2052,6 +2065,8 @@ string alterar_motivo
 string alterar_motivo_descricao
 string alterar_processo
 string alterar_processo_descricao
+string alterar_programa
+string alterar_programa_descricao
 string angulo
 string app_name
 string appbar_scrolling_view_behavior
@@ -2062,6 +2077,7 @@ string bt_cadastro_programa
 string cadastrar
 string cadastrar_novo
 string cadastrar_novo_motivo
+string cadastrar_novo_programa
 string cadastro
 string cadastro_motivo
 string cadastro_processo
@@ -2119,6 +2135,7 @@ string icon_scanner
 string icon_share
 string informe_nome_motivo
 string informe_nome_processo
+string informe_nome_programa
 string inicio
 string inserir_angulo
 string inserir_nome_programa
@@ -2185,11 +2202,14 @@ string processo
 string programa
 string programa_individual
 string programa_lote
+string relacao_programa
 string remover
 string remover_motivo
 string remover_motivo_descricao
 string remover_processo
 string remover_processo_descricao
+string remover_programa
+string remover_programa_descricao
 string remover_registro
 string remover_registro_descricao
 string search_menu_title
@@ -2221,6 +2241,7 @@ string tv_np
 string tv_processo
 string tv_programa
 string tv_registro
+string tv_relacao_programa_lista_rodape
 string tv_sucesso
 string unidade_grau
 string unidade_newton_metro

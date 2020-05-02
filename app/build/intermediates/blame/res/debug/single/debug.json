@@ -32,12 +32,12 @@
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_formulario_programa_lote.xml"
     },
     {
-        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bt_texto.xml.flat",
-        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\drawable\\bt_texto.xml"
-    },
-    {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bt_texto.xml.flat",
+        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\drawable\\bt_texto.xml"
     },
     {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
@@ -116,6 +116,10 @@
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_relacao_programas.xml.flat",
+        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_relacao_programas.xml"
+    },
+    {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_configuracoes.xml.flat",
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_configuracoes.xml"
     },
@@ -134,6 +138,10 @@
     {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_cb_formulario_ciclos.xml.flat",
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\cb_formulario_ciclos.xml"
+    },
+    {
+        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_lista_relacao_programas.xml.flat",
+        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\lista_relacao_programas.xml"
     },
     {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_sobre.xml.flat",

@@ -100,6 +100,7 @@ public class ProcessoAdapter extends RecyclerView.Adapter<ProcessoAdapter.Proces
                             processoDAO.deleta(processo);
                             processos.remove(posicao);
                             notifyDataSetChanged();
+                            //TODO remover todos os programas relacionados
                         }
                     })
                     .setNegativeButton(R.string.cancelar, null)

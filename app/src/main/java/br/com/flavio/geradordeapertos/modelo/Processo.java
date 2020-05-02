@@ -2,7 +2,9 @@ package br.com.flavio.geradordeapertos.modelo;
 
 import androidx.annotation.NonNull;
 
-public class Processo {
+import java.io.Serializable;
+
+public class Processo implements Serializable {
     private String nome;
     private int id;
     

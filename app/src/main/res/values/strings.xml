@@ -115,4 +115,12 @@
     <string name="ponto">.</string>
     <string name="barra">/</string>
     <string name="enviar">Enviar</string>
+    <string name="relacao_programa">Relação de programas</string>
+    <string name="tv_relacao_programa_lista_rodape">Clique e mantenha pressionado em um programa na lista para excluir ou alterar</string>
+    <string name="cadastrar_novo_programa">Cadastrar novo programa</string>
+    <string name="remover_programa">Remover programa</string>
+    <string name="remover_programa_descricao">Deseja remover o programa? Suas informações não poderão ser recuperadas.</string>
+    <string name="alterar_programa">Alterar programa</string>
+    <string name="alterar_programa_descricao">Deseja realmente alterar o programa? As informações não poderam ser revertidas.</string>
+    <string name="informe_nome_programa">Informe o nome do programa</string>
 </resources>

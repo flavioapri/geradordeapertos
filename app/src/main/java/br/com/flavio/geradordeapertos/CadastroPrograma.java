@@ -1,6 +1,5 @@
 package br.com.flavio.geradordeapertos;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +17,7 @@ import java.util.List;
 
 import br.com.flavio.geradordeapertos.dao.ProcessoDAO;
 import br.com.flavio.geradordeapertos.dao.ProgramaDAO;
+import br.com.flavio.geradordeapertos.helper.ProgramaHelper;
 import br.com.flavio.geradordeapertos.mascara.Mascara;
 import br.com.flavio.geradordeapertos.modelo.Processo;
 import br.com.flavio.geradordeapertos.modelo.Programa;
@@ -30,6 +30,7 @@ public class CadastroPrograma extends AppCompatActivity {
     private TextView tv_angulo;
     private Processo processo;
     private Programa programa;
+    private ProgramaHelper helper;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,15 @@ public class CadastroPrograma extends AppCompatActivity {
         tv_nominal = findViewById(R.id.tv_cadastro_programa_nominal);
         tv_angulo = findViewById(R.id.tv_cadastro_programa_angulo);
         
-        programa = new Programa();
+        helper = new ProgramaHelper(this);
+        
+        Intent intent = getIntent();
+        programa = (Programa) intent.getSerializableExtra("programa");
+        if (programa != null) {
+            helper.preencheFormulario(programa);
+        } else
+            programa = new Programa();
+        
     }
     
     @Override
@@ -56,13 +65,10 @@ public class CadastroPrograma extends AppCompatActivity {
                 .setTitle(R.string.selecao_processo)
                 .setMessage(R.string.selecione_processo_lista)
                 .setView(spinner)
-                .setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        processo = (Processo) spinner.getSelectedItem();
-                        programa.setProcesso(processo);
-                        tv_processo.setText(processo.getNome());
-                    }
+                .setPositiveButton(R.string.confirmar, (dialog, which) -> {
+                    processo = (Processo) spinner.getSelectedItem();
+                    programa.setProcesso(processo);
+                    tv_processo.setText(processo.getNome());
                 })
                 .setNegativeButton(R.string.cancelar, null)
                 .show();
@@ -85,14 +91,11 @@ public class CadastroPrograma extends AppCompatActivity {
                 .setTitle(R.string.alert_titulo_nome_programa)
                 .setMessage(R.string.alert_msg_programa)
                 .setView(editText)
-                .setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String nome = editText.getText().toString();
-                        programa.setNome(nome);
-                        tv_nome.setText(nome);
-                        //TODO forçar usuário a inserir nome
-                    }
+                .setPositiveButton(R.string.confirmar, (dialog, which) -> {
+                    String nome = editText.getText().toString();
+                    programa.setNome(nome);
+                    tv_nome.setText(nome);
+                    //TODO forçar usuário a inserir nome
                 })
                 .setNegativeButton(R.string.cancelar, null)
                 .show();
@@ -103,18 +106,15 @@ public class CadastroPrograma extends AppCompatActivity {
         View v = inflater.inflate(R.layout.np_cadastro_programa_ciclos, null);
         final NumberPicker numberPicker = v.findViewById(R.id.number_picker);
         numberPicker.setMinValue(1);
-        numberPicker.setMaxValue(20);
+        numberPicker.setMaxValue(10);
         
         new AlertDialog.Builder(this, R.style.AlertDialog)
                 .setTitle(R.string.alerto_title_ciclos)
                 .setMessage(R.string.alert_msg_ciclos)
                 .setView(numberPicker)
-                .setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        programa.setCiclos(numberPicker.getValue());
-                        tv_ciclos.setText(String.valueOf(programa.getCiclos()));
-                    }
+                .setPositiveButton(R.string.confirmar, (dialog, which) -> {
+                    programa.setCiclos(numberPicker.getValue());
+                    tv_ciclos.setText(String.valueOf(programa.getCiclos()));
                 })
                 .setNegativeButton(R.string.cancelar, null)
                 .show();
@@ -130,14 +130,11 @@ public class CadastroPrograma extends AppCompatActivity {
                 .setTitle(R.string.alert_titulo_nominal)
                 .setMessage(R.string.alert_msg_nominal)
                 .setView(editText)
-                .setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String valor = editText.getText().toString();
-                        programa.setValorNominal(valor);
-                        String exibicao = getString(R.string.unidade_newton_metro, programa.getValorNominal());
-                        tv_nominal.setText(exibicao);
-                    }
+                .setPositiveButton(R.string.confirmar, (dialog, which) -> {
+                    String valor = editText.getText().toString();
+                    programa.setValorNominal(valor);
+                    String exibicao = getString(R.string.unidade_newton_metro, programa.getValorNominal());
+                    tv_nominal.setText(exibicao);
                 })
                 .setNegativeButton(R.string.cancelar, null)
                 .show();
@@ -152,14 +149,11 @@ public class CadastroPrograma extends AppCompatActivity {
                 .setTitle(R.string.alert_titulo_angulo)
                 .setMessage(R.string.alert_msg_angulo)
                 .setView(editText)
-                .setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String valor = editText.getText().toString();
-                        programa.setAngulo(valor);
-                        String exibicao = getString(R.string.unidade_grau, programa.getAngulo());
-                        tv_angulo.setText(exibicao);
-                    }
+                .setPositiveButton(R.string.confirmar, (dialog, which) -> {
+                    String valor = editText.getText().toString();
+                    programa.setAngulo(valor);
+                    String exibicao = getString(R.string.unidade_grau, programa.getAngulo());
+                    tv_angulo.setText(exibicao);
                 })
                 .setNegativeButton(R.string.cancelar, null)
                 .show();
@@ -172,7 +166,10 @@ public class CadastroPrograma extends AppCompatActivity {
                     .setMessage(R.string.alert_programa_msg_salvar)
                     .setPositiveButton(R.string.confirmar, (dialog, which) -> {
                         ProgramaDAO dao = new ProgramaDAO(CadastroPrograma.this);
-                        dao.insere(programa);
+                        if (programa.getId() != 0)
+                            dao.altera(programa);
+                        else
+                            dao.insere(programa);
                         dao.close();
                         limpaFormulario();
                         new AlertDialog.Builder(CadastroPrograma.this, R.style.AlertDialog)
@@ -197,7 +194,7 @@ public class CadastroPrograma extends AppCompatActivity {
         programa = new Programa();
     }
     
-    public void vaiParaHome(View view){
+    public void vaiParaHome(View view) {
         startActivity(new Intent(this, MainActivity.class));
     }
 }
