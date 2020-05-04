@@ -13,18 +13,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/bt_menu"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/bt_principal"
+        android:background="@android:color/transparent"
         android:elevation="8dp"
         android:fontFamily="@font/font_awesome_5"
         android:onClick="mostraMenuSuperior"
         android:text="@string/icon_menu"
-        android:textColor="#FFFFFF"
+        android:textColor="#1E1E1E"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,6 @@
         android:fontFamily="@font/font_awesome_5"
         android:gravity="center"
         android:onClick="mostraMenuNovo"
-        android:stateListAnimator="@null"
         android:text="@string/icon_plus"
         android:textColor="#FFFFFF"
         android:textSize="30sp"

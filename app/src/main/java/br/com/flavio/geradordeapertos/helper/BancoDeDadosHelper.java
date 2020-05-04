@@ -1,15 +1,22 @@
 package br.com.flavio.geradordeapertos.helper;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 /**
  * Cria o banco de dados com todas as tabelas
  */
 public class BancoDeDadosHelper extends SQLiteOpenHelper {
+    private static Context context;
     private static final int VERSAO_BANCO = 1;
     private static final String NOME_BANCO = "gerador_de_apertos";
     private SQLiteDatabase db;
@@ -61,6 +68,7 @@ public class BancoDeDadosHelper extends SQLiteOpenHelper {
     
     public BancoDeDadosHelper(@Nullable Context context) {
         super(context, NOME_BANCO, null, VERSAO_BANCO);
+        this.context = context;
         this.db = getWritableDatabase();
     }
     
@@ -71,6 +79,19 @@ public class BancoDeDadosHelper extends SQLiteOpenHelper {
         db.execSQL(CRIAR_TABELA_PROGRAMA);
         db.execSQL(CRIAR_TABELA_MOTIVO);
         db.execSQL(CRIAR_TABELA_REGISTRO);
+        // Insere todos os dados do banco que estão em arquivo
+        try {
+            AssetManager assetManager = context.getResources().getAssets();
+            InputStream inputStream = assetManager.open("db_data.txt");
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String linha;
+            while ((linha = bufferedReader.readLine()) != null) {
+                db.execSQL(linha);
+            }
+            inputStream.close();
+        } catch (IOException e) {
+        }
     }
     
     @Override

@@ -1,4 +1,4 @@
-#Sat May 02 00:08:53 GMT-03:00 2020
+#Mon May 04 00:34:30 GMT-03:00 2020
 base.0=C\:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex

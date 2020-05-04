@@ -2,7 +2,6 @@ package br.com.flavio.geradordeapertos;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -67,6 +66,7 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
         sp_programas = findViewById(R.id.sp_formulario_programa);
         sp_motivos = findViewById(R.id.sp_formulario_motivo);
         et_np.addTextChangedListener(Mascara.insert(Mascara.MASCARA_NP, et_np));
+        ciclos = new ArrayList<>();
         // Inicializada o formulário com a data atual
         SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         Date dataAtual = new Date();
@@ -128,12 +128,7 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
                 .setTitle(R.string.alert_titulo_registro_ciclos)
                 .setMessage(R.string.alert_msg_registro_ciclos)
                 .setView(grupoCheckBoxes)
-                .setPositiveButton(R.string.confirmar, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        verificaCheckBoxesSelecionados(grupoCheckBoxes);
-                    }
-                })
+                .setPositiveButton(R.string.confirmar, (dialog, which) -> verificaCheckBoxesSelecionados(grupoCheckBoxes))
                 .setNegativeButton(R.string.cancelar, null)
                 .show();
     }
@@ -161,7 +156,6 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
     }
     
     private void verificaCheckBoxesSelecionados(LinearLayout grupoCheckBoxes) {
-        ciclos = new ArrayList<>();
         StringBuilder ciclos = new StringBuilder();//TODO tentar utilizar strinf builder no projeto
         for (int cont = 0; cont < grupoCheckBoxes.getChildCount(); cont++) {
             View view = grupoCheckBoxes.getChildAt(cont);
@@ -302,7 +296,7 @@ public class FormularioProgramaIndividual extends AppCompatActivity {
     private boolean verificaFormulario() {
         String np = et_np.getText().toString().trim();
         
-        if (np.length() < 11 | ciclos.isEmpty()) {
+        if (np.length() < 11 | ciclos.isEmpty() | motivo == null) {
             new AlertDialog.Builder(this, R.style.AlertDialog)
                     .setTitle(R.string.alert_formulario_titulo_incompleto)
                     .setMessage(R.string.alert_formulario_msg_incompleto)

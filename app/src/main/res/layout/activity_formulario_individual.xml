@@ -7,6 +7,20 @@
     android:layout_margin="10dp"
     tools:context=".FormularioProgramaIndividual">
 
+    <Button
+        android:id="@+id/bt_forumulario_individual_menu"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:elevation="8dp"
+        android:fontFamily="@font/font_awesome_5"
+        android:onClick="mostraMenuSuperior"
+        android:text="@string/icon_menu"
+        android:textColor="#1E1E1E"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/et_formulario_np"
         android:layout_width="0dp"
@@ -173,7 +187,7 @@
         android:id="@+id/bt_formulario_leitura"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/bt_texto"
         android:fontFamily="@font/product_sans"
         android:onClick="leCodigo"

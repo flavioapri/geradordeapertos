@@ -1,13 +1,9 @@
 package br.com.flavio.geradordeapertos;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -66,29 +62,8 @@ public class MainActivity extends AppCompatActivity {
      * @param view Botão que exibe o menu.
      */
     public void mostraMenuSuperior(View view) {
-        PopupMenu popup = getPopupMenu(view, R.menu.menu_main);
-        popup.setOnMenuItemClickListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.mi_cadastrar:
-                    intent.setClass(MainActivity.this, Cadastro.class);
-                    break;
-                case R.id.mi_configuracoes:
-                    intent.setClass(MainActivity.this, Configuracoes.class);
-                    break;
-                case R.id.mi_historico:
-                    intent.setClass(MainActivity.this, Historico.class);
-                    break;
-                case R.id.mi_sobre:
-                    intent.setClass(MainActivity.this, Sobre.class);
-                    break;
-            }
-            startActivity(intent);
-            return false;
-        });
-        popup.show();
+        MontaMenus.mostra(view, this);
     }
-    
-  
     
     /**
      * Exibe o menu para seleção do tipo de geração de apertos e chama a activity do formulário correspondente.
@@ -96,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view Botão de adicionar
      */
     public void mostraMenuNovo(View view) {
-        PopupMenu popup = getPopupMenu(view, R.menu.menu_novo);
+        PopupMenu popup = MontaMenus.getPopup(view, R.menu.menu_novo, this);
         popup.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.mi_programa_individual:
@@ -110,19 +85,5 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
         popup.show();
-    }
-    
-    /**
-     * Cria um popup para exibição dos menus
-     *
-     * @param view   O botão que foi clicado
-     * @param idMenu ID do menu correspondente
-     * @return popup criado
-     */
-    private PopupMenu getPopupMenu(View view, int idMenu) {
-        PopupMenu popup = new PopupMenu(this, view);
-        MenuInflater menuInflater = popup.getMenuInflater();
-        menuInflater.inflate(idMenu, popup.getMenu());
-        return popup;
     }
 }

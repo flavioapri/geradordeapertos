@@ -110,63 +110,63 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Fl
 	android:theme
 		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:13:9-65
 activity#br.com.flavio.geradordeapertos.RelacaoProgramas
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:14:9-20:20
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:14:9-16:20
 	android:name
 		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:14:19-51
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:15:13-19:29
-action#android.intent.action.MAIN
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:16:17-69
-	android:name
-		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:16:25-66
-category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:18:17-77
-	android:name
-		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:18:27-74
 activity#br.com.flavio.geradordeapertos.CadastroPrograma
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:21:9-63
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:17:9-63
 	android:name
-		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:21:19-51
+		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:17:19-51
 activity#br.com.flavio.geradordeapertos.CadastroMotivo
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:22:9-52
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:18:9-52
 	android:name
-		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:22:19-49
+		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:18:19-49
 activity#br.com.flavio.geradordeapertos.CadastroProcesso
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:23:9-63
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:19:9-63
 	android:name
-		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:23:19-51
+		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:19:19-51
 activity#br.com.flavio.geradordeapertos.Cadastro
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:24:9-46
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:20:9-46
 	android:name
-		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:24:19-43
+		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:20:19-43
 activity#br.com.flavio.geradordeapertos.FormularioProgramaLote
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:25:9-60
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:21:9-60
 	android:name
-		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:25:19-57
+		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:21:19-57
 activity#br.com.flavio.geradordeapertos.Leitura
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:26:9-45
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:22:9-45
 	android:name
-		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:26:19-42
+		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:22:19-42
 activity#br.com.flavio.geradordeapertos.Sobre
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:27:9-43
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:23:9-43
 	android:name
-		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:27:19-40
+		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:23:19-40
 activity#br.com.flavio.geradordeapertos.Configuracoes
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:28:9-51
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:24:9-51
 	android:name
-		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:28:19-48
+		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:24:19-48
 activity#br.com.flavio.geradordeapertos.Historico
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:29:9-47
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:25:9-47
 	android:name
-		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:29:19-44
+		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:25:19-44
 activity#br.com.flavio.geradordeapertos.FormularioProgramaIndividual
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:30:9-75
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:26:9-75
 	android:name
-		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:30:19-63
+		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:26:19-63
 activity#br.com.flavio.geradordeapertos.MainActivity
-ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:31:9-33:20
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:27:9-33:20
 	android:name
-		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:31:19-47
+		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:27:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:28:13-32:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:29:17-69
+	android:name
+		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:29:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:31:17-77
+	android:name
+		ADDED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:31:27-74
 uses-sdk
 INJECTED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml

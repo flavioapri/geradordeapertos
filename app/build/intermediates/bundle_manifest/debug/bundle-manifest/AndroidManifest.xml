@@ -22,11 +22,6 @@
         android:testOnly="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <activity android:name="br.com.flavio.geradordeapertos.RelacaoProgramas" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name="br.com.flavio.geradordeapertos.CadastroPrograma" />
         <activity android:name="br.com.flavio.geradordeapertos.CadastroMotivo" />
@@ -39,6 +34,11 @@
         <activity android:name="br.com.flavio.geradordeapertos.Historico" />
         <activity android:name="br.com.flavio.geradordeapertos.FormularioProgramaIndividual" />
         <activity android:name="br.com.flavio.geradordeapertos.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"

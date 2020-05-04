@@ -103,7 +103,7 @@
     <string name="alert_titulo_registro_ciclos">Ciclos de aperto</string>
     <string name="selecionar_todos">Todos</string>
     <string name="alert_formulario_titulo_incompleto">Formulario incompleto</string>
-    <string name="alert_formulario_msg_incompleto">NP faltando números e/ou ciclos não selecionados</string>
+    <string name="alert_formulario_msg_incompleto">NP faltando números, ciclos ou motivo não selecionados.</string>
     <string name="ok">OK</string>
     <string name="alert_formulario_titulo_limpar">Deseja limpar as informações do formulário?</string>
     <string name="alert_titulo_gravar_registro">Gravar registro</string>

@@ -50,7 +50,8 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
         holder.processo.setText("Processo: " + unificados.get(posicao).getPrograma().getProcesso().getNome());
         holder.programa.setText("Programa: " + unificados.get(posicao).getPrograma().getNome());
         holder.motivo.setText("Motivo: " + unificados.get(posicao).getMotivo().getNome());
-        holder.angulo.setText("Ângulo: " + String.valueOf(unificados.get(posicao).getPrograma().getAngulo()));
+        if (!(unificados.get(posicao).getPrograma().getAngulo() == 0)) // Exibe somente apertos com ângulo
+            holder.angulo.setText("Ângulo: " + String.valueOf(unificados.get(posicao).getPrograma().getAngulo()));
         holder.ciclos_apertos.setText(valores.get(posicao));
     }
     
@@ -136,7 +137,7 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
         
         private void remove() {
             final int posicao = getAdapterPosition();
-            final Registro registro = registros.get(posicao);
+            final Registro registro = unificados.get(posicao);
             final RegistroDAO registroDAO = new RegistroDAO(contexto);
             
             new AlertDialog.Builder(contexto, R.style.AlertDialog)
@@ -144,36 +145,12 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
                     .setMessage(R.string.remover_registro_descricao)
                     .setPositiveButton(R.string.remover, (dialog, which) -> {
                         registroDAO.deleta(registro);
-                        registros.remove(posicao);
-                        notifyDataSetChanged();
+                        unificados.remove(posicao);
+                        notifyItemRemoved(posicao);
                     })
                     .setNegativeButton(R.string.cancelar, null)
                     .show();
             registroDAO.close();
         }
-
-//        /**
-//         * Envia o registro como texto via Whatsapp
-//         */
-//        public void envia() {
-//            PackageManager pm = contexto.getPackageManager();
-//            Registro registro = unificados.get(getAdapterPosition());
-//
-//            String msg = registro.toString() + valores.get(getAdapterPosition());
-//
-//            try {
-//                Intent intent = new Intent(Intent.ACTION_SEND);
-//                intent.setType("text/plain");
-//
-//                pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
-//                intent.setPackage("com.whatsapp");
-//
-//                intent.putExtra(Intent.EXTRA_TEXT, msg);
-//                contexto.startActivity(intent);
-//
-//            } catch (PackageManager.NameNotFoundException e) {
-//                Toast.makeText(contexto, "WhatsApp não instalado", Toast.LENGTH_SHORT).show();
-//            }
-//        }
     }
 }

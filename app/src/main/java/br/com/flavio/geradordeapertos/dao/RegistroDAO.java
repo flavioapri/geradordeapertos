@@ -58,31 +58,31 @@ public class RegistroDAO extends SQLiteOpenHelper {
         int idMotivo;
         ProgramaDAO programaDAO = new ProgramaDAO(context);
         MotivoDAO motivoDAO = new MotivoDAO(context);
-    
+        
         ArrayList<Registro> registros = new ArrayList<Registro>();
         try {
             Cursor c = db.rawQuery(sql, null);
-        while (c.moveToNext()) {
-            Registro registro = new Registro();
-            registro.setId(c.getInt(c.getColumnIndex("id")));
-            registro.setNP(c.getString(c.getColumnIndex("np")));
-            registro.setData(c.getString(c.getColumnIndex("data")));
-            registro.setCiclo(c.getInt(c.getColumnIndex("ciclo")));
-            registro.setValor(c.getDouble(c.getColumnIndex("valor")));
-            
-            idPrograma = c.getInt(c.getColumnIndex("id_programa"));
-            registro.setPrograma(programaDAO.buscaPrograma(idPrograma));
-            
-            idMotivo = c.getInt(c.getColumnIndex("id_motivo"));
-            registro.setMotivo(motivoDAO.busca(idMotivo));
-            
-            registros.add(registro);
-        }
-        programaDAO.close();
-        motivoDAO.close();
-        c.close();
+            while (c.moveToNext()) {
+                Registro registro = new Registro();
+                registro.setId(c.getInt(c.getColumnIndex("id")));
+                registro.setNP(c.getString(c.getColumnIndex("np")));
+                registro.setData(c.getString(c.getColumnIndex("data")));
+                registro.setCiclo(c.getInt(c.getColumnIndex("ciclo")));
+                registro.setValor(c.getDouble(c.getColumnIndex("valor")));
+                
+                idPrograma = c.getInt(c.getColumnIndex("id_programa"));
+                registro.setPrograma(programaDAO.buscaPrograma(idPrograma));
+                
+                idMotivo = c.getInt(c.getColumnIndex("id_motivo"));
+                registro.setMotivo(motivoDAO.busca(idMotivo));
+                
+                registros.add(registro);
+            }
+            programaDAO.close();
+            motivoDAO.close();
+            c.close();
             return registros;
-        } catch (SQLiteException e){
+        } catch (SQLiteException e) {
             return registros;
         }
     }
@@ -96,7 +96,7 @@ public class RegistroDAO extends SQLiteOpenHelper {
         int idMotivo;
         ProgramaDAO programaDAO = new ProgramaDAO(context);
         MotivoDAO motivoDAO = new MotivoDAO(context);
-    
+        
         ArrayList<Registro> registros = new ArrayList<Registro>();
         while (c.moveToNext()) {
             Registro registro = new Registro();
@@ -105,13 +105,13 @@ public class RegistroDAO extends SQLiteOpenHelper {
             registro.setData(c.getString(c.getColumnIndex("data")));
             registro.setCiclo(c.getInt(c.getColumnIndex("ciclo")));
             registro.setValor(c.getDouble(c.getColumnIndex("valor")));
-        
+            
             idPrograma = c.getInt(c.getColumnIndex("id_programa"));
             registro.setPrograma(programaDAO.buscaPrograma(idPrograma));
-        
+            
             idMotivo = c.getInt(c.getColumnIndex("id_motivo"));
             registro.setMotivo(motivoDAO.busca(idMotivo));
-        
+            
             registros.add(registro);
         }
         programaDAO.close();
@@ -121,16 +121,17 @@ public class RegistroDAO extends SQLiteOpenHelper {
     }
     
     public void deleta(Registro registro) {
+        int idPrograma = registro.getPrograma().getId();
+        int np = registro.getNP();
         SQLiteDatabase db = getWritableDatabase();
-        String[] parametros = {String.valueOf(registro.getId())};
-        db.delete("registro", "id=?", parametros);
+        db.execSQL("DELETE FROM registro WHERE id_programa = " + idPrograma + " AND " + "np = " + np);
     }
     
     public void altera(Registro registro) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues dados = pegaDadosRegistro(registro);
         String[] parametros = {String.valueOf(registro.getId())};
-        db.update("registro", dados, "id=?", parametros);
+        db.update("registro", dados, "id_programa=?, ", parametros);
     }
 }
 
