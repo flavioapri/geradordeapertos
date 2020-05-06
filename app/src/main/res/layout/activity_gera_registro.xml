@@ -7,48 +7,37 @@
     android:layout_margin="10dp"
     tools:context=".GeraRegistro">
 
-    <Button
-        android:id="@+id/bt_forumulario_individual_menu"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:elevation="8dp"
-        android:fontFamily="@font/font_awesome_5"
-        android:onClick="mostraMenuSuperior"
-        android:text="@string/icon_menu"
-        android:textColor="#1E1E1E"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/et_formulario_np"
-        android:layout_width="0dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"
         android:autofillHints=""
         android:ems="5"
         android:gravity="center"
+        android:hint="99.999999/9"
         android:inputType="number"
         android:maxLength="11"
-        app:layout_constraintEnd_toStartOf="@+id/bt_formulario_leitura"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@+id/tv_formulario_np"
-        app:layout_constraintTop_toTopOf="@+id/bt_formulario_leitura" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_formulario_np"
         android:layout_width="27dp"
         android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="@font/product_sans"
         android:gravity="center_vertical"
         android:text="@string/tv_np"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/et_formulario_np"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bt_formulario_leitura" />
+        app:layout_constraintTop_toTopOf="@+id/et_formulario_np" />
 
     <TextView
         android:id="@+id/tv_formulario_processo"
@@ -127,25 +116,6 @@
 
 
     <Button
-        android:id="@+id/bt_formulario_home"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/bt_principal"
-        android:elevation="8dp"
-        android:fontFamily="@font/font_awesome_5"
-        android:gravity="center"
-        android:onClick="vaiParaHome"
-        android:stateListAnimator="@null"
-        android:text="@string/icon_home"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/bt_formulario_confirm"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/bt_formulario_confirm"
         android:layout_width="56dp"
         android:layout_height="56dp"
@@ -159,15 +129,16 @@
         android:textColor="#FFFFFF"
 
         android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_formulario_clear"
         app:layout_constraintEnd_toStartOf="@+id/bt_formulario_clear"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_formulario_home"
-        app:layout_constraintTop_toTopOf="@+id/bt_formulario_home" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bt_formulario_clear"
         android:layout_width="56dp"
         android:layout_height="56dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/bt_principal"
         android:elevation="8dp"
         android:fontFamily="@font/font_awesome_5"
@@ -175,19 +146,19 @@
         android:onClick="botaoLimpa"
         android:stateListAnimator="@null"
         android:text="@string/icon_clear"
-        android:textColor="#FFFFFF"
 
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_formulario_confirm"
-        app:layout_constraintTop_toTopOf="@+id/bt_formulario_home" />
+        app:layout_constraintStart_toEndOf="@+id/bt_formulario_confirm" />
 
     <Button
         android:id="@+id/bt_formulario_leitura"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/bt_texto"
         android:fontFamily="@font/product_sans"
         android:onClick="leCodigo"
@@ -196,8 +167,8 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/et_formulario_np"
-        app:layout_constraintTop_toBottomOf="@+id/tv_formulario_titulo" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_formulario_np" />
 
     <Button
         android:id="@+id/bt_formulario_ciclos"
@@ -214,18 +185,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_formulario_programa" />
-
-    <TextView
-        android:id="@+id/tv_formulario_titulo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/product_sans"
-        android:gravity="center"
-        android:text="@string/titulo_formulario"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_formulario_data"

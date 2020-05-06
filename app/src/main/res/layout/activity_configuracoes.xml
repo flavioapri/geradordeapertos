@@ -7,31 +7,18 @@
     android:layout_margin="10dp"
     tools:context=".Configuracoes">
 
-    <TextView
-        android:id="@+id/tv_configuracoes_titulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/product_sans"
-        android:text="@string/configuracoes"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Switch
         android:id="@+id/sw_configuracoes_manter"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/product_sans"
         android:paddingLeft="0dp"
         android:switchPadding="20dp"
         android:text="@string/manter_configuracao"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_configuracoes_titulo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_configuracoes_tolerancia"
@@ -60,6 +47,7 @@
         app:layout_constraintTop_toTopOf="@+id/tv_configuracoes_tolerancia" />
 
     <TextView
+        android:id="@+id/tv_taxa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -72,6 +60,7 @@
         app:layout_constraintTop_toTopOf="@+id/et_configuracoes_tolerancia" />
 
     <Button
+        android:id="@+id/bt_configuracoes_confirma"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginBottom="10dp"
@@ -79,7 +68,7 @@
         android:elevation="8dp"
         android:fontFamily="@font/font_awesome_5"
         android:gravity="center"
-        android:text="@string/icon_home"
+        android:text="@string/icon_confirm"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"

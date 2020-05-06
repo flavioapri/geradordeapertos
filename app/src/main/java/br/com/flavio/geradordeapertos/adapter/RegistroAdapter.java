@@ -39,7 +39,7 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
     @NonNull
     @Override
     public RegistroViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_registro_main, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_registro, parent, false);
         return new RegistroViewHolder(view, contexto);
     }
     

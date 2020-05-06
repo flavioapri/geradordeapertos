@@ -134,4 +134,7 @@
     <string name="mi_cadastro">Cadastro</string>
     <string name="gera_registro">Gerar Registro</string>
     <string name="gerar_registro_grupo">Registro por Grupo</string>
+    <string name="texto">texto</string>
+    <string name="icon_search"></string>
+    <string name="mi_inicio">Inicio</string>
 </resources>

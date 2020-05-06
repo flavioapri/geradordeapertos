@@ -18,7 +18,7 @@ import java.io.InputStreamReader;
 public class BancoDeDadosHelper extends SQLiteOpenHelper {
     private static Context context;
     private static final int VERSAO_BANCO = 1;
-    private static final String NOME_BANCO = "gerador_de_apertos";
+    public static final String NOME_BANCO = "gerador_de_apertos";
     private SQLiteDatabase db;
     // Nome das tabelas
     private static final String TABELA_PROCESSO = "processo";

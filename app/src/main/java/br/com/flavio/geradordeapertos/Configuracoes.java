@@ -1,10 +1,8 @@
 package br.com.flavio.geradordeapertos;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class Configuracoes extends AppCompatActivity {
+public class Configuracoes  extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

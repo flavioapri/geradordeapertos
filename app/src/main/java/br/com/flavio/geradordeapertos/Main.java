@@ -1,8 +1,6 @@
 package br.com.flavio.geradordeapertos;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,17 +15,12 @@ import br.com.flavio.geradordeapertos.modelo.Registro;
 
 public class Main extends BaseActivity {
     private RecyclerView rv_registros;
-    private RegistroAdapter adapter;
-    private List<Registro> registros;
-    private Intent intent;
-    private static final String NOME_BANCO_DADOS = "gerador_de_apertos";
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rv_registros = findViewById(R.id.rv_registros_lista);
-        intent = new Intent();
         criaBancoDeDados();
     }
     
@@ -38,7 +31,7 @@ public class Main extends BaseActivity {
     }
     
     public void criaBancoDeDados() {
-        File arquivoBanco = this.getDatabasePath(NOME_BANCO_DADOS);
+        File arquivoBanco = this.getDatabasePath(BancoDeDadosHelper.NOME_BANCO);
         if (!arquivoBanco.exists()) {
             new BancoDeDadosHelper(this);
         }
@@ -46,16 +39,11 @@ public class Main extends BaseActivity {
     
     private void criaLista() {
         RegistroDAO dao = new RegistroDAO(this);
-        registros = dao.buscaTodos();
+        List<Registro> registros = dao.buscaTodos();
         dao.close();
-        adapter = new RegistroAdapter(registros, this);
+        RegistroAdapter adapter = new RegistroAdapter(registros, this);
         rv_registros.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rv_registros.setLayoutManager(layoutManager);
-    }
-    
-    public void gotoNovoRegistro(View view) {
-        intent.setClass(Main.this, GeraRegistro.class);
-        startActivity(intent);
     }
 }

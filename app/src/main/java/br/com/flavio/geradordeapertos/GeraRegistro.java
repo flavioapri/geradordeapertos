@@ -38,7 +38,7 @@ import br.com.flavio.geradordeapertos.modelo.Processo;
 import br.com.flavio.geradordeapertos.modelo.Programa;
 import br.com.flavio.geradordeapertos.modelo.Registro;
 
-public class GeraRegistro extends BaseActivity {
+public class GeraRegistro  extends BaseActivity{
     private EditText et_np;
     private TextView tv_data;
     private Spinner sp_processos;

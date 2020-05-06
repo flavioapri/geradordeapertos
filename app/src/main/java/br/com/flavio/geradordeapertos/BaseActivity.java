@@ -5,16 +5,21 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Activity base com os métodos para criação do menu da ActionBar. As outras Activitys herdando faz com que evite se repetir o código em
+ * todas elas.
+ */
 @SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_actionbar, menu);
         return true;
     }
     
@@ -22,6 +27,13 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Intent intent = new Intent();
         switch (item.getItemId()) {
+            case R.id.mi_gerar_registro:
+            case R.id.mi_cadastro:
+                intent = null; // Se os itens que abrem os submenus forem selecionados intent aponta para nulo
+                break;
+            case R.id.mi_inicio:
+                intent.setClass(this, Main.class);
+                break;
             case R.id.mi_gerar_programa:
                 intent.setClass(this, GeraRegistro.class);
                 break;
@@ -46,9 +58,14 @@ public class BaseActivity extends AppCompatActivity {
             case R.id.mi_sobre:
                 intent.setClass(this, Sobre.class);
                 break;
-            
         }
-        startActivity(intent);
+        if (!(intent == null)) //Se o item selecionado for o que abre o submenu não tenta iniciar activity
+            startActivity(intent);
         return super.onOptionsItemSelected(item);
+    }
+    
+    public void gotoNovoRegistro(View view) {
+        Intent intent = new Intent().setClass(this, GeraRegistro.class);
+        startActivity(intent);
     }
 }

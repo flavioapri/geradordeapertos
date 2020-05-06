@@ -8,74 +8,45 @@
     tools:context=".CadastroProcesso">
 
     <Button
-        android:id="@+id/bt_cadastro_processo_home"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/bt_principal"
-        android:elevation="8dp"
-        android:fontFamily="@font/font_awesome_5"
-        android:gravity="center"
-        android:onClick="vaiParaHome"
-        android:text="@string/icon_home"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/bt_cadastro_processo_novo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/bt_texto"
+
         android:elevation="8dp"
         android:fontFamily="@font/product_sans"
-
         android:onClick="cadastrarProcesso"
         android:text="@string/cadastrar_novo"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_cadastro_processo_rodape" />
-
-    <TextView
-        android:id="@+id/tv_cadastro_processo_titulo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/product_sans"
-        android:gravity="center"
-        android:text="@string/cadastro_processo"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_cadastro_processo_lista"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_cadastro_processo_rodape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_processo_titulo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_cadastro_processo_rodape"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         android:fontFamily="@font/product_sans"
         android:gravity="center"
         android:text="@string/tv_cadastro_processo_lista_rodape"
+        app:layout_constraintBottom_toTopOf="@+id/bt_cadastro_processo_novo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_cadastro_processo_lista" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

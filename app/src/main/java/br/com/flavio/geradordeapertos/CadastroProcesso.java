@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,7 +16,7 @@ import br.com.flavio.geradordeapertos.adapter.ProcessoAdapter;
 import br.com.flavio.geradordeapertos.dao.ProcessoDAO;
 import br.com.flavio.geradordeapertos.modelo.Processo;
 
-public class CadastroProcesso extends AppCompatActivity {
+public class CadastroProcesso  extends BaseActivity {
     private RecyclerView rv_processos;
     private ProcessoAdapter adapter;
     private List<Processo> processos;
@@ -49,7 +48,7 @@ public class CadastroProcesso extends AppCompatActivity {
     }
     
     /**
-     * Exibe popup para persistir um novo ll_historico
+     * Exibe popup para persistir um novo cv_lista
      *
      * @param view
      */

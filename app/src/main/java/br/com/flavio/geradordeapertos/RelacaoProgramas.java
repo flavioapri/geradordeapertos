@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,7 +13,7 @@ import br.com.flavio.geradordeapertos.adapter.ProgramaAdapter;
 import br.com.flavio.geradordeapertos.dao.ProgramaDAO;
 import br.com.flavio.geradordeapertos.modelo.Programa;
 
-public class RelacaoProgramas extends AppCompatActivity {
+public class RelacaoProgramas  extends BaseActivity{
     private RecyclerView rv_programas;
     private ProgramaAdapter adapter;
     private List<Programa> programas;

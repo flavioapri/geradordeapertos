@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,7 +16,7 @@ import br.com.flavio.geradordeapertos.adapter.MotivoAdapter;
 import br.com.flavio.geradordeapertos.dao.MotivoDAO;
 import br.com.flavio.geradordeapertos.modelo.Motivo;
 
-public class CadastroMotivo extends AppCompatActivity {
+public class CadastroMotivo  extends BaseActivity {
     private RecyclerView rv_motivos;
     private MotivoAdapter adapter;
     private List<Motivo> motivos;
@@ -49,7 +48,7 @@ public class CadastroMotivo extends AppCompatActivity {
     }
     
     /**
-     * Exibe popup para persistir um novo ll_historico
+     * Exibe popup para persistir um novo cv_lista
      *
      * @param view
      */

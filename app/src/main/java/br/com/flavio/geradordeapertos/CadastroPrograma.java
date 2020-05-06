@@ -11,7 +11,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
@@ -22,7 +21,7 @@ import br.com.flavio.geradordeapertos.mascara.Mascara;
 import br.com.flavio.geradordeapertos.modelo.Processo;
 import br.com.flavio.geradordeapertos.modelo.Programa;
 
-public class CadastroPrograma extends AppCompatActivity {
+public class CadastroPrograma  extends BaseActivity{
     private TextView tv_processo;
     private TextView tv_nome;
     private TextView tv_ciclos;

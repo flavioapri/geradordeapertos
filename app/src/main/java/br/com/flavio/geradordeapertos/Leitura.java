@@ -12,7 +12,6 @@ import android.view.SurfaceView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -23,7 +22,7 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
-public class Leitura extends AppCompatActivity {
+public class Leitura  extends BaseActivity {
     private SurfaceView sv_camera;
     private CameraSource camera;
     private TextView tv_leitura_cabecalho;

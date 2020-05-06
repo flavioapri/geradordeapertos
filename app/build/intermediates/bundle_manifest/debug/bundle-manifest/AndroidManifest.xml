@@ -23,19 +23,36 @@
         android:theme="@style/MyTheme" >
         <activity android:name="br.com.flavio.geradordeapertos.RelacaoProgramas" >
         </activity>
-        <activity android:name="br.com.flavio.geradordeapertos.CadastroPrograma" />
-        <activity android:name="br.com.flavio.geradordeapertos.CadastroMotivo" />
-        <activity android:name="br.com.flavio.geradordeapertos.CadastroProcesso" />
-        <activity android:name="br.com.flavio.geradordeapertos.Cadastro" />
-        <activity android:name="br.com.flavio.geradordeapertos.GeraRegistroGrupo" />
-        <activity android:name="br.com.flavio.geradordeapertos.Leitura" />
-        <activity android:name="br.com.flavio.geradordeapertos.Sobre" />
-        <activity android:name="br.com.flavio.geradordeapertos.Configuracoes" />
-        <activity android:name="br.com.flavio.geradordeapertos.Historico" />
+        <activity
+            android:name="br.com.flavio.geradordeapertos.CadastroPrograma"
+            android:label="@string/cadastro_programa" />
+        <activity
+            android:name="br.com.flavio.geradordeapertos.CadastroMotivo"
+            android:label="@string/cadastro_motivo" />
+        <activity
+            android:name="br.com.flavio.geradordeapertos.CadastroProcesso"
+            android:label="@string/cadastro_processo" />
+        <activity
+            android:name="br.com.flavio.geradordeapertos.GeraRegistroGrupo"
+            android:label="@string/gerar_registro_grupo" />
+        <activity
+            android:name="br.com.flavio.geradordeapertos.Leitura"
+            android:label="@string/leitura" />
+        <activity
+            android:name="br.com.flavio.geradordeapertos.Sobre"
+            android:label="@string/sobre" />
+        <activity
+            android:name="br.com.flavio.geradordeapertos.Configuracoes"
+            android:label="@string/configuracoes" />
+        <activity
+            android:name="br.com.flavio.geradordeapertos.Historico"
+            android:label="@string/historico" />
         <activity
             android:name="br.com.flavio.geradordeapertos.GeraRegistro"
             android:label="@string/gera_registro" />
-        <activity android:name="br.com.flavio.geradordeapertos.Main" >
+        <activity
+            android:name="br.com.flavio.geradordeapertos.Main"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

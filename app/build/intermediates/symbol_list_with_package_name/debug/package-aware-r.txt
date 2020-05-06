@@ -1519,14 +1519,10 @@ id barrier
 id beginning
 id blocking
 id bottom
-id bt_cadastro_home
-id bt_cadastro_motivo
 id bt_cadastro_motivo_home
 id bt_cadastro_motivo_novo
-id bt_cadastro_processo
 id bt_cadastro_processo_home
 id bt_cadastro_processo_novo
-id bt_cadastro_programa
 id bt_cadastro_programa_angulo
 id bt_cadastro_programa_cadastrar
 id bt_cadastro_programa_ciclos
@@ -1576,7 +1572,7 @@ id coordinator
 id custom
 id customPanel
 id cut
-id cv_lista
+id cv
 id cv_lista_relacao_programas
 id dark
 id date_picker_actions
@@ -1645,7 +1641,6 @@ id list_item
 id masked
 id media_actions
 id message
-id mi_cadastrar
 id mi_cadastro
 id mi_configuracoes
 id mi_gerar_grupo
@@ -1655,9 +1650,6 @@ id mi_historico
 id mi_motivo
 id mi_processo
 id mi_programa
-id mi_programa_individual
-id mi_programa_lote
-id mi_programas
 id mi_sobre
 id middle
 id mini
@@ -1806,7 +1798,6 @@ id transition_scene_layoutid_cache
 id transition_transform
 id tv_angulo
 id tv_cadastro_motivo_rodape
-id tv_cadastro_motivo_titulo
 id tv_cadastro_processo_rodape
 id tv_cadastro_processo_titulo
 id tv_cadastro_programa_angulo
@@ -1815,7 +1806,6 @@ id tv_cadastro_programa_nome
 id tv_cadastro_programa_nominal
 id tv_cadastro_programa_processo
 id tv_cadastro_programa_titulo
-id tv_cadastro_titulo
 id tv_ciclos_apertos
 id tv_configuracoes_titulo
 id tv_configuracoes_tolerancia
@@ -1921,7 +1911,6 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
-layout activity_cadastro
 layout activity_cadastro_motivo
 layout activity_cadastro_processo
 layout activity_cadastro_programa
@@ -1936,6 +1925,7 @@ layout activity_relacao_programas
 layout activity_sobre
 layout cb_formulario_ciclos
 layout custom_dialog
+layout cv_lista
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1955,7 +1945,6 @@ layout et_cadastro_programa_angulo
 layout et_cadastro_programa_nominal
 layout lista_registro_main
 layout lista_relacao_programas
-layout ll_historico
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
@@ -2018,9 +2007,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
-menu menu_main
-menu menu_novo
-menu menu_programa
+menu menu_actionbar
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
@@ -2132,6 +2119,7 @@ string formato_dia
 string formato_mes
 string formato_separador
 string gera_registro
+string gerar_registro_grupo
 string hide_bottom_view_on_scroll_behavior
 string hint_nome_programa
 string historico
@@ -2245,6 +2233,7 @@ string status_bar_notification_info_overflow
 string string_sem_nome
 string string_valor_vazio
 string taxa_tolerancia
+string texto
 string titulo_formulario
 string tolerancia
 string tv_cadastro_aperto

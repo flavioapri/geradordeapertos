@@ -1,10 +1,8 @@
 package br.com.flavio.geradordeapertos;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class Sobre extends AppCompatActivity {
+public class Sobre extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
