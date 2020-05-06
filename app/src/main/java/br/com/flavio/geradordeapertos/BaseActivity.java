@@ -44,7 +44,7 @@ public class BaseActivity extends AppCompatActivity {
                 intent.setClass(this, CadastroProcesso.class);
                 break;
             case R.id.mi_programa:
-                intent.setClass(this, CadastroPrograma.class);
+                intent.setClass(this, RelacaoProgramas.class);
                 break;
             case R.id.mi_motivo:
                 intent.setClass(this, CadastroMotivo.class);

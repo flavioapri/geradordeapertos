@@ -36,7 +36,7 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Progra
     @NonNull
     @Override
     public ProgramaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_relacao_programas, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_programas, parent, false);
         return new ProgramaViewHolder(view, contexto);
     }
     

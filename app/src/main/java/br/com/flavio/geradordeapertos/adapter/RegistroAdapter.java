@@ -39,7 +39,7 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
     @NonNull
     @Override
     public RegistroViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_registro, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_registro, parent, false);
         return new RegistroViewHolder(view, contexto);
     }
     
@@ -80,6 +80,7 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
                 j--;
             }
         }
+        Collections.reverse(valores);
         Collections.reverse(unificados);// Ordenar do último para o primeiro
         return unificados;
     }

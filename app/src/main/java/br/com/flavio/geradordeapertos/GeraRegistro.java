@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -65,7 +64,7 @@ public class GeraRegistro  extends BaseActivity{
         sp_programas = findViewById(R.id.sp_formulario_programa);
         sp_motivos = findViewById(R.id.sp_formulario_motivo);
         et_np.addTextChangedListener(Mascara.insert(Mascara.MASCARA_NP, et_np));
-        ciclos = new ArrayList<>();
+        
         // Inicializada o formulário com a data atual
         SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         Date dataAtual = new Date();
@@ -86,7 +85,7 @@ public class GeraRegistro  extends BaseActivity{
         final List<Processo> processos = dao.buscaProcessos();
         dao.close();//TODO tratar quando a lista de processos esta vazia
         ArrayAdapter<Processo> adapter = new ArrayAdapter<Processo>(this, android.R.layout.simple_spinner_item, processos);
-        adapter.setDropDownViewResource(R.layout.sp_cadastro_programa_processo);//TODO renomear este layout desta fonte
+        adapter.setDropDownViewResource(R.layout.textview_spinner);//TODO renomear este layout desta fonte
         sp_processos.setAdapter(adapter);
         sp_processos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -106,7 +105,7 @@ public class GeraRegistro  extends BaseActivity{
         final List<Programa> programas = dao.buscaProgramas(processo);
         dao.close();//TODO tratar quando a lista de programas estiver vazia
         ArrayAdapter<Programa> adapter = new ArrayAdapter<Programa>(this, android.R.layout.simple_spinner_item, programas);
-        adapter.setDropDownViewResource(R.layout.sp_cadastro_programa_processo);
+        adapter.setDropDownViewResource(R.layout.textview_spinner);
         sp_programas.setAdapter(adapter);
         sp_programas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -141,7 +140,7 @@ public class GeraRegistro  extends BaseActivity{
         LinearLayout.LayoutParams parametrosCheckBox = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         parametrosCheckBox.setMargins(0, 0, 0, 20);
-        
+        //TODO tornar Linear Layout global e extrair criação para outro método
         for (int cont = 0; cont < programa.getCiclos(); cont++) {
             checkBoxes.add(new CheckBox(this));
             checkBoxes.get(cont).setText(Integer.toString((cont + 1)));
@@ -155,18 +154,19 @@ public class GeraRegistro  extends BaseActivity{
     }
     
     private void verificaCheckBoxesSelecionados(LinearLayout grupoCheckBoxes) {
-        StringBuilder ciclos = new StringBuilder();//TODO tentar utilizar strinf builder no projeto
+        StringBuilder s = new StringBuilder();//TODO tentar utilizar string builder no projeto
+        ciclos = new ArrayList<>();
         for (int cont = 0; cont < grupoCheckBoxes.getChildCount(); cont++) {
             View view = grupoCheckBoxes.getChildAt(cont);
             if (view instanceof CheckBox) {
                 CheckBox checkBox = (CheckBox) view;
                 if (checkBox.isChecked()) {
-                    this.ciclos.add(checkBox);
-                    ciclos.append(checkBox.getText()).append("    ");//TODO solução mais elegante para esta string
+                    ciclos.add(checkBox);
+                    s.append(checkBox.getText()).append("    ");//TODO solução mais elegante para esta string
                 }
             }
         }
-        tv_ciclos.setText(ciclos.toString());
+        tv_ciclos.setText(s.toString());
     }
     
     public void carregaMotivos() {
@@ -174,7 +174,7 @@ public class GeraRegistro  extends BaseActivity{
         final List<Motivo> motivos = dao.buscaMotivos();
         dao.close();//TODO tratar quando a lista de processos esta vazia
         ArrayAdapter<Motivo> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, motivos);
-        adapter.setDropDownViewResource(R.layout.sp_motivos);//TODO renomear layout desta fonte
+        adapter.setDropDownViewResource(R.layout.textview_spinner);//TODO renomear layout desta fonte
         sp_motivos.setAdapter(adapter);//TODO implementar "Sem motivo" no spinner
         sp_motivos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -200,21 +200,18 @@ public class GeraRegistro  extends BaseActivity{
         int dia = calendario.get(Calendar.DAY_OF_MONTH);
         //TODO tentar ocultar o teclado
         DatePickerDialog datePickerDialog = new DatePickerDialog(GeraRegistro.this,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int ano, int mes, int dia) {
-                        calendario.set(ano, mes, dia);
-                        String formato = getString(R.string.formato_data);
-                        SimpleDateFormat sdf = new SimpleDateFormat(formato, Locale.ENGLISH);
-                        Date data;
-                        try {
-                            data = sdf.parse(sdf.format(calendario.getTime()));
-                            String sDia = new SimpleDateFormat(getString(R.string.formato_dia), Locale.ENGLISH).format(data);
-                            String sMes = new SimpleDateFormat(getString(R.string.formato_mes), Locale.ENGLISH).format(data);
-                            String sAno = new SimpleDateFormat(getString(R.string.formato_ano), Locale.ENGLISH).format(data);
-                            tv_data.setText((sDia + getString(R.string.formato_separador) + sMes + getString(R.string.formato_separador) + sAno));
-                        } catch (ParseException ignored) {
-                        }
+                (datePicker, ano1, mes1, dia1) -> {
+                    calendario.set(ano1, mes1, dia1);
+                    String formato = getString(R.string.formato_data);
+                    SimpleDateFormat sdf = new SimpleDateFormat(formato, Locale.ENGLISH);
+                    Date data;
+                    try {
+                        data = sdf.parse(sdf.format(calendario.getTime()));
+                        String sDia = new SimpleDateFormat(getString(R.string.formato_dia), Locale.ENGLISH).format(data);
+                        String sMes = new SimpleDateFormat(getString(R.string.formato_mes), Locale.ENGLISH).format(data);
+                        String sAno = new SimpleDateFormat(getString(R.string.formato_ano), Locale.ENGLISH).format(data);
+                        tv_data.setText((sDia + getString(R.string.formato_separador) + sMes + getString(R.string.formato_separador) + sAno));
+                    } catch (ParseException ignored) {
                     }
                 }, ano, mes, dia);
         datePickerDialog.show();
@@ -238,10 +235,6 @@ public class GeraRegistro  extends BaseActivity{
     public void leCodigo(View view) {
         Intent intentLeitura = new Intent(this, Leitura.class);
         startActivityForResult(intentLeitura, ACTIVITY_LEITURA);
-    }
-    
-    public void vaiParaHome(View view) {
-        startActivity(new Intent(this, Main.class));
     }
     
     public void geraRegistro(View view) {

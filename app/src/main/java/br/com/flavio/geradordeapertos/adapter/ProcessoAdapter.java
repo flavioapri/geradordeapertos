@@ -36,7 +36,7 @@ public class ProcessoAdapter extends RecyclerView.Adapter<ProcessoAdapter.Proces
     @NonNull
     @Override
     public ProcessoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cv_lista, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_lista, parent, false);
         return new ProcessoViewHolder(view, contexto);
     }
     

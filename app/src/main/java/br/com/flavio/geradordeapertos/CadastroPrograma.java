@@ -78,7 +78,7 @@ public class CadastroPrograma  extends BaseActivity{
         List<Processo> processos = processoDAO.buscaProcessos();
         //TODO tratar quando a lista de processos esta vazia
         processoDAO.close();
-        ArrayAdapter<Processo> adapter = new ArrayAdapter<Processo>(this, R.layout.sp_cadastro_programa_processo, processos);
+        ArrayAdapter<Processo> adapter = new ArrayAdapter<Processo>(this, R.layout.textview_spinner, processos);
         Spinner spinner = new Spinner(this);
         spinner.setAdapter(adapter);
         return spinner;
@@ -102,7 +102,7 @@ public class CadastroPrograma  extends BaseActivity{
     
     public void insereCiclos(View view) {
         LayoutInflater inflater = getLayoutInflater();
-        View v = inflater.inflate(R.layout.np_cadastro_programa_ciclos, null);
+        View v = inflater.inflate(R.layout.numberpicker_ciclos, null);
         final NumberPicker numberPicker = v.findViewById(R.id.number_picker);
         numberPicker.setMinValue(1);
         numberPicker.setMaxValue(10);
@@ -121,7 +121,7 @@ public class CadastroPrograma  extends BaseActivity{
     
     public void insereValorNominal(View view) {
         LayoutInflater inflater = getLayoutInflater();
-        View v = inflater.inflate(R.layout.et_cadastro_programa_nominal, null);
+        View v = inflater.inflate(R.layout.editext_nominal, null);
         final EditText editText = v.findViewById(R.id.et_programa_nominal);
         editText.addTextChangedListener(Mascara.insert(Mascara.MASCARA_TORQUE, editText));
         
@@ -141,7 +141,7 @@ public class CadastroPrograma  extends BaseActivity{
     
     public void insereAngulo(View view) {
         LayoutInflater inflater = getLayoutInflater();
-        View v = inflater.inflate(R.layout.et_cadastro_programa_angulo, null);
+        View v = inflater.inflate(R.layout.edittext_angulo, null);
         final EditText editText = v.findViewById(R.id.et_programa_angulo);
         
         new AlertDialog.Builder(this)

@@ -48,7 +48,7 @@ public class CadastroProcesso  extends BaseActivity {
     }
     
     /**
-     * Exibe popup para persistir um novo cv_lista
+     * Exibe popup para persistir um novo cardview
      *
      * @param view
      */
