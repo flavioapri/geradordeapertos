@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/bt_formulario_leitura" />
 
     <TextView
-        android:id="@+id/tv_formulario_programa"
+        android:id="@+id/tv_formulario_processo"
         android:layout_width="87dp"
         android:layout_height="45dp"
         android:fontFamily="@font/product_sans"
@@ -70,16 +70,16 @@
         android:text="@string/tv_programa"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sp_formulario_programa" />
+        app:layout_constraintTop_toTopOf="@+id/sp_formulario_processo" />
 
     <Spinner
-        android:id="@+id/sp_formulario_programa"
+        android:id="@+id/sp_formulario_processo"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_formulario_programa"
+        app:layout_constraintStart_toEndOf="@+id/tv_formulario_processo"
         app:layout_constraintTop_toBottomOf="@+id/sp_formulario_apertadeira" />
 
     <TextView
@@ -184,7 +184,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_formulario_programa" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_formulario_processo" />
 
     <TextView
         android:id="@+id/tv_formulario_data"

@@ -11,11 +11,12 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.flavio.geradordeapertos.helper.BancoDeDadosHelper;
 import br.com.flavio.geradordeapertos.modelo.Motivo;
 
 public class MotivoDAO extends SQLiteOpenHelper {
     public MotivoDAO(@Nullable Context context) {
-        super(context, "GeradorDeApertos", null, 1);
+        super(context, BancoDeDadosHelper.NOME_BANCO, null, 1);
     }
     
     @Override

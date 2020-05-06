@@ -33,13 +33,13 @@
 22        android:testOnly="true"
 23        android:theme="@style/MyTheme" >
 23-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:13:9-39
-24        <activity android:name="br.com.flavio.geradordeapertos.RelacaoProgramas" >
+24        <activity android:name="br.com.flavio.geradordeapertos.RelacaoProcessos" >
 24-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:14:9-16:20
 24-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:14:19-51
 25        </activity>
 26        <activity
 26-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:17:9-19:66
-27            android:name="br.com.flavio.geradordeapertos.CadastroPrograma"
+27            android:name="br.com.flavio.geradordeapertos.CadastroProcesso"
 27-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:18:13-45
 28            android:label="@string/cadastro_programa" />
 28-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:19:13-54

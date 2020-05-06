@@ -11,14 +11,14 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.flavio.geradordeapertos.helper.BancoDeDadosHelper;
 import br.com.flavio.geradordeapertos.modelo.Apertadeira;
 
 public class ApertadeiraDAO extends SQLiteOpenHelper {
     private static final int VERSAO_BANCO = 1;
-    private static final String NOME_BANCO = "gerador_de_apertos";
     
     public ApertadeiraDAO(@Nullable Context context) {
-        super(context, NOME_BANCO, null, VERSAO_BANCO);
+        super(context, BancoDeDadosHelper.NOME_BANCO, null, VERSAO_BANCO);
     }
     
     @Override

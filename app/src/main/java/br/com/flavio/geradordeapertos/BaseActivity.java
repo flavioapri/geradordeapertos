@@ -34,7 +34,7 @@ public class BaseActivity extends AppCompatActivity {
             case R.id.mi_inicio:
                 intent.setClass(this, Main.class);
                 break;
-            case R.id.mi_gerar_programa:
+            case R.id.mi_gerar_processo:
                 intent.setClass(this, GeradorRegistro.class);
                 break;
             case R.id.mi_gerar_grupo:
@@ -43,8 +43,8 @@ public class BaseActivity extends AppCompatActivity {
             case R.id.mi_apertadeira:
                 intent.setClass(this, CadastroApertadeira.class);
                 break;
-            case R.id.mi_programa:
-                intent.setClass(this, RelacaoProgramas.class);
+            case R.id.mi_processo:
+                intent.setClass(this, RelacaoProcessos.class);
                 break;
             case R.id.mi_motivo:
                 intent.setClass(this, CadastroMotivo.class);

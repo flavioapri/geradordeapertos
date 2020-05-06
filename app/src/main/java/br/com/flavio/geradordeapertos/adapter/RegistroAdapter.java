@@ -47,11 +47,11 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
     public void onBindViewHolder(@NonNull RegistroViewHolder holder, int posicao) {
         holder.np.setText(unificados.get(posicao).getNPComMascara());
         holder.data.setText(unificados.get(posicao).getDataComMascara());
-        holder.apertadeira.setText("Apertadeira: " + unificados.get(posicao).getPrograma().getApertadeira().getNome());
-        holder.programa.setText("Programa: " + unificados.get(posicao).getPrograma().getNome());
+        holder.apertadeira.setText("Apertadeira: " + unificados.get(posicao).getProcesso().getApertadeira().getNome());
+        holder.processo.setText("Processo: " + unificados.get(posicao).getProcesso().getNome());
         holder.motivo.setText("Motivo: " + unificados.get(posicao).getMotivo().getNome());
-        if (!(unificados.get(posicao).getPrograma().getAngulo() == 0)) // Exibe somente apertos com ângulo
-            holder.angulo.setText("Ângulo: " + String.valueOf(unificados.get(posicao).getPrograma().getAngulo()));
+        if (!(unificados.get(posicao).getProcesso().getAngulo() == 0)) // Exibe somente apertos com ângulo
+            holder.angulo.setText("Ângulo: " + String.valueOf(unificados.get(posicao).getProcesso().getAngulo()));
         holder.ciclos_apertos.setText(valores.get(posicao));
     }
     
@@ -94,7 +94,7 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
         TextView np;
         TextView data;
         TextView apertadeira;
-        TextView programa;
+        TextView processo;
         TextView motivo;
         TextView angulo;
         TextView ciclos_apertos;
@@ -105,7 +105,7 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
             this.np = itemView.findViewById(R.id.tv_np);
             this.data = itemView.findViewById(R.id.tv_data);
             this.apertadeira = itemView.findViewById(R.id.tv_apertadeira);
-            this.programa = itemView.findViewById(R.id.tv_programa);
+            this.processo = itemView.findViewById(R.id.tv_processo);
             this.motivo = itemView.findViewById(R.id.tv_motivo);
             this.angulo = itemView.findViewById(R.id.tv_angulo);
             this.ciclos_apertos = itemView.findViewById(R.id.tv_ciclos_apertos);

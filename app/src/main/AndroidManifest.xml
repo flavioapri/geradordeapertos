@@ -11,18 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
-        <activity android:name=".RelacaoProgramas">
+        <activity android:name=".RelacaoProcessos">
 
         </activity>
         <activity
-            android:name=".CadastroPrograma"
-            android:label="@string/cadastro_programa"></activity>
+            android:name=".CadastroProcesso"
+            android:label="@string/cadastro_programa" />
         <activity
             android:name=".CadastroMotivo"
             android:label="@string/cadastro_motivo" />
         <activity
             android:name=".CadastroApertadeira"
-            android:label="@string/cadastro_processo"></activity>
+            android:label="@string/cadastro_processo" />
 
         <activity
             android:name=".GeradorRegistroGrupo"
@@ -41,7 +41,7 @@
             android:label="@string/historico" />
         <activity
             android:name=".GeradorRegistro"
-            android:label="@string/gera_registro"></activity>
+            android:label="@string/gera_registro" />
         <activity
             android:name=".Main"
             android:label="@string/app_name">

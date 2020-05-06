@@ -9,7 +9,7 @@ public class Registro {
     private int id;
     private int np;
     private String data;
-    private Programa programa;
+    private Processo processo;
     private int ciclo;
     private double valor;
     private Motivo motivo;
@@ -52,12 +52,12 @@ public class Registro {
         this.data = dia + mes + ano;
     }
     
-    public Programa getPrograma() {
-        return programa;
+    public Processo getProcesso() {
+        return processo;
     }
     
-    public void setPrograma(Programa programa) {
-        this.programa = programa;
+    public void setProcesso(Processo processo) {
+        this.processo = processo;
     }
     
     public int getNP() {
@@ -120,11 +120,11 @@ public class Registro {
     @Override
     public String toString() {
         String angulo = "";
-        if (programa.getAngulo() > 0) // Se houver ângulo exibe
-            angulo += "Ângulo: " + this.programa.getAngulo();
+        if (processo.getAngulo() > 0) // Se houver ângulo exibe
+            angulo += "Ângulo: " + this.processo.getAngulo();
         return "\n"
-                + "Apertadeira: " + programa.getApertadeira().getNome() + "\n"
-                + "Programa: " + programa.getNome() + "\n"
+                + "Apertadeira: " + processo.getApertadeira().getNome() + "\n"
+                + "Processo: " + processo.getNome() + "\n"
                 + "NP " + getNPComMascara() + "\n"
                 + "Motivo: " + motivo.getNome() + "\n"
                 + "Data: " + getDataComMascara() + "\n"
@@ -133,7 +133,7 @@ public class Registro {
     
     /**
      * Sobrescrito para que seja a feita comparação necessária para a unificação dos registros. Os critérios de verificação são pelo NP e
-     * Programa.
+     * Processo.
      *
      * @param obj
      * @return
@@ -143,7 +143,7 @@ public class Registro {
         if (!(obj instanceof Registro))
             return false;
         Registro registro = (Registro) obj;
-        if (!(this.np == registro.np) || !(this.getPrograma().getId() == registro.getPrograma().getId()))
+        if (!(this.np == registro.np) || !(this.getProcesso().getId() == registro.getProcesso().getId()))
             return false;
         return true;
     }

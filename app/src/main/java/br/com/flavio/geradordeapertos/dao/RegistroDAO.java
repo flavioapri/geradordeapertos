@@ -12,16 +12,16 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.flavio.geradordeapertos.modelo.Programa;
+import br.com.flavio.geradordeapertos.helper.BancoDeDadosHelper;
+import br.com.flavio.geradordeapertos.modelo.Processo;
 import br.com.flavio.geradordeapertos.modelo.Registro;
 
 public class RegistroDAO extends SQLiteOpenHelper {
     private static final int VERSAO_BANCO = 1;
-    private static final String NOME_BANCO = "gerador_de_apertos";
     private Context context;
     
     public RegistroDAO(@Nullable Context context) {
-        super(context, NOME_BANCO, null, VERSAO_BANCO);
+        super(context, BancoDeDadosHelper.NOME_BANCO, null, VERSAO_BANCO);
         this.context = context;
     }
     
@@ -43,7 +43,7 @@ public class RegistroDAO extends SQLiteOpenHelper {
         ContentValues dados = new ContentValues();
         dados.put("np", registro.getNP());
         dados.put("data", registro.getData());
-        dados.put("id_programa", registro.getPrograma().getId());
+        dados.put("id_processo", registro.getProcesso().getId());
         dados.put("ciclo", registro.getCiclo());
         dados.put("valor", registro.getValor());
         dados.put("id_motivo", registro.getMotivo().getId());
@@ -54,12 +54,12 @@ public class RegistroDAO extends SQLiteOpenHelper {
     public List<Registro> buscaTodos() {
         String sql = "SELECT * FROM registro";
         SQLiteDatabase db = getReadableDatabase();
-        int idPrograma;
+        int idProcesso;
         int idMotivo;
-        ProgramaDAO programaDAO = new ProgramaDAO(context);
+        ProcessoDAO processoDAO = new ProcessoDAO(context);
         MotivoDAO motivoDAO = new MotivoDAO(context);
         
-        ArrayList<Registro> registros = new ArrayList<Registro>();
+        ArrayList<Registro> registros = new ArrayList<>();
         try {
             Cursor c = db.rawQuery(sql, null);
             while (c.moveToNext()) {
@@ -70,15 +70,15 @@ public class RegistroDAO extends SQLiteOpenHelper {
                 registro.setCiclo(c.getInt(c.getColumnIndex("ciclo")));
                 registro.setValor(c.getDouble(c.getColumnIndex("valor")));
                 
-                idPrograma = c.getInt(c.getColumnIndex("id_programa"));
-                registro.setPrograma(programaDAO.buscaPrograma(idPrograma));
+                idProcesso = c.getInt(c.getColumnIndex("id_processo"));
+                registro.setProcesso(processoDAO.buscaProcesso(idProcesso));
                 
                 idMotivo = c.getInt(c.getColumnIndex("id_motivo"));
                 registro.setMotivo(motivoDAO.busca(idMotivo));
                 
                 registros.add(registro);
             }
-            programaDAO.close();
+            processoDAO.close();
             motivoDAO.close();
             c.close();
             return registros;
@@ -87,14 +87,14 @@ public class RegistroDAO extends SQLiteOpenHelper {
         }
     }
     
-    public List<Registro> buscaTodosPorPrograma(Programa programa) {
-        int idPrograma = programa.getId();
-        String sql = "SELECT * FROM registro WHERE id_programa = " + idPrograma;
+    public List<Registro> buscaTodosPorProcesso(Processo processo) {
+        int idProcesso = processo.getId();
+        String sql = "SELECT * FROM registro WHERE id_processo = " + idProcesso;
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
         
         int idMotivo;
-        ProgramaDAO programaDAO = new ProgramaDAO(context);
+        ProcessoDAO processoDAO = new ProcessoDAO(context);
         MotivoDAO motivoDAO = new MotivoDAO(context);
         
         ArrayList<Registro> registros = new ArrayList<Registro>();
@@ -106,32 +106,32 @@ public class RegistroDAO extends SQLiteOpenHelper {
             registro.setCiclo(c.getInt(c.getColumnIndex("ciclo")));
             registro.setValor(c.getDouble(c.getColumnIndex("valor")));
             
-            idPrograma = c.getInt(c.getColumnIndex("id_programa"));
-            registro.setPrograma(programaDAO.buscaPrograma(idPrograma));
+            idProcesso = c.getInt(c.getColumnIndex("id_processo"));
+            registro.setProcesso(processoDAO.buscaProcesso(idProcesso));
             
             idMotivo = c.getInt(c.getColumnIndex("id_motivo"));
             registro.setMotivo(motivoDAO.busca(idMotivo));
             
             registros.add(registro);
         }
-        programaDAO.close();
+        processoDAO.close();
         motivoDAO.close();
         c.close();
         return registros;
     }
     
     public void deleta(Registro registro) {
-        int idPrograma = registro.getPrograma().getId();
+        int idProcesso = registro.getProcesso().getId();
         int np = registro.getNP();
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DELETE FROM registro WHERE id_programa = " + idPrograma + " AND " + "np = " + np);
+        db.execSQL("DELETE FROM registro WHERE id_processo = " + idProcesso + " AND " + "np = " + np);
     }
     
     public void altera(Registro registro) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues dados = pegaDadosRegistro(registro);
         String[] parametros = {String.valueOf(registro.getId())};
-        db.update("registro", dados, "id_programa=?, ", parametros);
+        db.update("registro", dados, "id_processo=?, ", parametros);
     }
 }
 

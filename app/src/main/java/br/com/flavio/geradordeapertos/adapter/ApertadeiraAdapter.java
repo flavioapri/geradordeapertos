@@ -97,7 +97,7 @@ public class ApertadeiraAdapter extends RecyclerView.Adapter<ApertadeiraAdapter.
                         apertadeiraDAO.deleta(apertadeira);
                         apertadeiras.remove(posicao);
                         notifyDataSetChanged();
-                        //TODO remover todos os programas relacionados
+                        //TODO remover todos os processos relacionados
                     })
                     .setNegativeButton(R.string.cancelar, null)
                     .show();

@@ -2,7 +2,7 @@
 
 <EditText xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/et_programa_angulo"
+    android:id="@+id/et_processo_angulo"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:ems="10"
@@ -11,4 +11,4 @@
     android:maxLength="3"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/et_programa_nominal" />
+    app:layout_constraintTop_toBottomOf="@+id/et_processo_nominal" />

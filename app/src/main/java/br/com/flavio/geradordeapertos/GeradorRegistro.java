@@ -29,22 +29,22 @@ import java.util.concurrent.ThreadLocalRandom;
 import br.com.flavio.geradordeapertos.adapter.EmissorMensagem;
 import br.com.flavio.geradordeapertos.dao.MotivoDAO;
 import br.com.flavio.geradordeapertos.dao.ApertadeiraDAO;
-import br.com.flavio.geradordeapertos.dao.ProgramaDAO;
+import br.com.flavio.geradordeapertos.dao.ProcessoDAO;
 import br.com.flavio.geradordeapertos.dao.RegistroDAO;
 import br.com.flavio.geradordeapertos.mascara.Mascara;
 import br.com.flavio.geradordeapertos.modelo.Apertadeira;
 import br.com.flavio.geradordeapertos.modelo.Motivo;
-import br.com.flavio.geradordeapertos.modelo.Programa;
+import br.com.flavio.geradordeapertos.modelo.Processo;
 import br.com.flavio.geradordeapertos.modelo.Registro;
 
 public class GeradorRegistro extends BaseActivity{
     private EditText et_np;
     private TextView tv_data;
     private Spinner sp_apertadeiras;
-    private Spinner sp_programas;
+    private Spinner sp_processos;
     private Motivo motivo;
     private Apertadeira apertadeira;
-    private Programa programa;
+    private Processo processo;
     private List<CheckBox> ciclos;
     private static final int ACTIVITY_LEITURA = 1;
     private TextView tv_ciclos;
@@ -61,7 +61,7 @@ public class GeradorRegistro extends BaseActivity{
         tv_data = findViewById(R.id.tv_formulario_data);
         tv_ciclos = findViewById(R.id.tv_formulario_ciclos);
         sp_apertadeiras = findViewById(R.id.sp_formulario_apertadeira);
-        sp_programas = findViewById(R.id.sp_formulario_programa);
+        sp_processos = findViewById(R.id.sp_formulario_processo);
         sp_motivos = findViewById(R.id.sp_formulario_motivo);
         et_np.addTextChangedListener(Mascara.insert(Mascara.MASCARA_NP, et_np));
         
@@ -91,7 +91,7 @@ public class GeradorRegistro extends BaseActivity{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 apertadeira = apertadeiras.get(position);
-                carregaProgramas(apertadeira);
+                carregaProcessos(apertadeira);
             }
             
             @Override
@@ -100,17 +100,17 @@ public class GeradorRegistro extends BaseActivity{
         });
     }
     
-    private void carregaProgramas(Apertadeira apertadeira) {
-        ProgramaDAO dao = new ProgramaDAO(this);
-        final List<Programa> programas = dao.buscaProgramas(apertadeira);
-        dao.close();//TODO tratar quando a lista de programas estiver vazia
-        ArrayAdapter<Programa> adapter = new ArrayAdapter<Programa>(this, android.R.layout.simple_spinner_item, programas);
+    private void carregaProcessos(Apertadeira apertadeira) {
+        ProcessoDAO dao = new ProcessoDAO(this);
+        final List<Processo> processos = dao.buscaProcessos(apertadeira);
+        dao.close();//TODO tratar quando a lista de processos estiver vazia
+        ArrayAdapter<Processo> adapter = new ArrayAdapter<Processo>(this, android.R.layout.simple_spinner_item, processos);
         adapter.setDropDownViewResource(R.layout.textview_spinner);
-        sp_programas.setAdapter(adapter);
-        sp_programas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        sp_processos.setAdapter(adapter);
+        sp_processos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                programa = programas.get(position);
+                processo = processos.get(position);
             }
             
             @Override
@@ -141,7 +141,7 @@ public class GeradorRegistro extends BaseActivity{
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         parametrosCheckBox.setMargins(0, 0, 0, 20);
         //TODO tornar Linear Layout global e extrair criação para outro método
-        for (int cont = 0; cont < programa.getCiclos(); cont++) {
+        for (int cont = 0; cont < processo.getCiclos(); cont++) {
             checkBoxes.add(new CheckBox(this));
             checkBoxes.get(cont).setText(Integer.toString((cont + 1)));
             checkBoxes.get(cont).setScaleY(1.5f);
@@ -244,12 +244,12 @@ public class GeradorRegistro extends BaseActivity{
                 double torque;
                 for (CheckBox ciclo : ciclos) {
                     registro = new Registro();
-                    registro.setPrograma(programa);
+                    registro.setProcesso(processo);
                     registro.setNP(et_np.getText().toString());
                     registro.setCiclo(ciclo.getText().toString());
                     registro.setMotivo(motivo);
                     registro.setData(tv_data.getText().toString());
-                    torque = geraTorque(programa.getValorNominal());
+                    torque = geraTorque(processo.getValorNominal());
                     registro.setValor(torque);
                     gravaRegistro(registro);
                     // Seta a data que não esta formatada com a data formatada para utilizar o registro para envio
@@ -300,7 +300,7 @@ public class GeradorRegistro extends BaseActivity{
     }
     
     private double geraTorque(double valorNominal) {
-        double taxaTolerancia = 0.01;//TODO implementar através das configurações
+        double taxaTolerancia = 0.013;//TODO implementar através das configurações
         double tolerancia = valorNominal * taxaTolerancia;
         double limiteSuperior = valorNominal + tolerancia;
         double limiteInferior = valorNominal - tolerancia;
@@ -313,6 +313,7 @@ public class GeradorRegistro extends BaseActivity{
         carregaApertadeiras();
         tv_ciclos.setText("");
         ciclos.clear();
+        carregaMotivos();
     }
     
     public void botaoLimpa(View view) {
