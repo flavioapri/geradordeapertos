@@ -21,7 +21,7 @@ public class BancoDeDadosHelper extends SQLiteOpenHelper {
     public static final String NOME_BANCO = "gerador_de_apertos";
     private SQLiteDatabase db;
     // Nome das tabelas
-    private static final String TABELA_PROCESSO = "processo";
+    private static final String TABELA_APERTADEIRA = "apertadeira";
     private static final String TABELA_PROGRAMA = "programa";
     private static final String TABELA_MOTIVO = "motivo";
     private static final String TABELA_REGISTRO = "registro";
@@ -31,7 +31,7 @@ public class BancoDeDadosHelper extends SQLiteOpenHelper {
     // Tabela PROCESSO - campos
     // Tabela MOTIVO - campos
     // Tabela PROGRAMA - campos
-    private static final String ID_PROCESSO = "id_processo";
+    private static final String ID_APERTADEIRA = "id_apertadeira";
     private static final String CICLOS = "ciclos";
     private static final String VALOR_NOMINAL = "valor_nominal";
     private static final String ANGULO = "angulo";
@@ -44,12 +44,12 @@ public class BancoDeDadosHelper extends SQLiteOpenHelper {
     private static final String ID_MOTIVO = "id_motivo";
     // Declaração para criação das tabelas
     // Tabela PROCESSO
-    private static final String CRIAR_TABELA_PROCESSO =
-            "CREATE TABLE " + TABELA_PROCESSO + " (" + ID + " INTEGER PRIMARY KEY, " + NOME + " TEXT NOT NULL);";
+    private static final String CRIAR_TABELA_APERTADEIRA =
+            "CREATE TABLE " + TABELA_APERTADEIRA + " (" + ID + " INTEGER PRIMARY KEY, " + NOME + " TEXT NOT NULL);";
     
     // Tabela PROGRAMA
     private static final String CRIAR_TABELA_PROGRAMA =
-            "CREATE TABLE " + TABELA_PROGRAMA + " (" + ID + " INTEGER PRIMARY KEY, " + NOME + " TEXT NOT NULL, " + ID_PROCESSO + " " +
+            "CREATE TABLE " + TABELA_PROGRAMA + " (" + ID + " INTEGER PRIMARY KEY, " + NOME + " TEXT NOT NULL, " + ID_APERTADEIRA + " " +
                     "INTEGER" +
                     " NOT NULL, " + CICLOS + " " +
                     "INTEGER NOT NULL, " + VALOR_NOMINAL + " REAL NOT NULL, " + ANGULO + " INTEGER NOT NULL);";
@@ -75,7 +75,7 @@ public class BancoDeDadosHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Criando as tabelas        
-        db.execSQL(CRIAR_TABELA_PROCESSO);
+        db.execSQL(CRIAR_TABELA_APERTADEIRA);
         db.execSQL(CRIAR_TABELA_PROGRAMA);
         db.execSQL(CRIAR_TABELA_MOTIVO);
         db.execSQL(CRIAR_TABELA_REGISTRO);
@@ -98,7 +98,7 @@ public class BancoDeDadosHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Ao atualizar remover tabelas antigas
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_PROGRAMA);
-        db.execSQL("DROP TABLE IF EXISTS " + TABELA_PROCESSO);
+        db.execSQL("DROP TABLE IF EXISTS " + TABELA_APERTADEIRA);
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_MOTIVO);
         db.execSQL("DROP TABLE IF EXISTS " + TABELA_REGISTRO);
         // Criar as novas tabelas

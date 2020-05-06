@@ -23,8 +23,8 @@
         app:showAsAction="never">
         <menu>
             <item
-                android:id="@+id/mi_processo"
-                android:title="@string/mi_processo" />
+                android:id="@+id/mi_apertadeira"
+                android:title="@string/mi_apertadeira" />
             <item
                 android:id="@+id/mi_programa"
                 android:title="@string/mi_programa" />

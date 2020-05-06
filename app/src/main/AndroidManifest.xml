@@ -21,11 +21,11 @@
             android:name=".CadastroMotivo"
             android:label="@string/cadastro_motivo" />
         <activity
-            android:name=".CadastroProcesso"
+            android:name=".CadastroApertadeira"
             android:label="@string/cadastro_processo"></activity>
 
         <activity
-            android:name=".GeraRegistroGrupo"
+            android:name=".GeradorRegistroGrupo"
             android:label="@string/gerar_registro_grupo" />
         <activity
             android:name=".Leitura"
@@ -40,7 +40,7 @@
             android:name=".Historico"
             android:label="@string/historico" />
         <activity
-            android:name=".GeraRegistro"
+            android:name=".GeradorRegistro"
             android:label="@string/gera_registro"></activity>
         <activity
             android:name=".Main"

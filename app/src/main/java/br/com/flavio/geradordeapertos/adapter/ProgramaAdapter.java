@@ -43,7 +43,7 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Progra
     @Override
     public void onBindViewHolder(@NonNull ProgramaViewHolder holder, int posicao) {
         holder.nome.setText(programas.get(posicao).getNome());
-        holder.processo.setText("Processo: " + programas.get(posicao).getProcesso().getNome());
+        holder.apertadeira.setText("Apertadeira: " + programas.get(posicao).getApertadeira().getNome());
         holder.ciclos.setText("Ciclos: " + programas.get(posicao).getCiclos());
         holder.angulo.setText("Ângulo: " + programas.get(posicao).getAngulo());
         holder.valor.setText("Valor: " + programas.get(posicao).getValorNominal());
@@ -56,7 +56,7 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Progra
     
     public class ProgramaViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
         TextView nome;
-        TextView processo;
+        TextView apertadeira;
         TextView ciclos;
         TextView angulo;
         TextView valor;
@@ -65,7 +65,7 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Progra
         public ProgramaViewHolder(@NonNull View itemView, Context contexto) {
             super(itemView);
             this.nome = itemView.findViewById(R.id.tv_lista_programas_nome);
-            this.processo = itemView.findViewById(R.id.tv_lista_programas_processo);
+            this.apertadeira = itemView.findViewById(R.id.tv_lista_programas_apertadeira);
             this.ciclos = itemView.findViewById(R.id.tv_lista_programas_ciclos);
             this.angulo = itemView.findViewById(R.id.tv_lista_programas_valor);
             this.valor = itemView.findViewById(R.id.tv_lista_programas_angulo);

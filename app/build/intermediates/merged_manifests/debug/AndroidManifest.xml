@@ -30,10 +30,10 @@
             android:name="br.com.flavio.geradordeapertos.CadastroMotivo"
             android:label="@string/cadastro_motivo" />
         <activity
-            android:name="br.com.flavio.geradordeapertos.CadastroProcesso"
+            android:name="br.com.flavio.geradordeapertos.CadastroApertadeira"
             android:label="@string/cadastro_processo" />
         <activity
-            android:name="br.com.flavio.geradordeapertos.GeraRegistroGrupo"
+            android:name="br.com.flavio.geradordeapertos.GeradorRegistroGrupo"
             android:label="@string/gerar_registro_grupo" />
         <activity
             android:name="br.com.flavio.geradordeapertos.Leitura"
@@ -48,7 +48,7 @@
             android:name="br.com.flavio.geradordeapertos.Historico"
             android:label="@string/historico" />
         <activity
-            android:name="br.com.flavio.geradordeapertos.GeraRegistro"
+            android:name="br.com.flavio.geradordeapertos.GeradorRegistro"
             android:label="@string/gera_registro" />
         <activity
             android:name="br.com.flavio.geradordeapertos.Main"

@@ -8,7 +8,7 @@
     tools:context=".CadastroPrograma">
 
     <TextView
-        android:id="@+id/tv_cadastro_programa_processo"
+        android:id="@+id/tv_cadastro_programa_apertadeira"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
@@ -20,14 +20,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/bt_cadastro_programa_processo"
+        android:id="@+id/bt_cadastro_programa_apertadeira"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/bt_texto"
         android:elevation="8dp"
         android:fontFamily="@font/product_sans"
-        android:onClick="carregaProcessos"
+        android:onClick="carregaApertadeiras"
         android:text="@string/selecionar_processo"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_programa_processo" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_cadastro_programa_apertadeira" />
 
     <TextView
         android:id="@+id/tv_cadastro_programa_nome"
@@ -47,7 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bt_cadastro_programa_processo" />
+        app:layout_constraintTop_toBottomOf="@id/bt_cadastro_programa_apertadeira" />
 
     <Button
         android:id="@+id/bt_cadastro_programa_nome"

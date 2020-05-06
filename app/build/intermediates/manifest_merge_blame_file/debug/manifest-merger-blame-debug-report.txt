@@ -51,14 +51,14 @@
 31-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:22:13-52
 32        <activity
 32-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:23:9-25:66
-33            android:name="br.com.flavio.geradordeapertos.CadastroProcesso"
-33-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:24:13-45
+33            android:name="br.com.flavio.geradordeapertos.CadastroApertadeira"
+33-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:24:13-48
 34            android:label="@string/cadastro_processo" />
 34-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:25:13-54
 35        <activity
 35-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:27:9-29:60
-36            android:name="br.com.flavio.geradordeapertos.GeraRegistroGrupo"
-36-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:28:13-46
+36            android:name="br.com.flavio.geradordeapertos.GeradorRegistroGrupo"
+36-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:28:13-49
 37            android:label="@string/gerar_registro_grupo" />
 37-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:29:13-57
 38        <activity
@@ -87,8 +87,8 @@
 49-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:41:13-46
 50        <activity
 50-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:42:9-44:62
-51            android:name="br.com.flavio.geradordeapertos.GeraRegistro"
-51-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:43:13-41
+51            android:name="br.com.flavio.geradordeapertos.GeradorRegistro"
+51-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:43:13-44
 52            android:label="@string/gera_registro" />
 52-->C:\Users\Flavio\Google Drive\GeradorDeApertos\app\src\main\AndroidManifest.xml:44:13-50
 53        <activity

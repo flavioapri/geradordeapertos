@@ -14,20 +14,20 @@ import androidx.appcompat.app.AlertDialog;
 
 import java.util.List;
 
-import br.com.flavio.geradordeapertos.dao.ProcessoDAO;
+import br.com.flavio.geradordeapertos.dao.ApertadeiraDAO;
 import br.com.flavio.geradordeapertos.dao.ProgramaDAO;
 import br.com.flavio.geradordeapertos.helper.ProgramaHelper;
 import br.com.flavio.geradordeapertos.mascara.Mascara;
-import br.com.flavio.geradordeapertos.modelo.Processo;
+import br.com.flavio.geradordeapertos.modelo.Apertadeira;
 import br.com.flavio.geradordeapertos.modelo.Programa;
 
 public class CadastroPrograma  extends BaseActivity{
-    private TextView tv_processo;
+    private TextView tv_apertadeira;
     private TextView tv_nome;
     private TextView tv_ciclos;
     private TextView tv_nominal;
     private TextView tv_angulo;
-    private Processo processo;
+    private Apertadeira apertadeira;
     private Programa programa;
     private ProgramaHelper helper;
     
@@ -36,7 +36,7 @@ public class CadastroPrograma  extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_programa);
         
-        tv_processo = findViewById(R.id.tv_cadastro_programa_processo);
+        tv_apertadeira = findViewById(R.id.tv_cadastro_programa_apertadeira);
         tv_nome = findViewById(R.id.tv_cadastro_programa_nome);
         tv_ciclos = findViewById(R.id.tv_cadastro_programa_ciclos);
         tv_nominal = findViewById(R.id.tv_cadastro_programa_nominal);
@@ -58,27 +58,27 @@ public class CadastroPrograma  extends BaseActivity{
         super.onResume();
     }
     
-    public void carregaProcessos(View view) {
-        final Spinner spinner = criaSpinnerDeProcessos();
+    public void carregaApertadeiras(View view) {
+        final Spinner spinner = criaSpinnerDeApertadeiras();
         new AlertDialog.Builder(this)
-                .setTitle(R.string.selecao_processo)
-                .setMessage(R.string.selecione_processo_lista)
+                .setTitle(R.string.ad_titulo_cadastrar_programa_apertadeira)
+                .setMessage(R.string.ad_msg_cadastrar_programa_apertadeira)
                 .setView(spinner)
                 .setPositiveButton(R.string.confirmar, (dialog, which) -> {
-                    processo = (Processo) spinner.getSelectedItem();
-                    programa.setProcesso(processo);
-                    tv_processo.setText(processo.getNome());
+                    apertadeira = (Apertadeira) spinner.getSelectedItem();
+                    programa.setApertadeira(apertadeira);
+                    tv_apertadeira.setText(apertadeira.getNome());
                 })
                 .setNegativeButton(R.string.cancelar, null)
                 .show();
     }
     
-    private Spinner criaSpinnerDeProcessos() {
-        ProcessoDAO processoDAO = new ProcessoDAO(this);
-        List<Processo> processos = processoDAO.buscaProcessos();
-        //TODO tratar quando a lista de processos esta vazia
-        processoDAO.close();
-        ArrayAdapter<Processo> adapter = new ArrayAdapter<Processo>(this, R.layout.textview_spinner, processos);
+    private Spinner criaSpinnerDeApertadeiras() {
+        ApertadeiraDAO apertadeiraDAO = new ApertadeiraDAO(this);
+        List<Apertadeira> apertadeiras = apertadeiraDAO.buscaApertadeiras();
+        //TODO tratar quando a lista de apertadeiras esta vazia
+        apertadeiraDAO.close();
+        ArrayAdapter<Apertadeira> adapter = new ArrayAdapter<Apertadeira>(this, R.layout.textview_spinner, apertadeiras);
         Spinner spinner = new Spinner(this);
         spinner.setAdapter(adapter);
         return spinner;
@@ -185,7 +185,7 @@ public class CadastroPrograma  extends BaseActivity{
     }
     
     public void limpaFormulario() {
-        tv_processo.setText(R.string.string_valor_vazio);
+        tv_apertadeira.setText(R.string.string_valor_vazio);
         tv_nome.setText(R.string.string_valor_vazio);
         tv_ciclos.setText(R.string.string_valor_vazio);
         tv_nominal.setText(R.string.string_valor_vazio);

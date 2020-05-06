@@ -1,7 +1,6 @@
 package br.com.flavio.geradordeapertos.adapter;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -71,19 +70,16 @@ public class MotivoAdapter extends RecyclerView.Adapter<MotivoAdapter.MotivoView
             remover.setOnMenuItemClickListener(onClick);
         }
         
-        MenuItem.OnMenuItemClickListener onClick = new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case 1:
-                        alterarMotivo();
-                        break;
-                    case 2:
-                        removerMotivo();
-                        break;
-                }
-                return true;
+        MenuItem.OnMenuItemClickListener onClick = item -> {
+            switch (item.getItemId()) {
+                case 1:
+                    alterarMotivo();
+                    break;
+                case 2:
+                    removerMotivo();
+                    break;
             }
+            return true;
         };
         
         private void removerMotivo() {
@@ -94,13 +90,10 @@ public class MotivoAdapter extends RecyclerView.Adapter<MotivoAdapter.MotivoView
             new AlertDialog.Builder(contexto)
                     .setTitle(R.string.remover_motivo)
                     .setMessage(R.string.remover_motivo_descricao)
-                    .setPositiveButton(R.string.remover, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            motivoDAO.deleta(motivo);
-                            motivos.remove(posicao);
-                            notifyDataSetChanged();
-                        }
+                    .setPositiveButton(R.string.remover, (dialog, which) -> {
+                        motivoDAO.deleta(motivo);
+                        motivos.remove(posicao);
+                        notifyDataSetChanged();
                     })
                     .setNegativeButton(R.string.cancelar, null)
                     .show();
@@ -117,13 +110,10 @@ public class MotivoAdapter extends RecyclerView.Adapter<MotivoAdapter.MotivoView
                     .setTitle(R.string.alterar_motivo)
                     .setMessage(R.string.alterar_motivo_descricao)
                     .setView(et_alterar)
-                    .setPositiveButton(R.string.alterar, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            motivo.setNome(et_alterar.getText().toString());
-                            motivoDAO.altera(motivo);
-                            notifyDataSetChanged();
-                        }
+                    .setPositiveButton(R.string.alterar, (dialog, which) -> {
+                        motivo.setNome(et_alterar.getText().toString());
+                        motivoDAO.altera(motivo);
+                        notifyDataSetChanged();
                     })
                     .setNegativeButton(R.string.cancelar, null)
                     .show();

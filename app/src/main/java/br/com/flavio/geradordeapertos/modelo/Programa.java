@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class Programa implements Serializable {
     private int id;
-    private Processo processo;
+    private Apertadeira apertadeira;
     private String nome;
     private int ciclos;
     private double valorNominal;
@@ -27,12 +27,12 @@ public class Programa implements Serializable {
         this.id = id;
     }
     
-    public Processo getProcesso() {
-        return processo;
+    public Apertadeira getApertadeira() {
+        return apertadeira;
     }
     
-    public void setProcesso(Processo processo) {
-        this.processo = processo;
+    public void setApertadeira(Apertadeira apertadeira) {
+        this.apertadeira = apertadeira;
     }
     
     public String getNome() {

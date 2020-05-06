@@ -123,7 +123,7 @@ public class Registro {
         if (programa.getAngulo() > 0) // Se houver ângulo exibe
             angulo += "Ângulo: " + this.programa.getAngulo();
         return "\n"
-                + "Processo: " + programa.getProcesso().getNome() + "\n"
+                + "Apertadeira: " + programa.getApertadeira().getNome() + "\n"
                 + "Programa: " + programa.getNome() + "\n"
                 + "NP " + getNPComMascara() + "\n"
                 + "Motivo: " + motivo.getNome() + "\n"

@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.flavio.geradordeapertos.modelo.Processo;
+import br.com.flavio.geradordeapertos.modelo.Apertadeira;
 import br.com.flavio.geradordeapertos.modelo.Programa;
 
 public class ProgramaDAO extends SQLiteOpenHelper {
@@ -40,7 +40,7 @@ public class ProgramaDAO extends SQLiteOpenHelper {
     
     private ContentValues pegaDados(Programa programa) {
         ContentValues dados = new ContentValues();
-        dados.put("id_processo", programa.getProcesso().getId());
+        dados.put("id_apertadeira", programa.getApertadeira().getId());
         dados.put("nome", programa.getNome());
         dados.put("ciclos", programa.getCiclos());
         dados.put("valor_nominal", programa.getValorNominal());
@@ -53,8 +53,8 @@ public class ProgramaDAO extends SQLiteOpenHelper {
         String sql = "SELECT * FROM programa";
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
-        int idProcesso;
-        ProcessoDAO processoDAO = new ProcessoDAO(context);
+        int idApertadeira;
+        ApertadeiraDAO apertadeiraDAO = new ApertadeiraDAO(context);
         ArrayList<Programa> programas = new ArrayList<Programa>();
         while (c.moveToNext()) {
             Programa programa = new Programa();
@@ -64,22 +64,22 @@ public class ProgramaDAO extends SQLiteOpenHelper {
             programa.setValorNominal(c.getFloat(c.getColumnIndex("valor_nominal")));
             programa.setAngulo(c.getInt(c.getColumnIndex("angulo")));
             
-            idProcesso = c.getInt(c.getColumnIndex("id_processo"));
-            programa.setProcesso(processoDAO.buscaProcesso(idProcesso));
+            idApertadeira = c.getInt(c.getColumnIndex("id_apertadeira"));
+            programa.setApertadeira(apertadeiraDAO.buscaApertadeira(idApertadeira));
             
             programas.add(programa);
         }
-        processoDAO.close();
+        apertadeiraDAO.close();
         c.close();
         return programas;
     }
     
-    public List<Programa> buscaProgramas(Processo processo) {
-        int idProcesso = processo.getId();
-        String sql = "SELECT * FROM programa WHERE id_processo = " + idProcesso;
+    public List<Programa> buscaProgramas(Apertadeira apertadeira) {
+        int idApertadeira = apertadeira.getId();
+        String sql = "SELECT * FROM programa WHERE id_apertadeira = " + idApertadeira;
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
-        ProcessoDAO processoDAO = new ProcessoDAO(context);
+        ApertadeiraDAO apertadeiraDAO = new ApertadeiraDAO(context);
         ArrayList<Programa> programas = new ArrayList<Programa>();
         while (c.moveToNext()) {
             Programa programa = new Programa();
@@ -89,8 +89,8 @@ public class ProgramaDAO extends SQLiteOpenHelper {
             programa.setValorNominal(c.getFloat(c.getColumnIndex("valor_nominal")));
             programa.setAngulo(c.getInt(c.getColumnIndex("angulo")));
             
-            idProcesso = c.getInt(c.getColumnIndex("id_processo"));
-            programa.setProcesso(processoDAO.buscaProcesso(idProcesso));
+            idApertadeira = c.getInt(c.getColumnIndex("id_apertadeira"));
+            programa.setApertadeira(apertadeiraDAO.buscaApertadeira(idApertadeira));
             
             programas.add(programa);
         }
@@ -112,11 +112,11 @@ public class ProgramaDAO extends SQLiteOpenHelper {
     }
     
     public Programa buscaPrograma(int idPrograma) {
-        String sql = "SELECT id, nome, ciclos, valor_nominal, angulo, id_processo FROM programa WHERE id = " + idPrograma;
+        String sql = "SELECT id, nome, ciclos, valor_nominal, angulo, id_apertadeira FROM programa WHERE id = " + idPrograma;
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
-        int idProcesso;
-        ProcessoDAO processoDAO = new ProcessoDAO(context);
+        int idApertadeira;
+        ApertadeiraDAO apertadeiraDAO = new ApertadeiraDAO(context);
         Programa programa = new Programa();
         while (c.moveToNext()) {
             programa.setId(c.getInt(c.getColumnIndex("id")));
@@ -125,8 +125,8 @@ public class ProgramaDAO extends SQLiteOpenHelper {
             programa.setValorNominal(c.getFloat(c.getColumnIndex("valor_nominal")));
             programa.setAngulo(c.getInt(c.getColumnIndex("angulo")));
             
-            idProcesso = c.getInt(c.getColumnIndex("id_processo"));
-            programa.setProcesso(processoDAO.buscaProcesso(idProcesso));
+            idApertadeira = c.getInt(c.getColumnIndex("id_apertadeira"));
+            programa.setApertadeira(apertadeiraDAO.buscaApertadeira(idApertadeira));
         }
         c.close();
         return programa;

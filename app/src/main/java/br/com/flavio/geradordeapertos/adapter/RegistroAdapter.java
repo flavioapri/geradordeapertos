@@ -47,7 +47,7 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
     public void onBindViewHolder(@NonNull RegistroViewHolder holder, int posicao) {
         holder.np.setText(unificados.get(posicao).getNPComMascara());
         holder.data.setText(unificados.get(posicao).getDataComMascara());
-        holder.processo.setText("Processo: " + unificados.get(posicao).getPrograma().getProcesso().getNome());
+        holder.apertadeira.setText("Apertadeira: " + unificados.get(posicao).getPrograma().getApertadeira().getNome());
         holder.programa.setText("Programa: " + unificados.get(posicao).getPrograma().getNome());
         holder.motivo.setText("Motivo: " + unificados.get(posicao).getMotivo().getNome());
         if (!(unificados.get(posicao).getPrograma().getAngulo() == 0)) // Exibe somente apertos com ângulo
@@ -93,7 +93,7 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
     public class RegistroViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
         TextView np;
         TextView data;
-        TextView processo;
+        TextView apertadeira;
         TextView programa;
         TextView motivo;
         TextView angulo;
@@ -104,7 +104,7 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
             super(itemView);
             this.np = itemView.findViewById(R.id.tv_np);
             this.data = itemView.findViewById(R.id.tv_data);
-            this.processo = itemView.findViewById(R.id.tv_processo);
+            this.apertadeira = itemView.findViewById(R.id.tv_apertadeira);
             this.programa = itemView.findViewById(R.id.tv_programa);
             this.motivo = itemView.findViewById(R.id.tv_motivo);
             this.angulo = itemView.findViewById(R.id.tv_angulo);

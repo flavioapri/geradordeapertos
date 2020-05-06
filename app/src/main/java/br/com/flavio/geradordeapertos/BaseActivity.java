@@ -35,13 +35,13 @@ public class BaseActivity extends AppCompatActivity {
                 intent.setClass(this, Main.class);
                 break;
             case R.id.mi_gerar_programa:
-                intent.setClass(this, GeraRegistro.class);
+                intent.setClass(this, GeradorRegistro.class);
                 break;
             case R.id.mi_gerar_grupo:
-                intent.setClass(this, GeraRegistroGrupo.class);
+                intent.setClass(this, GeradorRegistroGrupo.class);
                 break;
-            case R.id.mi_processo:
-                intent.setClass(this, CadastroProcesso.class);
+            case R.id.mi_apertadeira:
+                intent.setClass(this, CadastroApertadeira.class);
                 break;
             case R.id.mi_programa:
                 intent.setClass(this, RelacaoProgramas.class);
@@ -65,7 +65,7 @@ public class BaseActivity extends AppCompatActivity {
     }
     
     public void gotoNovoRegistro(View view) {
-        Intent intent = new Intent().setClass(this, GeraRegistro.class);
+        Intent intent = new Intent().setClass(this, GeradorRegistro.class);
         startActivity(intent);
     }
 }
