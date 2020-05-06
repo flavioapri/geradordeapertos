@@ -100,7 +100,7 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Progra
             final Programa programa = programas.get(posicao);
             final ProgramaDAO programaDAO = new ProgramaDAO(contexto);
             
-            new AlertDialog.Builder(contexto, R.style.AlertDialog)
+            new AlertDialog.Builder(contexto)
                     .setTitle(R.string.remover_programa)
                     .setMessage(R.string.remover_programa_descricao)
                     .setPositiveButton(R.string.remover, (dialog, which) -> {
@@ -116,7 +116,7 @@ public class ProgramaAdapter extends RecyclerView.Adapter<ProgramaAdapter.Progra
         private void alterarPrograma() {
             final Programa programa = programas.get(getAdapterPosition());
             
-            new AlertDialog.Builder(contexto, R.style.AlertDialog)
+            new AlertDialog.Builder(contexto)
                     .setTitle(R.string.alterar_programa)
                     .setMessage(R.string.alterar_programa_descricao)
                     .setPositiveButton(R.string.alterar, (dialog, which) -> {

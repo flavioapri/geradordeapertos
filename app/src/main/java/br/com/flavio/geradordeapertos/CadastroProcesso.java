@@ -58,7 +58,7 @@ public class CadastroProcesso extends AppCompatActivity {
         final ProcessoDAO processoDAO = new ProcessoDAO(this);
         final Processo processo = new Processo();
         //TODO personalizar estilo do dialog
-        new AlertDialog.Builder(this, R.style.AlertDialog)
+        new AlertDialog.Builder(this)
                 .setTitle(R.string.cadastro_processo)
                 .setMessage(R.string.informe_nome_processo)
                 .setView(et_dialog_processo)
@@ -81,7 +81,7 @@ public class CadastroProcesso extends AppCompatActivity {
      * @param view
      */
     public void vaiParaHome(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Main.class);
         startActivity(intent);
     }
 }

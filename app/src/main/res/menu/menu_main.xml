@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="br.com.flavio.geradordeapertos.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:id="@+id/mi_cadastrar"
-        android:title="@string/cadastro" />
+        android:id="@+id/mi_gerar_registro"
+        android:title="@string/mi_gerar_registro">
+        <menu>
+            <item
+                android:id="@+id/mi_gerar_programa"
+                android:title="@string/mi_gerar_programa" />
+            <item
+                android:id="@+id/mi_gerar_grupo"
+                android:title="@string/mi_gerar_grupo" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/mi_cadastro"
+        android:title="@string/mi_cadastro">
+        <menu>
+            <item
+                android:id="@+id/mi_processo"
+                android:title="@string/mi_processo" />
+            <item
+                android:id="@+id/mi_programa"
+                android:title="@string/mi_programa" />
+            <item
+                android:id="@+id/mi_motivo"
+                android:title="@string/mi_motivo" />
+        </menu>
+    </item>
     <item
         android:id="@+id/mi_historico"
         android:title="@string/mi_historico" />

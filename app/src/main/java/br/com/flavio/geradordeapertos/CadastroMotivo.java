@@ -58,7 +58,7 @@ public class CadastroMotivo extends AppCompatActivity {
         final MotivoDAO motivoDAO = new MotivoDAO(this);
         final Motivo motivo = new Motivo();
         //TODO personalizar estilo do dialog
-        new AlertDialog.Builder(this, R.style.AlertDialog)
+        new AlertDialog.Builder(this)
                 .setTitle(R.string.cadastro_motivo)
                 .setMessage(R.string.informe_nome_motivo)
                 .setView(et_dialog_motivo)
@@ -81,7 +81,7 @@ public class CadastroMotivo extends AppCompatActivity {
      * @param view
      */
     public void vaiParaHome(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Main.class);
         startActivity(intent);
     }
 }

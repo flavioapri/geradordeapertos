@@ -42,6 +42,7 @@ public class CadastroPrograma extends AppCompatActivity {
         tv_ciclos = findViewById(R.id.tv_cadastro_programa_ciclos);
         tv_nominal = findViewById(R.id.tv_cadastro_programa_nominal);
         tv_angulo = findViewById(R.id.tv_cadastro_programa_angulo);
+       
         
         helper = new ProgramaHelper(this);
         
@@ -51,7 +52,6 @@ public class CadastroPrograma extends AppCompatActivity {
             helper.preencheFormulario(programa);
         } else
             programa = new Programa();
-        
     }
     
     @Override
@@ -61,7 +61,7 @@ public class CadastroPrograma extends AppCompatActivity {
     
     public void carregaProcessos(View view) {
         final Spinner spinner = criaSpinnerDeProcessos();
-        new AlertDialog.Builder(this, R.style.AlertDialog)
+        new AlertDialog.Builder(this)
                 .setTitle(R.string.selecao_processo)
                 .setMessage(R.string.selecione_processo_lista)
                 .setView(spinner)
@@ -87,7 +87,7 @@ public class CadastroPrograma extends AppCompatActivity {
     
     public void insereNome(View view) {
         final EditText editText = new EditText(this);
-        new AlertDialog.Builder(this, R.style.AlertDialog)
+        new AlertDialog.Builder(this)
                 .setTitle(R.string.alert_titulo_nome_programa)
                 .setMessage(R.string.alert_msg_programa)
                 .setView(editText)
@@ -108,7 +108,7 @@ public class CadastroPrograma extends AppCompatActivity {
         numberPicker.setMinValue(1);
         numberPicker.setMaxValue(10);
         
-        new AlertDialog.Builder(this, R.style.AlertDialog)
+        new AlertDialog.Builder(this)
                 .setTitle(R.string.alerto_title_ciclos)
                 .setMessage(R.string.alert_msg_ciclos)
                 .setView(numberPicker)
@@ -126,7 +126,7 @@ public class CadastroPrograma extends AppCompatActivity {
         final EditText editText = v.findViewById(R.id.et_programa_nominal);
         editText.addTextChangedListener(Mascara.insert(Mascara.MASCARA_TORQUE, editText));
         
-        new AlertDialog.Builder(this, R.style.AlertDialog)
+        new AlertDialog.Builder(this)
                 .setTitle(R.string.alert_titulo_nominal)
                 .setMessage(R.string.alert_msg_nominal)
                 .setView(editText)
@@ -145,7 +145,7 @@ public class CadastroPrograma extends AppCompatActivity {
         View v = inflater.inflate(R.layout.et_cadastro_programa_angulo, null);
         final EditText editText = v.findViewById(R.id.et_programa_angulo);
         
-        new AlertDialog.Builder(this, R.style.AlertDialog)
+        new AlertDialog.Builder(this)
                 .setTitle(R.string.alert_titulo_angulo)
                 .setMessage(R.string.alert_msg_angulo)
                 .setView(editText)
@@ -159,9 +159,9 @@ public class CadastroPrograma extends AppCompatActivity {
                 .show();
     }
     
-    public void inserirPrograma(View view) {
+    public void inserePrograma(View view) {
         if (programa.isPreenchido()) {
-            new AlertDialog.Builder(this, R.style.AlertDialog)
+            new AlertDialog.Builder(this)
                     .setTitle(R.string.alert_programa_titulo_salvar)
                     .setMessage(R.string.alert_programa_msg_salvar)
                     .setPositiveButton(R.string.confirmar, (dialog, which) -> {
@@ -172,14 +172,14 @@ public class CadastroPrograma extends AppCompatActivity {
                             dao.insere(programa);
                         dao.close();
                         limpaFormulario();
-                        new AlertDialog.Builder(CadastroPrograma.this, R.style.AlertDialog)
+                        new AlertDialog.Builder(CadastroPrograma.this)
                                 .setMessage(R.string.msg_programa_salvo)
                                 .show();
                     })
                     .setNegativeButton(R.string.cancelar, null)
                     .show();
         } else {
-            new AlertDialog.Builder(CadastroPrograma.this, R.style.AlertDialog)
+            new AlertDialog.Builder(CadastroPrograma.this)
                     .setMessage(R.string.msg_formulario_incompleto)
                     .show();
         }
@@ -195,6 +195,7 @@ public class CadastroPrograma extends AppCompatActivity {
     }
     
     public void vaiParaHome(View view) {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, Main.class));
     }
+    
 }

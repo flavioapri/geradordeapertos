@@ -4,10 +4,6 @@
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\drawable\\bt_principal.xml"
     },
     {
-        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_formulario_individual.xml.flat",
-        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_formulario_individual.xml"
-    },
-    {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_et_cadastro_programa_nominal.xml.flat",
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\et_cadastro_programa_nominal.xml"
     },
@@ -26,10 +22,6 @@
     {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_lista_registro_main.xml.flat",
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\lista_registro_main.xml"
-    },
-    {
-        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_formulario_programa_lote.xml.flat",
-        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_formulario_programa_lote.xml"
     },
     {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
@@ -58,6 +50,14 @@
     {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_gera_registro_grupo.xml.flat",
+        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_gera_registro_grupo.xml"
+    },
+    {
+        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_gera_registro.xml.flat",
+        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_gera_registro.xml"
     },
     {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_sp_cadastro_programa_processo.xml.flat",
@@ -164,8 +164,16 @@
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\et_cadastro_programa_angulo.xml"
     },
     {
+        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_menu.xml.flat",
+        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\drawable\\ic_menu.xml"
+    },
+    {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_programa.xml.flat",
+        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\menu\\menu_programa.xml"
     },
     {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",

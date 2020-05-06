@@ -140,7 +140,7 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
             final Registro registro = unificados.get(posicao);
             final RegistroDAO registroDAO = new RegistroDAO(contexto);
             
-            new AlertDialog.Builder(contexto, R.style.AlertDialog)
+            new AlertDialog.Builder(contexto)
                     .setTitle(R.string.remover_registro)
                     .setMessage(R.string.remover_registro_descricao)
                     .setPositiveButton(R.string.remover, (dialog, which) -> {

@@ -1407,6 +1407,7 @@ drawable ic_keyboard_arrow_left_black_24dp
 drawable ic_keyboard_arrow_right_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_menu
 drawable ic_menu_arrow_down_black_24dp
 drawable ic_menu_arrow_up_black_24dp
 drawable ic_mtrl_checked_circle
@@ -1529,6 +1530,7 @@ id bt_cadastro_programa
 id bt_cadastro_programa_angulo
 id bt_cadastro_programa_cadastrar
 id bt_cadastro_programa_ciclos
+id bt_cadastro_programa_menu
 id bt_cadastro_programa_nome
 id bt_cadastro_programa_nominal
 id bt_cadastro_programa_processo
@@ -1544,7 +1546,6 @@ id bt_forumulario_individual_menu
 id bt_historico_exportar
 id bt_historico_home
 id bt_historico_limpar
-id bt_menu
 id bt_novo
 id bt_pesquisar
 id bt_relacao_programa_home
@@ -1645,10 +1646,18 @@ id masked
 id media_actions
 id message
 id mi_cadastrar
+id mi_cadastro
 id mi_configuracoes
+id mi_gerar_grupo
+id mi_gerar_programa
+id mi_gerar_registro
 id mi_historico
+id mi_motivo
+id mi_processo
+id mi_programa
 id mi_programa_individual
 id mi_programa_lote
+id mi_programas
 id mi_sobre
 id middle
 id mini
@@ -1917,8 +1926,8 @@ layout activity_cadastro_motivo
 layout activity_cadastro_processo
 layout activity_cadastro_programa
 layout activity_configuracoes
-layout activity_formulario_individual
-layout activity_formulario_programa_lote
+layout activity_gera_registro
+layout activity_gera_registro_grupo
 layout activity_historico
 layout activity_leitura
 layout activity_main
@@ -2011,6 +2020,7 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu menu_main
 menu menu_novo
+menu menu_programa
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
@@ -2121,6 +2131,7 @@ string formato_data
 string formato_dia
 string formato_mes
 string formato_separador
+string gera_registro
 string hide_bottom_view_on_scroll_behavior
 string hint_nome_programa
 string historico
@@ -2148,8 +2159,17 @@ string leitura_cabecalho_ok
 string manter_configuracao
 string mascara_np
 string mascara_valor_nominal
+string mg_gerar_registro
+string mi_cadastro
 string mi_configuracoes
+string mi_gerar_grupo
+string mi_gerar_programa
+string mi_gerar_registro
 string mi_historico
+string mi_motivo
+string mi_processo
+string mi_programa
+string mi_programas
 string mi_sobre
 string motivo
 string msg_formulario_incompleto
@@ -2246,10 +2266,8 @@ string tv_relacao_programa_lista_rodape
 string tv_sucesso
 string unidade_grau
 string unidade_newton_metro
-style AlertDialog
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
-style AlertDialogTitulo
 style Animation_AppCompat_Dialog
 style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
@@ -2478,6 +2496,7 @@ style MaterialAlertDialog_MaterialComponents_Title_Panel
 style MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked
 style MaterialAlertDialog_MaterialComponents_Title_Text
 style MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked
+style MyTheme
 style NumberPickerText
 style Platform_AppCompat
 style Platform_AppCompat_Light

@@ -91,7 +91,7 @@ public class ProcessoAdapter extends RecyclerView.Adapter<ProcessoAdapter.Proces
             final Processo processo = processos.get(posicao);
             final ProcessoDAO processoDAO = new ProcessoDAO(contexto);
             
-            new AlertDialog.Builder(contexto, R.style.AlertDialog)
+            new AlertDialog.Builder(contexto)
                     .setTitle(R.string.remover_processo)
                     .setMessage(R.string.remover_processo_descricao)
                     .setPositiveButton(R.string.remover, new DialogInterface.OnClickListener() {
@@ -114,7 +114,7 @@ public class ProcessoAdapter extends RecyclerView.Adapter<ProcessoAdapter.Proces
             final Processo processo = processos.get(posicao);
             final ProcessoDAO processoDAO = new ProcessoDAO(contexto);
             
-            new AlertDialog.Builder(contexto, R.style.AlertDialog)
+            new AlertDialog.Builder(contexto)
                     .setTitle(R.string.alterar_processo)
                     .setMessage(R.string.alterar_processo_descricao)
                     .setView(et_alterar)

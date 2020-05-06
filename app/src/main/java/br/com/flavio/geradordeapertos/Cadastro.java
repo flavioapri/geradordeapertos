@@ -31,7 +31,7 @@ public class Cadastro extends AppCompatActivity {
                 intent.setClass(this, CadastroPrograma.class);
                 break;
             default:
-                intent.setClass(this, MainActivity.class);
+                intent.setClass(this, Main.class);
                 break;
         }
         startActivity(intent);

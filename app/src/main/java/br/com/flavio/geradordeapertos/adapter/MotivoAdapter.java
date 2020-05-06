@@ -91,7 +91,7 @@ public class MotivoAdapter extends RecyclerView.Adapter<MotivoAdapter.MotivoView
             final Motivo motivo = motivos.get(posicao);
             final MotivoDAO motivoDAO = new MotivoDAO(contexto);
             
-            new AlertDialog.Builder(contexto, R.style.AlertDialog)
+            new AlertDialog.Builder(contexto)
                     .setTitle(R.string.remover_motivo)
                     .setMessage(R.string.remover_motivo_descricao)
                     .setPositiveButton(R.string.remover, new DialogInterface.OnClickListener() {
@@ -113,7 +113,7 @@ public class MotivoAdapter extends RecyclerView.Adapter<MotivoAdapter.MotivoView
             final Motivo motivo = motivos.get(posicao);
             final MotivoDAO motivoDAO = new MotivoDAO(contexto);
             
-            new AlertDialog.Builder(contexto, R.style.AlertDialog)
+            new AlertDialog.Builder(contexto)
                     .setTitle(R.string.alterar_motivo)
                     .setMessage(R.string.alterar_motivo_descricao)
                     .setView(et_alterar)

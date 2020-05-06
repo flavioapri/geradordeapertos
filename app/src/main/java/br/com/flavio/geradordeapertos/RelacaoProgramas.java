@@ -51,7 +51,7 @@ public class RelacaoProgramas extends AppCompatActivity {
      * @param view
      */
     public void gotoHome(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Main.class);
         startActivity(intent);
     }
     

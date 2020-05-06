@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.flavio.geradordeapertos.CadastroPrograma">
+    <item
+        android:id="@+id/mi_cadastrar"
+        android:title="@string/cadastro" />
+    <item
+        android:id="@+id/mi_historico"
+        android:title="@string/mi_historico" />
+    <item
+        android:id="@+id/mi_programas"
+        android:title="@string/mi_programas" />
+    <item
+        android:id="@+id/mi_configuracoes"
+        android:title="@string/mi_configuracoes" />
+    <item
+        android:id="@+id/mi_sobre"
+        android:title="@string/mi_sobre" />
+</menu>

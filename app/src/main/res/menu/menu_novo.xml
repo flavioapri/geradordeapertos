@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="br.com.flavio.geradordeapertos.MainActivity">
+    tools:context="br.com.flavio.geradordeapertos.Main">
     <item
         android:id="@+id/mi_programa_individual"
         android:title="@string/programa_individual" />
