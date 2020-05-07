@@ -60,6 +60,7 @@ public class ApertadeiraDAO extends SQLiteOpenHelper {
     public void deleta(Apertadeira apertadeira) {
         SQLiteDatabase db = getWritableDatabase();
         String[] parametros = {String.valueOf(apertadeira.getId())};
+        db.delete("processo", "id_apertadeira=?", parametros);
         db.delete("apertadeira", "id=?", parametros);
     }
     

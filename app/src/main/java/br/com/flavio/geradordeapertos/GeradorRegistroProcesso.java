@@ -37,7 +37,7 @@ import br.com.flavio.geradordeapertos.modelo.Motivo;
 import br.com.flavio.geradordeapertos.modelo.Processo;
 import br.com.flavio.geradordeapertos.modelo.Registro;
 
-public class GeradorRegistro extends BaseActivity{
+public class GeradorRegistroProcesso extends BaseActivity{
     private EditText et_np;
     private TextView tv_data;
     private Spinner sp_apertadeiras;
@@ -55,14 +55,14 @@ public class GeradorRegistro extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gera_registro);
+        setContentView(R.layout.activity_gera_registro_processo);
         
-        et_np = findViewById(R.id.et_formulario_np);
-        tv_data = findViewById(R.id.tv_formulario_data);
-        tv_ciclos = findViewById(R.id.tv_formulario_ciclos);
-        sp_apertadeiras = findViewById(R.id.sp_formulario_apertadeira);
-        sp_processos = findViewById(R.id.sp_formulario_processo);
-        sp_motivos = findViewById(R.id.sp_formulario_motivo);
+        et_np = findViewById(R.id.et_gera_registro_np);
+        tv_data = findViewById(R.id.tv_gera_registro_data);
+        tv_ciclos = findViewById(R.id.tv_gera_registro_ciclos);
+        sp_apertadeiras = findViewById(R.id.sp_gera_registro_apertadeira);
+        sp_processos = findViewById(R.id.sp_gera_registro_processo);
+        sp_motivos = findViewById(R.id.sp_gera_registro_motivo);
         et_np.addTextChangedListener(Mascara.insert(Mascara.MASCARA_NP, et_np));
         
         // Inicializada o formulário com a data atual
@@ -199,7 +199,7 @@ public class GeradorRegistro extends BaseActivity{
         int mes = calendario.get(Calendar.MONTH);
         int dia = calendario.get(Calendar.DAY_OF_MONTH);
         //TODO tentar ocultar o teclado
-        DatePickerDialog datePickerDialog = new DatePickerDialog(GeradorRegistro.this,
+        DatePickerDialog datePickerDialog = new DatePickerDialog(GeradorRegistroProcesso.this,
                 (datePicker, ano1, mes1, dia1) -> {
                     calendario.set(ano1, mes1, dia1);
                     String formato = getString(R.string.formato_data);
@@ -269,7 +269,7 @@ public class GeradorRegistro extends BaseActivity{
                 .setPositiveButton(R.string.confirmar, (dialog, which) -> {
                     confirmado[0] = true;
                     limpa();
-                    new AlertDialog.Builder(GeradorRegistro.this)
+                    new AlertDialog.Builder(GeradorRegistroProcesso.this)
                             .setMessage(R.string.alert_confirmacao_gravar_registro)
                             .show();
                     EmissorMensagem.envia(this, registro, valores);
@@ -290,8 +290,8 @@ public class GeradorRegistro extends BaseActivity{
         
         if (np.length() < 11 | ciclos.isEmpty() | motivo == null) {
             new AlertDialog.Builder(this)
-                    .setTitle(R.string.alert_formulario_titulo_incompleto)
-                    .setMessage(R.string.alert_formulario_msg_incompleto)
+                    .setTitle(R.string.ad_titulo_gera_registro_incompleto)
+                    .setMessage(R.string.ad_msg_gera_registro_incompleto)
                     .setPositiveButton(R.string.ok, (dialog, which) -> { })
                     .show();
             return false;

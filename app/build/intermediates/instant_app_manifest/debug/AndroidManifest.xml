@@ -22,8 +22,9 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/MyTheme" >
-        <activity android:name="br.com.flavio.geradordeapertos.RelacaoProcessos" >
-        </activity>
+        <activity
+            android:name="br.com.flavio.geradordeapertos.RelacaoProcessos"
+            android:label="@string/lbl_relacao_processos" />
         <activity
             android:name="br.com.flavio.geradordeapertos.CadastroProcesso"
             android:label="@string/cadastro_programa" />
@@ -35,7 +36,7 @@
             android:label="@string/cadastro_processo" />
         <activity
             android:name="br.com.flavio.geradordeapertos.GeradorRegistroGrupo"
-            android:label="@string/gerar_registro_grupo" />
+            android:label="@string/lbl_registro_apertadeira" />
         <activity
             android:name="br.com.flavio.geradordeapertos.Leitura"
             android:label="@string/leitura" />
@@ -49,8 +50,8 @@
             android:name="br.com.flavio.geradordeapertos.Historico"
             android:label="@string/historico" />
         <activity
-            android:name="br.com.flavio.geradordeapertos.GeradorRegistro"
-            android:label="@string/gera_registro" />
+            android:name="br.com.flavio.geradordeapertos.GeradorRegistroProcesso"
+            android:label="@string/lbl_registro_processo" />
         <activity
             android:name="br.com.flavio.geradordeapertos.Main"
             android:label="@string/app_name" >

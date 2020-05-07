@@ -79,7 +79,7 @@
     <string name="alerto_title_ciclos">Definir ciclos</string>
     <string name="alert_msg_ciclos">Quantos ciclos de aperto tera o processo?</string>
     <string name="alert_titulo_nominal">Valor nominal</string>
-    <string name="alert_msg_nominal">Informe o valor. Para valores inferiores a 100 utilize 0 antes de informar o valor. Ex: (013 é 13) </string>
+    <string name="alert_msg_nominal">Informe o valor. Para valores inferiores a 100 e decimais utilize 0 antes de informar o valor. Ex: (013,3 é 13,3) </string>
     <string name="mascara_valor_nominal">###.#</string>
     <string name="alert_titulo_angulo">Ângulo</string>
     <string name="alert_msg_angulo">Informe o valor.</string>
@@ -132,8 +132,8 @@
     <string name="mi_gerar_programa">Por processo</string>
     <string name="mi_gerar_registro">Gerar registro</string>
     <string name="mi_cadastro">Cadastro</string>
-    <string name="gera_registro">Gerar registro</string>
-    <string name="gerar_registro_grupo">Gerar registro por Grupo</string>
+    <string name="lbl_registro_processo">Gerar registro por processo</string>
+    <string name="lbl_registro_apertadeira">Registro por apertadeira</string>
     <string name="texto">texto</string>
     <string name="icon_search"></string>
     <string name="mi_inicio">Inicio</string>
@@ -165,4 +165,8 @@
     <string name="ad_msg_alterar_processo">Deseja alterar o processo?</string>
     <string name="ad_titulo_remover_processo">Remover</string>
     <string name="ad_msg_remover_processo">Deseja realmente remover o processo? As informações não poderam ser recuperadas.</string>
+    <string name="lbl_relacao_processos">Relação de processos</string>
+    <string name="mi_gerar_apertadeira">Por apertadeira</string>
+    <string name="ad_titulo_gera_registro_incompleto">Formulário incompleto</string>
+    <string name="ad_msg_gera_registro_incompleto">Ainda faltam dados no formulário para gerar o registro.</string>
 </resources>

@@ -40,6 +40,10 @@
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
     },
     {
+        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_gera_registro_apertadeira.xml.flat",
+        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_gera_registro_apertadeira.xml"
+    },
+    {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_cadastro_motivo.xml.flat",
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_cadastro_motivo.xml"
     },
@@ -52,12 +56,8 @@
         "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_gera_registro_grupo.xml.flat",
-        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_gera_registro_grupo.xml"
-    },
-    {
-        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_gera_registro.xml.flat",
-        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_gera_registro.xml"
+        "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_gera_registro_processo.xml.flat",
+        "source": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\src\\main\\res\\layout\\activity_gera_registro_processo.xml"
     },
     {
         "merged": "C:\\Users\\Flavio\\Google Drive\\GeradorDeApertos\\app\\build\\intermediates\\res\\merged\\debug\\layout_textview_spinner.xml.flat",

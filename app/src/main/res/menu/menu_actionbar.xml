@@ -13,8 +13,8 @@
                 android:id="@+id/mi_gerar_processo"
                 android:title="@string/mi_gerar_processo" />
             <item
-                android:id="@+id/mi_gerar_grupo"
-                android:title="@string/mi_gerar_grupo" />
+                android:id="@+id/mi_gerar_apertadeira"
+                android:title="@string/mi_gerar_apertadeira" />
         </menu>
     </item>
     <item
