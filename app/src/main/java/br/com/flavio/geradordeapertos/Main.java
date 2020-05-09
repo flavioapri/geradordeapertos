@@ -1,6 +1,7 @@
 package br.com.flavio.geradordeapertos;
 
 import android.os.Bundle;
+import android.view.Menu;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +29,13 @@ public class Main extends BaseActivity {
     protected void onResume() {
         super.onResume();
         criaLista();
+    }
+    
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Desabilita a opção da activity no menu
+        menu.findItem(R.id.mi_inicio).setVisible(false);
+        return super.onPrepareOptionsMenu(menu);
     }
     
     public void criaBancoDeDados() {

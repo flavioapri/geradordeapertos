@@ -4,13 +4,16 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -27,8 +30,8 @@ import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
 
 import br.com.flavio.geradordeapertos.adapter.EmissorMensagem;
-import br.com.flavio.geradordeapertos.dao.MotivoDAO;
 import br.com.flavio.geradordeapertos.dao.ApertadeiraDAO;
+import br.com.flavio.geradordeapertos.dao.MotivoDAO;
 import br.com.flavio.geradordeapertos.dao.ProcessoDAO;
 import br.com.flavio.geradordeapertos.dao.RegistroDAO;
 import br.com.flavio.geradordeapertos.mascara.Mascara;
@@ -37,7 +40,7 @@ import br.com.flavio.geradordeapertos.modelo.Motivo;
 import br.com.flavio.geradordeapertos.modelo.Processo;
 import br.com.flavio.geradordeapertos.modelo.Registro;
 
-public class GeradorRegistroProcesso extends BaseActivity{
+public class GeradorRegistroProcesso extends BaseActivity {
     private EditText et_np;
     private TextView tv_data;
     private Spinner sp_apertadeiras;
@@ -46,11 +49,16 @@ public class GeradorRegistroProcesso extends BaseActivity{
     private Apertadeira apertadeira;
     private Processo processo;
     private List<CheckBox> ciclos;
+    private List<Registro> registros;
+    private List<String> valoresRegistros;
     private static final int ACTIVITY_LEITURA = 1;
     private TextView tv_ciclos;
     private Spinner sp_motivos;
     private String valores;
     private Registro registro;
+    private Button bt_ciclos;
+    private LinearLayout grupoCheckBoxes;
+    private boolean porProcesso;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,27 +72,55 @@ public class GeradorRegistroProcesso extends BaseActivity{
         sp_processos = findViewById(R.id.sp_gera_registro_processo);
         sp_motivos = findViewById(R.id.sp_gera_registro_motivo);
         et_np.addTextChangedListener(Mascara.insert(Mascara.MASCARA_NP, et_np));
+        bt_ciclos = findViewById(R.id.bt_gera_registro_ciclos);
+        porProcesso = true;
         
+        RadioGroup rg_tipo = findViewById(R.id.rg_gera_registro_tipo);
+        rg_tipo.setOnCheckedChangeListener((group, checkedId) -> {
+            switch (checkedId) {
+                case R.id.rb_gera_registro_tipo_processo:
+                    sp_processos.setEnabled(true);
+                    bt_ciclos.setEnabled(true);
+                    porProcesso = true;
+                    break;
+                case R.id.rb_gera_registro_tipo_apertadeira:
+                    sp_processos.setEnabled(false);
+                    bt_ciclos.setEnabled(false);
+                    porProcesso = false;
+                    break;
+            }
+        });
         // Inicializada o formulário com a data atual
         SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         Date dataAtual = new Date();
         String dataFormatada = formataData.format(dataAtual);
         tv_data.setText(dataFormatada);
         
+        carregaApertadeiras();
+        carregaMotivos();
     }
     
     @Override
     protected void onResume() {
         super.onResume();
-        carregaApertadeiras();
-        carregaMotivos();
+    }
+    
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Desabilita a opção da activity no menu
+        menu.findItem(R.id.mi_gerar_processo).setVisible(false);
+        return super.onPrepareOptionsMenu(menu);
     }
     
     public void carregaApertadeiras() {
         ApertadeiraDAO dao = new ApertadeiraDAO(this);
         final List<Apertadeira> apertadeiras = dao.buscaApertadeiras();
-        dao.close();//TODO tratar quando a lista de apertadeiras esta vazia
-        ArrayAdapter<Apertadeira> adapter = new ArrayAdapter<Apertadeira>(this, android.R.layout.simple_spinner_item, apertadeiras);
+        // Cria objeto com o valor padrão para o spinner exibir
+        Apertadeira valorPadraoNome = new Apertadeira();
+        valorPadraoNome.setNome("Apertadeira");
+        apertadeiras.add(0, valorPadraoNome);
+        dao.close();
+        ArrayAdapter<Apertadeira> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, apertadeiras);
         adapter.setDropDownViewResource(R.layout.textview_spinner);//TODO renomear este layout desta fonte
         sp_apertadeiras.setAdapter(adapter);
         sp_apertadeiras.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -103,6 +139,9 @@ public class GeradorRegistroProcesso extends BaseActivity{
     private void carregaProcessos(Apertadeira apertadeira) {
         ProcessoDAO dao = new ProcessoDAO(this);
         final List<Processo> processos = dao.buscaProcessos(apertadeira);
+        Processo valorPadraoNome = new Processo();
+        valorPadraoNome.setNome("Processo");
+        processos.add(0, valorPadraoNome);
         dao.close();//TODO tratar quando a lista de processos estiver vazia
         ArrayAdapter<Processo> adapter = new ArrayAdapter<Processo>(this, android.R.layout.simple_spinner_item, processos);
         adapter.setDropDownViewResource(R.layout.textview_spinner);
@@ -111,6 +150,8 @@ public class GeradorRegistroProcesso extends BaseActivity{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 processo = processos.get(position);
+                grupoCheckBoxes = criaGrupoCheckBoxes();
+                verificaCheckBoxesSelecionados(grupoCheckBoxes);
             }
             
             @Override
@@ -120,7 +161,7 @@ public class GeradorRegistroProcesso extends BaseActivity{
     }
     
     public void selecionaCiclos(View view) {
-        final LinearLayout grupoCheckBoxes = criaGrupoCheckBoxes();
+        grupoCheckBoxes = criaGrupoCheckBoxes();
         
         new AlertDialog.Builder(this)
                 .setTitle(R.string.alert_titulo_registro_ciclos)
@@ -132,23 +173,11 @@ public class GeradorRegistroProcesso extends BaseActivity{
     }
     
     private LinearLayout criaGrupoCheckBoxes() {
-        ArrayList<CheckBox> checkBoxes = new ArrayList<>();
-        LinearLayout layout = new LinearLayout(this);
-        layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setGravity(Gravity.CENTER);
-        
-        LinearLayout.LayoutParams parametrosCheckBox = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        parametrosCheckBox.setMargins(0, 0, 0, 20);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.ciclos_checkboxes, null);
         //TODO tornar Linear Layout global e extrair criação para outro método
-        for (int cont = 0; cont < processo.getCiclos(); cont++) {
-            checkBoxes.add(new CheckBox(this));
-            checkBoxes.get(cont).setText(Integer.toString((cont + 1)));
-            checkBoxes.get(cont).setScaleY(1.5f);
-            checkBoxes.get(cont).setScaleX(1.5f);
-            checkBoxes.get(cont).setChecked(true);
-            checkBoxes.get(cont).setLayoutParams(parametrosCheckBox);
-            layout.addView(checkBoxes.get(cont));
+        for (int cont = 9; cont >= processo.getCiclos(); cont--) {
+            layout.removeViewAt(cont);
         }
         return layout;
     }
@@ -173,6 +202,9 @@ public class GeradorRegistroProcesso extends BaseActivity{
         MotivoDAO dao = new MotivoDAO(this);
         final List<Motivo> motivos = dao.buscaMotivos();
         dao.close();//TODO tratar quando a lista de apertadeiras esta vazia
+        Motivo valorPadraoNome = new Motivo();
+        valorPadraoNome.setNome("Motivo");
+        motivos.add(0, valorPadraoNome);
         ArrayAdapter<Motivo> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, motivos);
         adapter.setDropDownViewResource(R.layout.textview_spinner);//TODO renomear layout desta fonte
         sp_motivos.setAdapter(adapter);//TODO implementar "Sem motivo" no spinner
@@ -237,7 +269,14 @@ public class GeradorRegistroProcesso extends BaseActivity{
         startActivityForResult(intentLeitura, ACTIVITY_LEITURA);
     }
     
-    public void geraRegistro(View view) {
+    public void geraRegistro(View view){
+        if (porProcesso)
+            geraRegistroPorProcesso();
+        else
+            geraRegistroPorApertadeira();
+    }
+    
+    public void geraRegistroPorProcesso() {
         if (verificaFormulario()) {
             if (confirmaRegistro()) {
                 valores = "";
@@ -286,9 +325,12 @@ public class GeradorRegistroProcesso extends BaseActivity{
     }
     
     private boolean verificaFormulario() {
+        //TODO verificar se não estão selecionados os valores padrão dos spinners
         String np = et_np.getText().toString().trim();
-        
-        if (np.length() < 11 | ciclos.isEmpty() | motivo == null) {
+        boolean preenchidoProcesso =
+                (!(np.length() < 11 || ciclos == null || ciclos.isEmpty() || motivo == null || processo == null || apertadeira == null));
+        boolean preenchidoApertadeira = (!(np.length() < 11 || motivo == null || apertadeira == null));
+        if (!(preenchidoApertadeira || preenchidoProcesso)) {
             new AlertDialog.Builder(this)
                     .setTitle(R.string.ad_titulo_gera_registro_incompleto)
                     .setMessage(R.string.ad_msg_gera_registro_incompleto)
@@ -308,18 +350,58 @@ public class GeradorRegistroProcesso extends BaseActivity{
         return ThreadLocalRandom.current().nextDouble(limiteInferior, limiteSuperior);
     }
     
+    private void geraRegistroPorApertadeira() {
+        if (verificaFormulario()) {
+            if (confirmaRegistro()) {
+                valores = "";
+                double torque;
+                ProcessoDAO dao = new ProcessoDAO(this);
+                List<Processo> processos = dao.buscaProcessos(apertadeira);
+                dao.close();
+                registros = new ArrayList<>();
+                valoresRegistros = new ArrayList<>();
+                for (Processo processo : processos) {
+                    for (int cont = 0; cont < processo.getCiclos(); cont++) {
+                        registro = new Registro();
+                        registro.setProcesso(processo);
+                        registro.setNP(et_np.getText().toString());
+                        registro.setCiclo(cont + 1);
+                        registro.setMotivo(motivo);
+                        registro.setData(tv_data.getText().toString());
+                        torque = geraTorque(processo.getValorNominal());
+                        registro.setValor(torque);
+                        gravaRegistro(registro);
+                        // Seta a data que não esta formatada com a data formatada para utilizar o registro para envio
+                        registro.setData(registro.getDataComMascara());
+                        valores += "Ciclo " + registro.getCiclo() + ": " + registro.getValor() + "\n";
+                        if (!registros.contains(registro))
+                            registros.add(registro);
+                    }
+                    valoresRegistros.add(valores);
+                    valores = "";
+                }
+                
+                for (int cont = 0; cont < registros.size(); cont++) {
+                    System.out.println(registros.get(cont));
+                    System.out.println(valoresRegistros.get(cont));
+                }
+                
+            }
+        }
+    }
+    
     public void limpa() {
         et_np.setText("");
         carregaApertadeiras();
         tv_ciclos.setText("");
-        ciclos.clear();
         carregaMotivos();
+        if (ciclos != null)
+            ciclos.clear();
     }
     
     public void botaoLimpa(View view) {
         limpa();
     }
-    
 }
 
 

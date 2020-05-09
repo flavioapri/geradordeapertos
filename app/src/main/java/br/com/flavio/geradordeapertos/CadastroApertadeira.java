@@ -1,6 +1,7 @@
 package br.com.flavio.geradordeapertos;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
@@ -28,6 +29,13 @@ public class CadastroApertadeira extends BaseActivity {
     protected void onResume() {
         super.onResume();
         carregaListaApertadeiras();
+    }
+    
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Desabilita a opção da activity no menu
+        menu.findItem(R.id.mi_apertadeira).setVisible(false);
+        return super.onPrepareOptionsMenu(menu);
     }
     
     /**

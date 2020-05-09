@@ -37,9 +37,6 @@ public class BaseActivity extends AppCompatActivity {
             case R.id.mi_gerar_processo:
                 intent.setClass(this, GeradorRegistroProcesso.class);
                 break;
-            case R.id.mi_gerar_apertadeira:
-                intent.setClass(this, GeradorRegistroApertadeira.class);
-                break;
             case R.id.mi_apertadeira:
                 intent.setClass(this, CadastroApertadeira.class);
                 break;

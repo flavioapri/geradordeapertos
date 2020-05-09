@@ -3,6 +3,7 @@ package br.com.flavio.geradordeapertos;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
@@ -32,6 +33,13 @@ public class CadastroMotivo  extends BaseActivity {
     protected void onResume() {
         super.onResume();
         carregaListaMotivos();
+    }
+    
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Desabilita a opção da activity no menu
+        menu.findItem(R.id.mi_motivo).setVisible(false);
+        return super.onPrepareOptionsMenu(menu);
     }
     
     /**

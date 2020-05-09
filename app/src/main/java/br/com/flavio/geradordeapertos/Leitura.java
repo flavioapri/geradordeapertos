@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.SparseArray;
+import android.view.Menu;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.TextView;
@@ -104,6 +105,13 @@ public class Leitura  extends BaseActivity {
         tv_leitura_cabecalho.setText(R.string.leitura_cabecalho);
         tv_leitura_cabecalho.setTextColor(Color.DKGRAY);
         super.onResume();
+    }
+    
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Remove o menu da action bar
+        menu.clear();
+        return super.onPrepareOptionsMenu(menu);
     }
     
     @Override

@@ -7,24 +7,6 @@
     android:layout_margin="10dp"
     tools:context=".GeradorRegistroProcesso">
 
-    <EditText
-        android:id="@+id/et_gera_registro_np"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:autofillHints=""
-        android:ems="5"
-        android:gravity="center"
-        android:hint="99.999999/9"
-        android:inputType="number"
-        android:maxLength="11"
-        app:layout_constraintEnd_toStartOf="@+id/bt_gera_registro_scanner"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@+id/tv_gera_registro_np"
-        app:layout_constraintTop_toTopOf="@+id/tv_gera_registro_np" />
-
     <TextView
         android:id="@+id/tv_gera_registro_np"
         android:layout_width="wrap_content"
@@ -40,81 +22,161 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_gera_registro_apertadeira"
+    <EditText
+        android:id="@+id/et_gera_registro_np"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:autofillHints=""
+        android:ems="5"
+        android:gravity="center"
+        android:hint="99.999999/9"
+        android:inputType="number"
+        android:maxLength="11"
+        app:layout_constraintEnd_toStartOf="@+id/bt_gera_registro_scanner"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/tv_gera_registro_np"
+        app:layout_constraintTop_toTopOf="@+id/tv_gera_registro_np" />
+
+    <Button
+        android:id="@+id/bt_gera_registro_scanner"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
+        android:background="@drawable/bt_texto_enabled"
         android:fontFamily="@font/product_sans"
-        android:gravity="center_vertical"
-        android:text="@string/tv_gera_registro_apertadeira"
-        android:textSize="14sp"
+        android:onClick="leCodigo"
+        android:text="@string/leitura"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/et_gera_registro_np"
+        app:layout_constraintTop_toTopOf="@+id/et_gera_registro_np" />
+
+    <RadioGroup
+        android:id="@+id/rg_gera_registro_tipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sp_gera_registro_apertadeira" />
+        app:layout_constraintTop_toBottomOf="@+id/et_gera_registro_np">
+
+        <TextView
+            android:id="@+id/tv_rg_gera_registro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="@string/tv_rg_gera_registro" />
+
+        <RadioButton
+            android:id="@+id/rb_gera_registro_tipo_processo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:checked="true"
+            android:text="@string/rb_gera_registro_tipo_processo" />
+
+        <RadioButton
+            android:id="@+id/rb_gera_registro_tipo_apertadeira"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/rb_gera_registro_tipo_apertadeira" />
+    </RadioGroup>
 
     <Spinner
         android:id="@+id/sp_gera_registro_apertadeira"
         android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
 
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_gera_registro_apertadeira"
-        app:layout_constraintTop_toBottomOf="@+id/et_gera_registro_np" />
-
-    <TextView
-        android:id="@+id/tv_gera_registro_processo"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:fontFamily="@font/product_sans"
-        android:gravity="center_vertical"
-        android:text="@string/tv_programa"
-        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sp_gera_registro_processo" />
+        app:layout_constraintTop_toBottomOf="@id/rg_gera_registro_tipo" />
 
     <Spinner
         android:id="@+id/sp_gera_registro_processo"
         android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_gera_registro_processo"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_gera_registro_apertadeira" />
 
-    <TextView
-        android:id="@+id/tv_gera_registro_motivo"
+    <Button
+        android:id="@+id/bt_gera_registro_ciclos"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bt_selector"
         android:fontFamily="@font/product_sans"
-        android:gravity="center_vertical"
-        android:text="@string/tv_motivo"
-        android:textSize="14sp"
+        android:onClick="selecionaCiclos"
+        android:text="@string/tv_ciclo"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sp_gera_registro_motivo" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_gera_registro_processo" />
 
     <TextView
         android:id="@+id/tv_gera_registro_ciclos"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:fontFamily="@font/product_sans"
-        android:gravity="center"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/bt_gera_registro_ciclos"
-        tools:layout_editor_absoluteX="146dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/bt_gera_registro_ciclos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bt_gera_registro_ciclos"
+        app:layout_constraintTop_toTopOf="@+id/bt_gera_registro_ciclos" />
 
     <Spinner
         android:id="@+id/sp_gera_registro_motivo"
         android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_gera_registro_motivo"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_gera_registro_ciclos" />
 
+
+    <Button
+        android:id="@+id/bt_gera_registro_data"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bt_texto_enabled"
+        android:fontFamily="@font/product_sans"
+        android:onClick="mostrarCalendario"
+        android:text="@string/tv_data"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/tv_gera_registro_data"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_gera_registro_motivo" />
+
+    <TextView
+        android:id="@+id/tv_gera_registro_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/product_sans"
+        android:text="@string/tv_gera_registro_data"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_gera_registro_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/bt_gera_registro_data"
+        app:layout_constraintTop_toTopOf="@+id/bt_gera_registro_data" />
 
     <Button
         android:id="@+id/bt_gera_registro_confirm"
@@ -154,66 +216,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_gera_registro_confirm" />
-
-    <Button
-        android:id="@+id/bt_gera_registro_scanner"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:background="@drawable/bt_texto"
-        android:fontFamily="@font/product_sans"
-        android:onClick="leCodigo"
-        android:text="@string/leitura"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@+id/et_gera_registro_np"
-        app:layout_constraintTop_toTopOf="@+id/et_gera_registro_np" />
-
-    <Button
-        android:id="@+id/bt_gera_registro_ciclos"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bt_texto"
-        android:fontFamily="@font/product_sans"
-        android:onClick="selecionaCiclos"
-        android:text="@string/tv_ciclo"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_gera_registro_processo" />
-
-    <TextView
-        android:id="@+id/tv_gera_registro_data"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/product_sans"
-        android:gravity="center"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_gera_registro_motivo" />
-
-    <Button
-        android:id="@+id/bt_gera_registro_data"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bt_texto"
-        android:fontFamily="@font/product_sans"
-        android:onClick="mostrarCalendario"
-        android:text="@string/tv_data"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_gera_registro_data" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package br.com.flavio.geradordeapertos;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -21,7 +22,7 @@ import br.com.flavio.geradordeapertos.mascara.Mascara;
 import br.com.flavio.geradordeapertos.modelo.Apertadeira;
 import br.com.flavio.geradordeapertos.modelo.Processo;
 
-public class CadastroProcesso extends BaseActivity{
+public class CadastroProcesso extends BaseActivity {
     private TextView tv_apertadeira;
     private TextView tv_nome;
     private TextView tv_ciclos;
@@ -41,7 +42,6 @@ public class CadastroProcesso extends BaseActivity{
         tv_ciclos = findViewById(R.id.tv_cadastro_processo_ciclos);
         tv_nominal = findViewById(R.id.tv_cadastro_processo_nominal);
         tv_angulo = findViewById(R.id.tv_cadastro_processo_angulo);
-       
         
         helper = new ProcessoHelper(this);
         
@@ -56,6 +56,13 @@ public class CadastroProcesso extends BaseActivity{
     @Override
     protected void onResume() {
         super.onResume();
+    }
+    
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Desabilita a opção da activity no menu
+        menu.findItem(R.id.mi_processo).setVisible(false);
+        return super.onPrepareOptionsMenu(menu);
     }
     
     public void carregaApertadeiras(View view) {

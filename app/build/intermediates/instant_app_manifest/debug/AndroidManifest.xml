@@ -35,9 +35,6 @@
             android:name="br.com.flavio.geradordeapertos.CadastroApertadeira"
             android:label="@string/cadastro_processo" />
         <activity
-            android:name="br.com.flavio.geradordeapertos.GeradorRegistroGrupo"
-            android:label="@string/lbl_registro_apertadeira" />
-        <activity
             android:name="br.com.flavio.geradordeapertos.Leitura"
             android:label="@string/leitura" />
         <activity

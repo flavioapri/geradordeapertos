@@ -24,9 +24,6 @@
             android:name=".CadastroApertadeira"
             android:label="@string/cadastro_processo" />
         <activity
-            android:name=".GeradorRegistroApertadeira"
-            android:label="@string/lbl_registro_apertadeira" />
-        <activity
             android:name=".Leitura"
             android:label="@string/leitura" />
         <activity

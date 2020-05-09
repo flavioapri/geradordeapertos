@@ -104,7 +104,7 @@
         android:id="@+id/bt_pesquisar"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:background="@drawable/bt_texto"
+        android:background="@drawable/bt_texto_enabled"
         android:elevation="8dp"
         android:fontFamily="@font/font_awesome_5"
         android:text="@string/icon_search"

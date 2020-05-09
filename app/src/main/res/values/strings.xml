@@ -169,4 +169,8 @@
     <string name="mi_gerar_apertadeira">Por apertadeira</string>
     <string name="ad_titulo_gera_registro_incompleto">Formulário incompleto</string>
     <string name="ad_msg_gera_registro_incompleto">Ainda faltam dados no formulário para gerar o registro.</string>
+    <string name="rb_gera_registro_tipo_processo">Processo</string>
+    <string name="rb_gera_registro_tipo_apertadeira">Apertadeira</string>
+    <string name="tv_rg_gera_registro">Gerar registro por</string>
+    <string name="tv_gera_registro_data">99/99/9999</string>
 </resources>

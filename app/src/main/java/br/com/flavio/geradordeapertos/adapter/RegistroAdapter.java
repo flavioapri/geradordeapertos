@@ -66,7 +66,9 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
         String valor = "";
         
         int i = 0;
-        for (int j = i; j < registros.size(); j++) {
+        for (int j = i; j <= registros.size(); j++) {
+//            if (j == registros.size())
+//                j--;
             if (registros.get(i).equals(registros.get(j))) { // Comparação feita por equals sobrescrito em Registro
                 valor += "Ciclo " + registros.get(j).getCiclo() + ": " + registros.get(j).getValor() + "\n";
             }
@@ -75,9 +77,11 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
                 i = j;
                 valores.add(valor);
                 valor = "";
+               
+                j--;
                 if ((j + 1) == registros.size())
                     break;
-                j--;
+                
             }
         }
         Collections.reverse(valores);

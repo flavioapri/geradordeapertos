@@ -27,6 +27,8 @@ anim design_bottom_sheet_slide_in
 anim design_bottom_sheet_slide_out
 anim design_snackbar_in
 anim design_snackbar_out
+anim item_animation_fall_down
+anim layout_animation
 anim mtrl_bottom_sheet_slide_in
 anim mtrl_bottom_sheet_slide_out
 anim mtrl_card_lowers_interpolator
@@ -1364,7 +1366,9 @@ drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
 drawable bt_principal
-drawable bt_texto
+drawable bt_selector
+drawable bt_texto_disabled
+drawable bt_texto_enabled
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1530,7 +1534,7 @@ id bt_gera_registro_ciclos
 id bt_gera_registro_clear
 id bt_gera_registro_confirm
 id bt_gera_registro_data
-id bt_gera_registro_leitura
+id bt_gera_registro_scanner
 id bt_historico_exportar
 id bt_historico_limpar
 id bt_novo
@@ -1540,7 +1544,16 @@ id buttonPanel
 id cancel_action
 id cancel_button
 id card_view
-id cb_formulario_selecionar_todos
+id cb1
+id cb10
+id cb2
+id cb3
+id cb4
+id cb5
+id cb6
+id cb7
+id cb8
+id cb9
 id center
 id center_horizontal
 id center_vertical
@@ -1625,7 +1638,6 @@ id left
 id light
 id line1
 id line3
-id linear_layout
 id listMode
 id list_item
 id masked
@@ -1695,7 +1707,10 @@ id pin
 id progress_circular
 id progress_horizontal
 id radio
+id rb_gera_registro_tipo_apertadeira
+id rb_gera_registro_tipo_processo
 id rc_lista_registros
+id rg_gera_registro_tipo
 id right
 id right_icon
 id right_side
@@ -1801,12 +1816,9 @@ id tv_ciclos_apertos
 id tv_configuracoes_tolerancia
 id tv_data
 id tv_formulario_processo
-id tv_gera_registro_apertadeira
 id tv_gera_registro_ciclos
 id tv_gera_registro_data
-id tv_gera_registro_motivo
 id tv_gera_registro_np
-id tv_gera_registro_processo
 id tv_historico_apertadeira
 id tv_historico_fim
 id tv_historico_inicio
@@ -1821,6 +1833,7 @@ id tv_nome
 id tv_np
 id tv_processo
 id tv_relacao_processo_rodape
+id tv_rg_gera_registro
 id tv_sobre_descricao
 id tv_sobre_notas
 id tv_taxa
@@ -1901,7 +1914,6 @@ layout activity_cadastro_apertadeira
 layout activity_cadastro_motivo
 layout activity_cadastro_processo
 layout activity_configuracoes
-layout activity_gera_registro_apertadeira
 layout activity_gera_registro_processo
 layout activity_historico
 layout activity_leitura
@@ -1911,7 +1923,7 @@ layout activity_sobre
 layout cardview_lista
 layout cardview_processos
 layout cardview_registro
-layout checkbox_ciclos
+layout ciclos_checkboxes
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2224,6 +2236,8 @@ string ponto
 string processo
 string programa_individual
 string programa_lote
+string rb_gera_registro_tipo_apertadeira
+string rb_gera_registro_tipo_processo
 string relacao_programa
 string remover
 string remover_motivo
@@ -2262,6 +2276,7 @@ string tv_ciclo
 string tv_data
 string tv_formulario_ciclos
 string tv_gera_registro_apertadeira
+string tv_gera_registro_data
 string tv_historico_apertadeira
 string tv_motivo
 string tv_np
@@ -2270,6 +2285,7 @@ string tv_programa
 string tv_registro
 string tv_relacao_processo_lista_rodape
 string tv_relacao_programa_lista_rodape
+string tv_rg_gera_registro
 string tv_sucesso
 string unidade_grau
 string unidade_newton_metro
