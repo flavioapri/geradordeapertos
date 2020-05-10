@@ -174,7 +174,7 @@ public class GeradorRegistroProcesso extends BaseActivity {
     
     private LinearLayout criaGrupoCheckBoxes() {
         LayoutInflater inflater = LayoutInflater.from(this);
-        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.ciclos_checkboxes, null);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.checkboxes_ciclos, null);
         //TODO tornar Linear Layout global e extrair criação para outro método
         for (int cont = 9; cont >= processo.getCiclos(); cont--) {
             layout.removeViewAt(cont);
@@ -269,7 +269,7 @@ public class GeradorRegistroProcesso extends BaseActivity {
         startActivityForResult(intentLeitura, ACTIVITY_LEITURA);
     }
     
-    public void geraRegistro(View view){
+    public void geraRegistro(View view) {
         if (porProcesso)
             geraRegistroPorProcesso();
         else
@@ -311,7 +311,10 @@ public class GeradorRegistroProcesso extends BaseActivity {
                     new AlertDialog.Builder(GeradorRegistroProcesso.this)
                             .setMessage(R.string.alert_confirmacao_gravar_registro)
                             .show();
-                    EmissorMensagem.envia(this, registro, valores);
+                    if (porProcesso)
+                        EmissorMensagem.enviaMensagem(this, registro, valores);
+                    else
+                        EmissorMensagem.enviaMensagem(this, registros, valoresRegistros);
                 })
                 .setNegativeButton(R.string.cancelar, (dialog, which) -> confirmado[0] = false)
                 .show();
@@ -328,8 +331,9 @@ public class GeradorRegistroProcesso extends BaseActivity {
         //TODO verificar se não estão selecionados os valores padrão dos spinners
         String np = et_np.getText().toString().trim();
         boolean preenchidoProcesso =
-                (!(np.length() < 11 || ciclos == null || ciclos.isEmpty() || motivo == null || processo == null || apertadeira == null));
-        boolean preenchidoApertadeira = (!(np.length() < 11 || motivo == null || apertadeira == null));
+                (!(np.length() < 11 || ciclos == null || ciclos.isEmpty() || motivo.getNome() == "Motivo" || processo.getNome() ==
+                        "Processo" || apertadeira.getNome() == "Apertadeira"));
+        boolean preenchidoApertadeira = (!(np.length() < 11 || motivo.getNome() == "Motivo" || apertadeira.getNome() == "Apertadeira"));
         if (!(preenchidoApertadeira || preenchidoProcesso)) {
             new AlertDialog.Builder(this)
                     .setTitle(R.string.ad_titulo_gera_registro_incompleto)
@@ -385,7 +389,6 @@ public class GeradorRegistroProcesso extends BaseActivity {
                     System.out.println(registros.get(cont));
                     System.out.println(valoresRegistros.get(cont));
                 }
-                
             }
         }
     }

@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import br.com.flavio.geradordeapertos.R;
 import br.com.flavio.geradordeapertos.dao.RegistroDAO;
@@ -61,32 +63,27 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
      * @return Lista com os registros unificados
      */
     private List<Registro> unificaRegistros() {
-        List<Registro> unificados = new ArrayList<>();
+        Set<Registro> registrosUnificados = new LinkedHashSet<>();
+        registrosUnificados.addAll(registros);
+        List<Registro> registrosOrdenados = new ArrayList<>();
+        registrosOrdenados.addAll(registrosUnificados);
         valores = new ArrayList<>();
         String valor = "";
         
-        int i = 0;
-        for (int j = i; j <= registros.size(); j++) {
-//            if (j == registros.size())
-//                j--;
-            if (registros.get(i).equals(registros.get(j))) { // Comparação feita por equals sobrescrito em Registro
-                valor += "Ciclo " + registros.get(j).getCiclo() + ": " + registros.get(j).getValor() + "\n";
+        for (Registro registroUnificado : registrosUnificados) {
+            for (Registro registro : registros) {
+                if (registroUnificado.equals(registro))
+                    valor += "Ciclo " + registro.getCiclo() + ": " + registro.getValor() + "\n";
+                else {
+                    continue;
+                }
             }
-            if (!registros.get(i).equals(registros.get(j)) || (j + 1) == registros.size()) {
-                unificados.add(registros.get(i));
-                i = j;
-                valores.add(valor);
-                valor = "";
-               
-                j--;
-                if ((j + 1) == registros.size())
-                    break;
-                
-            }
+            valores.add(valor);
+            valor = "";
         }
         Collections.reverse(valores);
-        Collections.reverse(unificados);// Ordenar do último para o primeiro
-        return unificados;
+        Collections.reverse(registrosOrdenados);
+        return registrosOrdenados;
     }
     
     @Override
@@ -130,7 +127,7 @@ public class RegistroAdapter extends RecyclerView.Adapter<RegistroAdapter.Regist
         MenuItem.OnMenuItemClickListener onClick = item -> {
             switch (item.getItemId()) {
                 case 1:
-                    EmissorMensagem.envia(contexto, unificados.get(getAdapterPosition()),
+                    EmissorMensagem.enviaMensagem(contexto, unificados.get(getAdapterPosition()),
                             valores.get(getAdapterPosition()));
                     break;
                 case 2:

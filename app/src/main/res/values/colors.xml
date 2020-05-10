@@ -2,4 +2,5 @@
 <resources>
     <color name="colorPrimaryDark">#66A114</color>
     <color name="leitura_background">#1B1B1B</color>
+    <color name="campoCardRegistro">#014C02</color>
 </resources>
